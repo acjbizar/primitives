@@ -1,32 +1,21 @@
 #!/usr/bin/env python3
 """
-Generate 5×9 glyph SVGs for A–Z and a–z using ONLY the 10 primitives:
-0 square
-1 circle (dot)
-2 half (flat bottom, curved top)
-3 half (flat top, curved bottom)
-4 half (flat left, curved right)
-5 half (flat right, curved left)
-6 quarter (flat top+right, curved diagonal)
-7 quarter (flat bottom+right, curved diagonal)
-8 quarter (flat bottom+left, curved diagonal)
-9 quarter (flat top+left, curved diagonal)
+Generate 5×9 glyph SVGs for A–Z, a–z, and 0–9 using ONLY the 10 primitives.
 
-No external fonts are used: every glyph is defined as a 5×9 bitmap (on/off),
-then we "upgrade" each filled cell into one of the primitives based on neighbors.
-
-- Put this script in: tools/
-- It writes SVGs to:   ../sketches/alphabet-5x9-manual/
-  (upper-A.svg ... upper-Z.svg, lower-a.svg ... lower-z.svg)
+- Script location: tools/
+- Output: ../sketches/alphabet-5x9-manual/
+  - upper-A.svg ... upper-Z.svg
+  - lower-a.svg ... lower-z.svg
+  - digit-0.svg  ... digit-9.svg
 """
 
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional
 
 GRID_W, GRID_H = 5, 9
-D = 48  # tile size (viewBox 48×48 per primitive)
+D = 48  # tile size (each primitive uses viewBox 48×48)
 
 
 # ----------------------------
@@ -623,6 +612,120 @@ GLYPHS: Dict[str, List[str]] = {
         .....
         .....
     """),
+
+    # --------------------
+    # Digits 0–9
+    # --------------------
+    "0": bm("""
+        .###.
+        #...#
+        #..##
+        #.#.#
+        ##..#
+        #...#
+        .###.
+        .....
+        .....
+    """),
+    "1": bm("""
+        ..#..
+        .##..
+        ..#..
+        ..#..
+        ..#..
+        ..#..
+        .###.
+        .....
+        .....
+    """),
+    "2": bm("""
+        .###.
+        #...#
+        ....#
+        ...#.
+        ..#..
+        .#...
+        #####
+        .....
+        .....
+    """),
+    "3": bm("""
+        ####.
+        ....#
+        ...#.
+        ..##.
+        ....#
+        #...#
+        .###.
+        .....
+        .....
+    """),
+    "4": bm("""
+        ...#.
+        ..##.
+        .#.#.
+        #..#.
+        #####
+        ...#.
+        ...#.
+        .....
+        .....
+    """),
+    "5": bm("""
+        #####
+        #....
+        ####.
+        ....#
+        ....#
+        #...#
+        .###.
+        .....
+        .....
+    """),
+    "6": bm("""
+        .###.
+        #....
+        ####.
+        #...#
+        #...#
+        #...#
+        .###.
+        .....
+        .....
+    """),
+    "7": bm("""
+        #####
+        ....#
+        ...#.
+        ..#..
+        .#...
+        .#...
+        .#...
+        .....
+        .....
+    """),
+    "8": bm("""
+        .###.
+        #...#
+        #...#
+        .###.
+        #...#
+        #...#
+        .###.
+        .....
+        .....
+    """),
+    "9": bm("""
+        .###.
+        #...#
+        #...#
+        .####
+        ....#
+        ...#.
+        .##..
+        .....
+        .....
+    """),
 }
 
 
@@ -633,52 +736,33 @@ def svg_defs() -> str:
     d = D
     r = D / 2
     return f"""  <defs>
-    <!-- 0 square -->
     <symbol id="p0" viewBox="0 0 {d} {d}">
       <rect x="0" y="0" width="{d}" height="{d}" fill="currentColor"/>
     </symbol>
-
-    <!-- 1 circle -->
     <symbol id="p1" viewBox="0 0 {d} {d}">
       <circle cx="{r:g}" cy="{r:g}" r="{r:g}" fill="currentColor"/>
     </symbol>
-
-    <!-- 2 half: flat bottom, curved top -->
     <symbol id="p2" viewBox="0 0 {d} {d}">
       <path d="M {d:g} {d:g} A {r:g} {r:g} 0 0 0 0 {d:g} Z" fill="currentColor"/>
     </symbol>
-
-    <!-- 3 half: flat top, curved bottom -->
     <symbol id="p3" viewBox="0 0 {d} {d}">
       <path d="M 0 0 A {r:g} {r:g} 0 0 0 {d:g} 0 Z" fill="currentColor"/>
     </symbol>
-
-    <!-- 4 half: flat left, curved right -->
     <symbol id="p4" viewBox="0 0 {d} {d}">
       <path d="M 0 {d:g} A {r:g} {r:g} 0 0 0 0 0 Z" fill="currentColor"/>
     </symbol>
-
-    <!-- 5 half: flat right, curved left -->
     <symbol id="p5" viewBox="0 0 {d} {d}">
       <path d="M {d:g} 0 A {r:g} {r:g} 0 0 0 {d:g} {d:g} Z" fill="currentColor"/>
     </symbol>
-
-    <!-- 6 quarter: flat top+right -->
     <symbol id="p6" viewBox="0 0 {d} {d}">
       <path d="M {d:g} 0 L {d:g} {d:g} A {d:g} {d:g} 0 0 1 0 0 Z" fill="currentColor"/>
     </symbol>
-
-    <!-- 7 quarter: flat bottom+right -->
     <symbol id="p7" viewBox="0 0 {d} {d}">
       <path d="M {d:g} {d:g} L 0 {d:g} A {d:g} {d:g} 0 0 1 {d:g} 0 Z" fill="currentColor"/>
     </symbol>
-
-    <!-- 8 quarter: flat bottom+left -->
     <symbol id="p8" viewBox="0 0 {d} {d}">
       <path d="M 0 {d:g} L 0 0 A {d:g} {d:g} 0 0 1 {d:g} {d:g} Z" fill="currentColor"/>
     </symbol>
-
-    <!-- 9 quarter: flat top+left -->
     <symbol id="p9" viewBox="0 0 {d} {d}">
       <path d="M 0 0 L {d:g} 0 A {d:g} {d:g} 0 0 1 0 {d:g} Z" fill="currentColor"/>
     </symbol>
@@ -720,7 +804,7 @@ def pick_primitive(g: List[str], x: int, y: int) -> Optional[int]:
             return 4
         return 0
 
-    # clean corner (orthogonal 2-neighbor) -> quarter with flats on the connected edges
+    # orthogonal corner -> quarter with flats on the connected edges
     if n == 2 and ((up and lf) or (up and rt) or (dn and lf) or (dn and rt)):
         if up and lf:
             return 9  # flat top+left
@@ -764,17 +848,16 @@ def main() -> None:
     out_dir = script_dir.parent / "sketches" / "alphabet-5x9-manual"
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    # uppercase
     for ch in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
-        g = GLYPHS[ch]
-        (out_dir / f"upper-{ch}.svg").write_text(glyph_to_svg(g), encoding="utf-8")
+        (out_dir / f"upper-{ch}.svg").write_text(glyph_to_svg(GLYPHS[ch]), encoding="utf-8")
 
-    # lowercase
     for ch in "abcdefghijklmnopqrstuvwxyz":
-        g = GLYPHS[ch]
-        (out_dir / f"lower-{ch}.svg").write_text(glyph_to_svg(g), encoding="utf-8")
+        (out_dir / f"lower-{ch}.svg").write_text(glyph_to_svg(GLYPHS[ch]), encoding="utf-8")
 
-    print(f"Wrote 52 glyph SVGs to: {out_dir}")
+    for ch in "0123456789":
+        (out_dir / f"digit-{ch}.svg").write_text(glyph_to_svg(GLYPHS[ch]), encoding="utf-8")
+
+    print(f"Wrote 62 glyph SVGs to: {out_dir}")
 
 
 if __name__ == "__main__":

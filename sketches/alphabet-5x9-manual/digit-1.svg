@@ -33,17 +33,15 @@
   </defs>
 
   <g style="color: #000">
-    <use href="#p2" x="0" y="96" width="48" height="48" />
-    <use href="#p2" x="192" y="96" width="48" height="48" />
-    <use href="#p0" x="0" y="144" width="48" height="48" />
-    <use href="#p0" x="192" y="144" width="48" height="48" />
-    <use href="#p0" x="0" y="192" width="48" height="48" />
-    <use href="#p2" x="96" y="192" width="48" height="48" />
-    <use href="#p0" x="192" y="192" width="48" height="48" />
-    <use href="#p3" x="0" y="240" width="48" height="48" />
-    <use href="#p3" x="96" y="240" width="48" height="48" />
-    <use href="#p3" x="192" y="240" width="48" height="48" />
-    <use href="#p1" x="48" y="288" width="48" height="48" />
-    <use href="#p1" x="144" y="288" width="48" height="48" />
+    <use href="#p2" x="96" y="0" width="48" height="48" />
+    <use href="#p5" x="48" y="48" width="48" height="48" />
+    <use href="#p0" x="96" y="48" width="48" height="48" />
+    <use href="#p0" x="96" y="96" width="48" height="48" />
+    <use href="#p0" x="96" y="144" width="48" height="48" />
+    <use href="#p0" x="96" y="192" width="48" height="48" />
+    <use href="#p0" x="96" y="240" width="48" height="48" />
+    <use href="#p5" x="48" y="288" width="48" height="48" />
+    <use href="#p0" x="96" y="288" width="48" height="48" />
+    <use href="#p4" x="144" y="288" width="48" height="48" />
   </g>
 </svg>
