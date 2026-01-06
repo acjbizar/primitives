@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="432" viewBox="0 0 240 432">
+  <defs>
+    <!-- 0 square -->
+    <symbol id="p0" viewBox="0 0 48 48">
+      <rect x="0" y="0" width="48" height="48" fill="currentColor"/>
+    </symbol>
+
+    <!-- 1 circle -->
+    <symbol id="p1" viewBox="0 0 48 48">
+      <circle cx="24" cy="24" r="24" fill="currentColor"/>
+    </symbol>
+
+    <!-- 2 half: flat bottom, curved top -->
+    <symbol id="p2" viewBox="0 0 48 48">
+      <path d="M 48 48 A 24 24 0 0 0 0 48 Z" fill="currentColor"/>
+    </symbol>
+
+    <!-- 3 half: flat top, curved bottom -->
+    <symbol id="p3" viewBox="0 0 48 48">
+      <path d="M 0 0 A 24 24 0 0 0 48 0 Z" fill="currentColor"/>
+    </symbol>
+
+    <!-- 4 half: flat left, curved right -->
+    <symbol id="p4" viewBox="0 0 48 48">
+      <path d="M 0 48 A 24 24 0 0 0 0 0 Z" fill="currentColor"/>
+    </symbol>
+
+    <!-- 5 half: flat right, curved left -->
+    <symbol id="p5" viewBox="0 0 48 48">
+      <path d="M 48 0 A 24 24 0 0 0 48 48 Z" fill="currentColor"/>
+    </symbol>
+
+    <!-- 6 quarter: flat top+right -->
+    <symbol id="p6" viewBox="0 0 48 48">
+      <path d="M 48 0 L 48 48 A 48 48 0 0 1 0 0 Z" fill="currentColor"/>
+    </symbol>
+
+    <!-- 7 quarter: flat bottom+right -->
+    <symbol id="p7" viewBox="0 0 48 48">
+      <path d="M 48 48 L 0 48 A 48 48 0 0 1 48 0 Z" fill="currentColor"/>
+    </symbol>
+
+    <!-- 8 quarter: flat bottom+left -->
+    <symbol id="p8" viewBox="0 0 48 48">
+      <path d="M 0 48 L 0 0 A 48 48 0 0 1 48 48 Z" fill="currentColor"/>
+    </symbol>
+
+    <!-- 9 quarter: flat top+left -->
+    <symbol id="p9" viewBox="0 0 48 48">
+      <path d="M 0 0 L 48 0 A 48 48 0 0 1 0 48 Z" fill="currentColor"/>
+    </symbol>
+  </defs>
+
+  <g style="color: #000">
+    <use href="#p1" x="144" y="0" width="48" height="48" />
+    <use href="#p5" x="96" y="96" width="48" height="48" />
+    <use href="#p8" x="144" y="96" width="48" height="48" />
+    <use href="#p0" x="144" y="144" width="48" height="48" />
+    <use href="#p0" x="144" y="192" width="48" height="48" />
+    <use href="#p0" x="144" y="240" width="48" height="48" />
+    <use href="#p1" x="0" y="288" width="48" height="48" />
+    <use href="#p3" x="144" y="288" width="48" height="48" />
+    <use href="#p5" x="48" y="336" width="48" height="48" />
+    <use href="#p4" x="96" y="336" width="48" height="48" />
+  </g>
+</svg>
