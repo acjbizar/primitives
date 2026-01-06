@@ -1,2 +1,4 @@
-# primitives
+
+# Primitives
+
 Abstract (typographic) design system.
