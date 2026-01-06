@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="1740" viewBox="0 0 980 1740">
+    <defs>
+        <style>
+            .title { font: 700 30px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace; fill:#111; }
+            .sub   { font: 16px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace; fill:#444; }
+            .lbl   { font: 20px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace; fill:#111; }
+            .code  { font: 14px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace; fill:#555; }
+            .frame { fill:none; stroke:#ddd; stroke-width:2; }
+            .cell  { fill:none; stroke:#bbb; stroke-width:2; stroke-dasharray:4 4; }
+            .shape { fill:#111; fill-opacity:.85; stroke:#111; stroke-width:2; stroke-linejoin:round; stroke-linecap:round; }
+        </style>
+    </defs>
+
+    <!-- Header -->
+    <text class="title" x="28" y="54">primitives.acjs.net — primitives legend</text>
+    <text class="sub" x="28" y="84">Derived from switch(p) cases 0..9 in your script (d = 48). Each sample shows a 48×48 cell (dashed) at (48,48).</text>
+
+    <!-- Reusable layout notes:
+         Each row is 160px tall.
+         Sample viewport is 144×144 (frame), with the original cell at x=48,y=48,d=48.
+    -->
+
+    <!-- ROW 0 -->
+    <g transform="translate(28,120)">
+        <rect class="frame" x="0" y="0" width="144" height="144" rx="14"/>
+        <rect class="cell"  x="48" y="48" width="48" height="48" rx="8"/>
+
+        <!-- case 0: fillRect(x,y,d,d) -->
+        <rect class="shape" x="48" y="48" width="48" height="48"/>
+
+        <text class="lbl"  x="180" y="56">p=0 — square</text>
+        <text class="code" x="180" y="82">fillRect(x, y, d, d)</text>
+    </g>
+
+    <!-- ROW 1 -->
+    <g transform="translate(28,280)">
+        <rect class="frame" x="0" y="0" width="144" height="144" rx="14"/>
+        <rect class="cell"  x="48" y="48" width="48" height="48" rx="8"/>
+
+        <!-- case 1: full circle (r=d/2) centered in cell -->
+        <circle class="shape" cx="72" cy="72" r="24"/>
+
+        <text class="lbl"  x="180" y="56">p=1 — circle</text>
+        <text class="code" x="180" y="82">arc(x+d/2, y+d/2, d/2, 0, 2π)</text>
+    </g>
+
+    <!-- ROW 2 -->
+    <g transform="translate(28,440)">
+        <rect class="frame" x="0" y="0" width="144" height="144" rx="14"/>
+        <rect class="cell"  x="48" y="48" width="48" height="48" rx="8"/>
+
+        <!-- case 2: semicircle attached to bottom edge (center at x+d/2, y+d) -->
+        <path class="shape" d="M 96 96 A 24 24 0 0 0 48 96 Z"/>
+
+        <text class="lbl"  x="180" y="56">p=2 — semicircle (bottom)</text>
+        <text class="code" x="180" y="82">arc(x+d/2, y+d, d/2, 0, π) + closePath()</text>
+    </g>
+
+    <!-- ROW 3 -->
+    <g transform="translate(28,600)">
+        <rect class="frame" x="0" y="0" width="144" height="144" rx="14"/>
+        <rect class="cell"  x="48" y="48" width="48" height="48" rx="8"/>
+
+        <!-- case 3: semicircle attached to top edge (center at x+d/2, y) -->
+        <path class="shape" d="M 48 48 A 24 24 0 0 0 96 48 Z"/>
+
+        <text class="lbl"  x="180" y="56">p=3 — semicircle (top)</text>
+        <text class="code" x="180" y="82">arc(x+d/2, y, d/2, π, 2π) + closePath()</text>
+    </g>
+
+    <!-- ROW 4 -->
+    <g transform="translate(28,760)">
+        <rect class="frame" x="0" y="0" width="144" height="144" rx="14"/>
+        <rect class="cell"  x="48" y="48" width="48" height="48" rx="8"/>
+
+        <!-- case 4: semicircle attached to left edge (center at x, y+d/2) bulging left -->
+        <path class="shape" d="M 48 96 A 24 24 0 0 1 48 48 Z"/>
+
+        <text class="lbl"  x="180" y="56">p=4 — semicircle (left)</text>
+        <text class="code" x="180" y="82">arc(x, y+d/2, d/2, π/2, 3π/2) + closePath()</text>
+    </g>
+
+    <!-- ROW 5 -->
+    <g transform="translate(28,920)">
+        <rect class="frame" x="0" y="0" width="144" height="144" rx="14"/>
+        <rect class="cell"  x="48" y="48" width="48" height="48" rx="8"/>
+
+        <!-- case 5: semicircle attached to right edge (center at x+d, y+d/2) bulging right -->
+        <path class="shape" d="M 96 48 A 24 24 0 0 1 96 96 Z"/>
+
+        <text class="lbl"  x="180" y="56">p=5 — semicircle (right)</text>
+        <text class="code" x="180" y="82">arc(x+d, y+d/2, d/2, 3π/2, π/2) + closePath()</text>
+    </g>
+
+    <!-- ROW 6 -->
+    <g transform="translate(28,1080)">
+        <rect class="frame" x="0" y="0" width="144" height="144" rx="14"/>
+        <rect class="cell"  x="48" y="48" width="48" height="48" rx="8"/>
+
+        <!-- case 6:
+             moveTo(x,y) -> lineTo(x+d,y)
+             (implicit line) -> arc start at (x+d, y+d)
+             arc center (x+d,y), r=d, from π/2 to π
+        -->
+        <path class="shape" d="M 48 48 L 96 48 L 96 96 A 48 48 0 0 0 48 48 Z"/>
+
+        <text class="lbl"  x="180" y="56">p=6 — corner wedge (center at top-right)</text>
+        <text class="code" x="180" y="82">moveTo(x,y) → lineTo(x+d,y) → arc(x+d,y, d, π/2, π)</text>
+    </g>
+
+    <!-- ROW 7 -->
+    <g transform="translate(28,1240)">
+        <rect class="frame" x="0" y="0" width="144" height="144" rx="14"/>
+        <rect class="cell"  x="48" y="48" width="48" height="48" rx="8"/>
+
+        <!-- case 7:
+             moveTo(x+d,y) -> lineTo(x+d,y+d)
+             (implicit line) -> arc start at (x, y+d)
+             arc center (x+d,y+d), r=d, from π to 3π/2
+        -->
+        <path class="shape" d="M 96 48 L 96 96 L 48 96 A 48 48 0 0 0 96 48 Z"/>
+
+        <text class="lbl"  x="180" y="56">p=7 — corner wedge (center at bottom-right)</text>
+        <text class="code" x="180" y="82">moveTo(x+d,y) → lineTo(x+d,y+d) → arc(x+d,y+d, d, π, 3π/2)</text>
+    </g>
+
+    <!-- ROW 8 -->
+    <g transform="translate(28,1400)">
+        <rect class="frame" x="0" y="0" width="144" height="144" rx="14"/>
+        <rect class="cell"  x="48" y="48" width="48" height="48" rx="8"/>
+
+        <!-- case 8:
+             moveTo(x-d, y+d) -> lineTo(x, y+d)
+             (implicit line) -> arc start at (x, y)
+             arc center (x, y+d), r=d, from 3π/2 to 2π
+        -->
+        <path class="shape" d="M 0 96 L 48 96 L 48 48 A 48 48 0 0 0 96 96 Z"/>
+
+        <text class="lbl"  x="180" y="56">p=8 — corner wedge (center at bottom-left)</text>
+        <text class="code" x="180" y="82">moveTo(x-d,y+d) → lineTo(x,y+d) → arc(x,y+d, d, 3π/2, 2π)</text>
+    </g>
+
+    <!-- ROW 9 -->
+    <g transform="translate(28,1560)">
+        <rect class="frame" x="0" y="0" width="144" height="144" rx="14"/>
+        <rect class="cell"  x="48" y="48" width="48" height="48" rx="8"/>
+
+        <!-- case 9:
+             moveTo(x, y-d) -> lineTo(x, y)
+             (implicit line) -> arc start at (x+d, y)
+             arc center (x, y), r=d, from 2π to 2.5π (== π/2)
+        -->
+        <path class="shape" d="M 48 0 L 48 48 L 96 48 A 48 48 0 0 0 48 96 Z"/>
+
+        <text class="lbl"  x="180" y="56">p=9 — corner wedge (center at top-left)</text>
+        <text class="code" x="180" y="82">moveTo(x,y-d) → lineTo(x,y) → arc(x,y, d, 2π, 5π/2)</text>
+    </g>
+</svg>
