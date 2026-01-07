@@ -7,6 +7,31 @@ Abstract (typographic) design system.
 
 ![](sketches/pattern-1767736570921.svg)
 
+## Web Fonts
+
+```css
+@font-face {
+  font-family: "Primitives Color";
+  src:
+    url("https://hetcdn.nl/fonts/primitives-color.woff2") format("woff2"),
+    url("https://hetcdn.nl/fonts/primitives-color.woff") format("woff"),
+    url("https://hetcdn.nl/fonts/primitives-color.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+    --font-primitives: "Primitives Color", system-ui, sans-serif;
+}
+
+.font--primitives {
+    font-family: var(--font-primitives);
+    font-palette: normal;
+    font-variant-ligatures: none;
+}
+```
+
 ## Letter Sample
 
 ![a](sketches/alphabet-5x9-manual-rgb/lower-a.svg)![b](sketches/alphabet-5x9-manual-rgb/lower-b.svg)![c](sketches/alphabet-5x9-manual-rgb/lower-c.svg)![d](sketches/alphabet-5x9-manual-rgb/lower-d.svg)![e](sketches/alphabet-5x9-manual-rgb/lower-e.svg)![f](sketches/alphabet-5x9-manual-rgb/lower-f.svg)![g](sketches/alphabet-5x9-manual-rgb/lower-g.svg)![h](sketches/alphabet-5x9-manual-rgb/lower-h.svg)![i](sketches/alphabet-5x9-manual-rgb/lower-i.svg)![j](sketches/alphabet-5x9-manual-rgb/lower-j.svg)![k](sketches/alphabet-5x9-manual-rgb/lower-k.svg)![l](sketches/alphabet-5x9-manual-rgb/lower-l.svg)![m](sketches/alphabet-5x9-manual-rgb/lower-m.svg)![n](sketches/alphabet-5x9-manual-rgb/lower-n.svg)![o](sketches/alphabet-5x9-manual-rgb/lower-o.svg)![p](sketches/alphabet-5x9-manual-rgb/lower-p.svg)![q](sketches/alphabet-5x9-manual-rgb/lower-q.svg)![r](sketches/alphabet-5x9-manual-rgb/lower-r.svg)![s](sketches/alphabet-5x9-manual-rgb/lower-s.svg)![t](sketches/alphabet-5x9-manual-rgb/lower-t.svg)![u](sketches/alphabet-5x9-manual-rgb/lower-u.svg)![v](sketches/alphabet-5x9-manual-rgb/lower-v.svg)![w](sketches/alphabet-5x9-manual-rgb/lower-w.svg)![x](sketches/alphabet-5x9-manual-rgb/lower-x.svg)![y](sketches/alphabet-5x9-manual-rgb/lower-y.svg)![z](sketches/alphabet-5x9-manual-rgb/lower-z.svg)![A](sketches/alphabet-5x9-manual-rgb/upper-A.svg)![B](sketches/alphabet-5x9-manual-rgb/upper-B.svg)![C](sketches/alphabet-5x9-manual-rgb/upper-C.svg)![D](sketches/alphabet-5x9-manual-rgb/upper-D.svg)![E](sketches/alphabet-5x9-manual-rgb/upper-E.svg)![F](sketches/alphabet-5x9-manual-rgb/upper-F.svg)![G](sketches/alphabet-5x9-manual-rgb/upper-G.svg)![H](sketches/alphabet-5x9-manual-rgb/upper-H.svg)![I](sketches/alphabet-5x9-manual-rgb/upper-I.svg)![J](sketches/alphabet-5x9-manual-rgb/upper-J.svg)![K](sketches/alphabet-5x9-manual-rgb/upper-K.svg)![L](sketches/alphabet-5x9-manual-rgb/upper-L.svg)![M](sketches/alphabet-5x9-manual-rgb/upper-M.svg)![N](sketches/alphabet-5x9-manual-rgb/upper-N.svg)![O](sketches/alphabet-5x9-manual-rgb/upper-O.svg)![P](sketches/alphabet-5x9-manual-rgb/upper-P.svg)![Q](sketches/alphabet-5x9-manual-rgb/upper-Q.svg)![R](sketches/alphabet-5x9-manual-rgb/upper-R.svg)![S](sketches/alphabet-5x9-manual-rgb/upper-S.svg)![T](sketches/alphabet-5x9-manual-rgb/upper-T.svg)![U](sketches/alphabet-5x9-manual-rgb/upper-U.svg)![V](sketches/alphabet-5x9-manual-rgb/upper-V.svg)![W](sketches/alphabet-5x9-manual-rgb/upper-W.svg)![X](sketches/alphabet-5x9-manual-rgb/upper-X.svg)![Y](sketches/alphabet-5x9-manual-rgb/upper-Y.svg)![Z](sketches/alphabet-5x9-manual-rgb/upper-Z.svg)![0](sketches/alphabet-5x9-manual-rgb/digit-0.svg)![1](sketches/alphabet-5x9-manual-rgb/digit-1.svg)![2](sketches/alphabet-5x9-manual-rgb/digit-2.svg)![3](sketches/alphabet-5x9-manual-rgb/digit-3.svg)![4](sketches/alphabet-5x9-manual-rgb/digit-4.svg)![5](sketches/alphabet-5x9-manual-rgb/digit-5.svg)![6](sketches/alphabet-5x9-manual-rgb/digit-6.svg)![7](sketches/alphabet-5x9-manual-rgb/digit-7.svg)![8](sketches/alphabet-5x9-manual-rgb/digit-8.svg)![9](sketches/alphabet-5x9-manual-rgb/digit-9.svg)
