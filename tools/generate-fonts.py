@@ -1,25 +1,23 @@
 #!/usr/bin/env python3
 """
-Build a COLR/CPAL color TrueType font from the 5×9 primitive-grid glyphs (A–Z, a–z, 0–9)
-and write it to: ../dist/fonts/
+Build a COLR/CPAL color TrueType font from the 5×9 primitive-grid glyphs (A–Z, a–z, 0–9),
+and ALSO generate WOFF + WOFF2 (when possible), writing everything to: ../dist/fonts/
 
 Put this script in: tools/
-Run from repo root or from tools/ (paths are resolved from this file).
-
-Output:
+Outputs:
   dist/fonts/primitives-color.ttf
+  dist/fonts/primitives-color.woff
+  dist/fonts/primitives-color.woff2   (if brotli/woff2 support is available)
 
 Notes:
 - Colors are baked into the font (fonts can't randomize at render-time).
-- Each tile (primitive instance) gets a deterministic “random” palette color, derived
-  from CRC32 of (glyph, cell, primitive).
+- Each tile gets a deterministic “random” palette color from CRC32 of (glyph, cell, primitive).
 """
 
 from __future__ import annotations
 
 import math
 import random
-import time
 import zlib
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
@@ -28,6 +26,7 @@ from fontTools.colorLib.builder import buildCOLR, buildCPAL
 from fontTools.fontBuilder import FontBuilder
 from fontTools.pens.cu2quPen import Cu2QuPen
 from fontTools.pens.ttGlyphPen import TTGlyphPen
+from fontTools.ttLib import TTFont
 from fontTools.ttLib.tables import otTables as ot
 
 
@@ -39,32 +38,26 @@ STYLE_NAME = "Color"
 
 UPM = 1000
 
-# Vertical metrics (baseline at y=0; y increases UP)
 ASCENT = 700
-DESCENT = 300  # (positive number here; will be written as negative where needed)
+DESCENT = 300  # positive; written as negative in headers
 
-# Glyph advance (monospace-ish)
 ADVANCE_WIDTH = 600
 
-# 5×9 grid, each cell is 100×100 font units
 GRID_W, GRID_H = 5, 9
 CELL = 100
-GRID_PX_W = GRID_W * CELL  # 500
-GRID_PX_H = GRID_H * CELL  # 900
+LEFT = 50
+TOP = 600
 
-# Place grid inside glyph box with margins:
-LEFT = 50              # left sidebearing-ish (centers 500 inside 600)
-TOP = 600              # top of the 9-row grid (grid runs down to TOP-900 = -300)
-
-# Color palette
 PALETTE_SIZE = 256
 PALETTE_SEED = 42
 
+OUT_BASENAME = "primitives-color"
 
-# -----------------------------
+
+# ----------------------------
 # Glyph bitmaps (5×9)
 # '.' = empty, '#' = filled
-# -----------------------------
+# ----------------------------
 def bm(s: str) -> List[str]:
     rows = [line.strip() for line in s.strip().splitlines()]
     assert len(rows) == GRID_H
@@ -766,7 +759,7 @@ GLYPHS: Dict[str, List[str]] = {
 
 
 # -----------------------------
-# Bitmap -> primitive selection
+# Primitive selection
 # -----------------------------
 def is_on(g: List[str], x: int, y: int) -> bool:
     return 0 <= x < GRID_W and 0 <= y < GRID_H and g[y][x] == "#"
@@ -782,49 +775,39 @@ def pick_primitive(g: List[str], x: int, y: int) -> Optional[int]:
     rt = is_on(g, x + 1, y)
     n = int(up) + int(dn) + int(lf) + int(rt)
 
-    # isolated
     if n == 0:
         return 1
-
-    # endpoints -> half circles
     if n == 1:
         if dn:
-            return 2  # flat bottom
+            return 2
         if up:
-            return 3  # flat top
+            return 3
         if rt:
-            return 5  # flat right
+            return 5
         if lf:
-            return 4  # flat left
+            return 4
         return 0
-
-    # corners -> diagonal wedges
     if n == 2 and ((up and lf) or (up and rt) or (dn and lf) or (dn and rt)):
         if up and lf:
-            return 9  # top-left wedge
+            return 9
         if up and rt:
-            return 6  # top-right wedge
+            return 6
         if dn and lf:
-            return 8  # bottom-left wedge
+            return 8
         if dn and rt:
-            return 7  # bottom-right wedge
+            return 7
         return 0
-
-    # straights / junctions
     return 0
 
 
-def tiles_for_glyph(g: List[str]) -> List[Tuple[int, int, int, int]]:
-    """
-    Returns list of (col, row, pid, paletteIndexHint)
-    """
-    out: List[Tuple[int, int, int, int]] = []
+def tiles_for_glyph(g: List[str]) -> List[Tuple[int, int, int]]:
+    out: List[Tuple[int, int, int]] = []
     for row in range(GRID_H):
         for col in range(GRID_W):
             pid = pick_primitive(g, col, row)
             if pid is None:
                 continue
-            out.append((col, row, pid, 0))
+            out.append((col, row, pid))
     return out
 
 
@@ -845,10 +828,6 @@ def draw_rect(pen: TTGlyphPen, x0: float, y0: float, x1: float, y1: float) -> No
 
 
 def cubic_arc_to(pen, cx: float, cy: float, r: float, a0: float, a1: float) -> None:
-    """
-    Add cubic Bezier arc(s) from a0 to a1 around center (cx,cy), radius r.
-    Works for CW or CCW depending on sign of (a1-a0).
-    """
     da = a1 - a0
     if da == 0:
         return
@@ -880,9 +859,6 @@ def cubic_arc_to(pen, cx: float, cy: float, r: float, a0: float, a1: float) -> N
 
 
 def build_primitive_glyph(pid: int):
-    """
-    Build one of the 10 primitive glyphs in a CELL×CELL box, origin at (0,0).
-    """
     ttpen = TTGlyphPen(None)
     pen = Cu2QuPen(ttpen, max_err=1.0, reverse_direction=False)
 
@@ -893,73 +869,60 @@ def build_primitive_glyph(pid: int):
         draw_rect(pen, 0, 0, s, s)
 
     elif pid == 1:
-        # full circle
         pen.moveTo((s, r))
         cubic_arc_to(pen, r, r, r, 0.0, 2.0 * math.pi)
         pen.closePath()
 
     elif pid == 2:
-        # semicircle bulge UP, flat bottom on y=0
         pen.moveTo((0, 0))
         pen.lineTo((s, 0))
-        # start at angle 0 at (s,0) around center (r,0)
         cubic_arc_to(pen, r, 0.0, r, 0.0, math.pi)
         pen.closePath()
 
     elif pid == 3:
-        # semicircle bulge DOWN, flat top on y=s
         pen.moveTo((0, s))
         pen.lineTo((s, s))
-        # start at angle 0 at (s,s) around center (r,s), go CW to -pi
         cubic_arc_to(pen, r, s, r, 0.0, -math.pi)
         pen.closePath()
 
     elif pid == 4:
-        # semicircle bulge RIGHT, flat left on x=0
         pen.moveTo((0, 0))
         pen.lineTo((0, s))
-        # from top (pi/2) to bottom (-pi/2) around center (0,r), CW
         cubic_arc_to(pen, 0.0, r, r, math.pi / 2.0, -math.pi / 2.0)
         pen.closePath()
 
     elif pid == 5:
-        # semicircle bulge LEFT, flat right on x=s
         pen.moveTo((s, 0))
         pen.lineTo((s, s))
-        # from top (pi/2) to bottom (3pi/2) around center (s,r), CCW
         cubic_arc_to(pen, s, r, r, math.pi / 2.0, 3.0 * math.pi / 2.0)
         pen.closePath()
 
     elif pid == 6:
-        # top-right wedge (big quarter circle, radius s, center at (s,s))
         pen.moveTo((0, s))
         pen.lineTo((s, s))
         pen.lineTo((s, 0))
-        cubic_arc_to(pen, s, s, s, 3.0 * math.pi / 2.0, math.pi)  # CW 90°
+        cubic_arc_to(pen, s, s, s, 3.0 * math.pi / 2.0, math.pi)
         pen.closePath()
 
     elif pid == 7:
-        # bottom-right wedge (center at (s,0))
         pen.moveTo((s, s))
         pen.lineTo((s, 0))
         pen.lineTo((0, 0))
-        cubic_arc_to(pen, s, 0.0, s, math.pi, math.pi / 2.0)  # CW 90°
+        cubic_arc_to(pen, s, 0.0, s, math.pi, math.pi / 2.0)
         pen.closePath()
 
     elif pid == 8:
-        # bottom-left wedge (center at (0,0))
         pen.moveTo((s, 0))
         pen.lineTo((0, 0))
         pen.lineTo((0, s))
-        cubic_arc_to(pen, 0.0, 0.0, s, math.pi / 2.0, 0.0)  # CW 90°
+        cubic_arc_to(pen, 0.0, 0.0, s, math.pi / 2.0, 0.0)
         pen.closePath()
 
     elif pid == 9:
-        # top-left wedge (center at (0,s))
         pen.moveTo((0, 0))
         pen.lineTo((0, s))
         pen.lineTo((s, s))
-        cubic_arc_to(pen, 0.0, s, s, 0.0, -math.pi / 2.0)  # CW 90°
+        cubic_arc_to(pen, 0.0, s, s, 0.0, -math.pi / 2.0)
         pen.closePath()
 
     else:
@@ -968,13 +931,7 @@ def build_primitive_glyph(pid: int):
     return ttpen.glyph()
 
 
-# -----------------------------
-# Fallback (monochrome) glyphs
-# -----------------------------
 def build_fallback_glyph(bitmap: List[str]):
-    """
-    Fallback outline: union of filled cell rectangles.
-    """
     pen = TTGlyphPen(None)
     for row in range(GRID_H):
         for col in range(GRID_W):
@@ -990,7 +947,6 @@ def build_fallback_glyph(bitmap: List[str]):
 def build_notdef():
     pen = TTGlyphPen(None)
     draw_rect(pen, 50, -250, 550, 650)
-    # inner counter
     draw_rect(pen, 100, -200, 500, 600)
     return pen.glyph()
 
@@ -1001,20 +957,14 @@ def palette_index_for(glyph_name: str, col: int, row: int, pid: int) -> int:
 
 
 # -----------------------------
-# Main build
+# Build & repack
 # -----------------------------
-def main() -> None:
-    script_dir = Path(__file__).resolve().parent          # tools/
-    root_dir = script_dir.parent                          # project root
-    out_dir = root_dir / "dist" / "fonts"
-    out_dir.mkdir(parents=True, exist_ok=True)
-
-    # Characters included
+def build_ttf(out_ttf: Path) -> None:
     chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+
     cmap = {ord(ch): codepoint_name(ch) for ch in chars}
     cmap[0x20] = "space"
 
-    # Glyph order
     base_glyphs = [cmap[ord(ch)] for ch in chars]
     primitives = [f"p{i}" for i in range(10)]
     glyph_order = [".notdef", "space"] + base_glyphs + primitives
@@ -1023,7 +973,6 @@ def main() -> None:
     fb.setupGlyphOrder(glyph_order)
     fb.setupCharacterMap(cmap)
 
-    # Metrics
     hmtx = {g: (ADVANCE_WIDTH, 0) for g in glyph_order}
     hmtx["space"] = (ADVANCE_WIDTH, 0)
     for p in primitives:
@@ -1047,12 +996,9 @@ def main() -> None:
     )
     fb.setupPost()
 
-    # Build glyf outlines
     glyf = {".notdef": build_notdef(), "space": TTGlyphPen(None).glyph()}
     for i in range(10):
         glyf[f"p{i}"] = build_primitive_glyph(i)
-
-    # Fallback glyphs for characters
     for ch in chars:
         gname = codepoint_name(ch)
         glyf[gname] = build_fallback_glyph(GLYPHS[ch])
@@ -1062,24 +1008,19 @@ def main() -> None:
 
     tt = fb.font
 
-    # CPAL palette (single palette)
     rng = random.Random(PALETTE_SEED)
     palette = [(rng.random(), rng.random(), rng.random(), 1.0) for _ in range(PALETTE_SIZE)]
     tt["CPAL"] = buildCPAL([palette])
 
-    # COLR v1 paint graphs
     colorGlyphs: Dict[str, dict] = {}
-
     for ch in chars:
         gname = codepoint_name(ch)
         tiles = tiles_for_glyph(GLYPHS[ch])
 
         layers: List[dict] = []
-        for col, row, pid, _ in tiles:
-            # placement
+        for col, row, pid in tiles:
             dx = LEFT + col * CELL
-            dy = TOP - (row + 1) * CELL  # bottom of the cell
-
+            dy = TOP - (row + 1) * CELL
             pidx = palette_index_for(gname, col, row, pid)
 
             layers.append(
@@ -1105,7 +1046,6 @@ def main() -> None:
                 }
             )
 
-        # Wrap layers in PaintColrLayers (important!)
         colorGlyphs[gname] = {
             "Format": ot.PaintFormat.PaintColrLayers,
             "Layers": layers,
@@ -1113,10 +1053,42 @@ def main() -> None:
 
     tt["COLR"] = buildCOLR(colorGlyphs, version=1, glyphMap=tt.getReverseGlyphMap())
 
-    out_path = out_dir / "primitives-color.ttf"
-    tt.save(out_path)
+    tt.save(out_ttf)
 
-    print(f"Wrote: {out_path}")
+
+def repack_web_fonts(out_ttf: Path, out_woff: Path, out_woff2: Path) -> None:
+    # WOFF
+    tt = TTFont(str(out_ttf))
+    tt.flavor = "woff"
+    tt.save(str(out_woff))
+
+    # WOFF2 (may require brotli; catch and report nicely)
+    try:
+        tt = TTFont(str(out_ttf))
+        tt.flavor = "woff2"
+        tt.save(str(out_woff2))
+    except Exception as e:
+        print(f"NOTE: Could not write WOFF2 ({out_woff2.name}): {e}")
+        print("      Install with: pip install brotli")
+
+
+def main() -> None:
+    script_dir = Path(__file__).resolve().parent
+    root_dir = script_dir.parent
+    out_dir = root_dir / "dist" / "fonts"
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    out_ttf = out_dir / f"{OUT_BASENAME}.ttf"
+    out_woff = out_dir / f"{OUT_BASENAME}.woff"
+    out_woff2 = out_dir / f"{OUT_BASENAME}.woff2"
+
+    build_ttf(out_ttf)
+    print(f"Wrote: {out_ttf}")
+
+    repack_web_fonts(out_ttf, out_woff, out_woff2)
+    print(f"Wrote: {out_woff}")
+    if out_woff2.exists():
+        print(f"Wrote: {out_woff2}")
 
 
 if __name__ == "__main__":
