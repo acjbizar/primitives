@@ -1,0 +1,265 @@
+<!-- Save as: tests/letter-sample.html -->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Primitives Color Font – Letter Sample</title>
+
+    <style>
+        @font-face{
+            font-family: "PrimitivesColor";
+            src: url("../dist/fonts/primitives-color.ttf") format("truetype");
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        :root{
+            --bg: #0c0c0f;
+            --fg: #f2f2f5;
+            --muted: #a0a0aa;
+            --card: #16161c;
+            --border: #2a2a33;
+            --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+
+        *{ box-sizing: border-box; }
+        body{
+            margin: 0;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+            background: var(--bg);
+            color: var(--fg);
+            line-height: 1.4;
+        }
+
+        header{
+            padding: 20px 18px 10px;
+            border-bottom: 1px solid var(--border);
+            background: linear-gradient(180deg, rgba(255,255,255,0.04), transparent);
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(8px);
+        }
+
+        h1{
+            margin: 0 0 6px;
+            font-size: 18px;
+            font-weight: 650;
+            letter-spacing: 0.2px;
+        }
+
+        .sub{
+            margin: 0;
+            color: var(--muted);
+            font-family: var(--mono);
+            font-size: 12px;
+        }
+
+        main{
+            padding: 18px;
+            display: grid;
+            gap: 14px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .card{
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 14px;
+        }
+
+        .row{
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        label{
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--muted);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        input[type="range"]{ width: 280px; }
+        input[type="text"]{
+            width: min(100%, 800px);
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: #0f0f14;
+            color: var(--fg);
+            font-family: var(--mono);
+            font-size: 13px;
+            outline: none;
+        }
+        input[type="text"]:focus{ border-color: #3a3a45; }
+
+        button{
+            padding: 9px 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: #101018;
+            color: var(--fg);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 12px;
+        }
+        button:hover{ border-color: #3a3a45; }
+
+        .sample{
+            font-family: "PrimitivesColor", system-ui, sans-serif;
+            font-size: 96px;
+            line-height: 1.05;
+            letter-spacing: 0;
+            font-variant-ligatures: none;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .grid{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 12px;
+        }
+
+        .mini .sample{ font-size: 64px; }
+        .mono{ font-family: var(--mono); }
+
+        .note{
+            color: var(--muted);
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        .ok{
+            color: #9ae6b4;
+            font-family: var(--mono);
+            font-size: 12px;
+        }
+        .warn{
+            color: #fbd38d;
+            font-family: var(--mono);
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <h1>Primitives Color Font – Test Page</h1>
+    <p class="sub">Font: <span class="mono">../dist/fonts/primitives-color.ttf</span> · Page: <span class="mono">tests/letter-sample.html</span></p>
+</header>
+
+<main>
+    <section class="card">
+        <div class="row">
+            <label>Font size: <span id="sizeLabel" class="mono">96px</span></label>
+            <input id="size" type="range" min="16" max="220" value="96" />
+            <button id="reset">Reset</button>
+            <span id="status" class="mono"></span>
+        </div>
+
+        <div style="height: 10px"></div>
+
+        <label>Custom text</label>
+        <input
+                id="text"
+                type="text"
+                spellcheck="false"
+                value="ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+0123456789
+The quick brown fox jumps over the lazy dog."
+        />
+
+        <div style="height: 14px"></div>
+
+        <div id="sample" class="sample">ABCDEFGHIJKLMNOPQRSTUVWXYZ
+            abcdefghijklmnopqrstuvwxyz
+            0123456789
+            The quick brown fox jumps over the lazy dog.</div>
+
+        <div class="note mono">
+            Tip: If you see monochrome fallback glyphs, your browser likely isn’t applying COLR (or it failed to load the font).
+            Chrome/Edge generally work well for COLR v1.
+        </div>
+    </section>
+
+    <section class="grid">
+        <div class="card mini">
+            <div class="mono" style="color: var(--muted); font-size: 12px; margin-bottom: 8px;">Alphabet block</div>
+            <div class="sample">ABCDEFGHIJKLMNOPQRSTUVWXYZ
+                abcdefghijklmnopqrstuvwxyz</div>
+        </div>
+
+        <div class="card mini">
+            <div class="mono" style="color: var(--muted); font-size: 12px; margin-bottom: 8px;">Digits block</div>
+            <div class="sample">0123456789
+                9876543210</div>
+        </div>
+
+        <div class="card mini">
+            <div class="mono" style="color: var(--muted); font-size: 12px; margin-bottom: 8px;">Mixed</div>
+            <div class="sample">Aa Bb Cc Dd Ee
+                Ff Gg Hh Ii Jj
+                123 456 7890</div>
+        </div>
+    </section>
+</main>
+
+<script>
+    const size = document.getElementById('size');
+    const sizeLabel = document.getElementById('sizeLabel');
+    const text = document.getElementById('text');
+    const sample = document.getElementById('sample');
+    const reset = document.getElementById('reset');
+    const status = document.getElementById('status');
+
+    function setSize(px){
+        sample.style.fontSize = px + 'px';
+        sizeLabel.textContent = px + 'px';
+    }
+
+    function setText(v){
+        sample.textContent = v;
+    }
+
+    // basic font load check
+    async function checkFont(){
+        try{
+            await document.fonts.load('48px "PrimitivesColor"');
+            const ok = document.fonts.check('48px "PrimitivesColor"');
+            status.textContent = ok ? 'font loaded ✓' : 'font not loaded';
+            status.className = ok ? 'ok' : 'warn';
+        }catch(e){
+            status.textContent = 'font load error';
+            status.className = 'warn';
+        }
+    }
+
+    size.addEventListener('input', () => setSize(parseInt(size.value, 10)));
+    text.addEventListener('input', () => setText(text.value));
+    reset.addEventListener('click', () => {
+        size.value = 96;
+        setSize(96);
+        const defaultText =
+            `ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+0123456789
+The quick brown fox jumps over the lazy dog.`;
+        text.value = defaultText;
+        setText(defaultText);
+    });
+
+    setSize(parseInt(size.value, 10));
+    setText(text.value);
+    checkFont();
+</script>
+</body>
+</html>
