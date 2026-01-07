@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="432" viewBox="0 0 240 432">
+  <defs>
+    <symbol id="p0" viewBox="0 0 48 48">
+      <rect x="0" y="0" width="48" height="48" fill="currentColor"/>
+    </symbol>
+    <symbol id="p1" viewBox="0 0 48 48">
+      <circle cx="24" cy="24" r="24" fill="currentColor"/>
+    </symbol>
+    <symbol id="p2" viewBox="0 0 48 48">
+      <path d="M 48 48 A 24 24 0 0 0 0 48 Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="p3" viewBox="0 0 48 48">
+      <path d="M 0 0 A 24 24 0 0 0 48 0 Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="p4" viewBox="0 0 48 48">
+      <path d="M 0 48 A 24 24 0 0 0 0 0 Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="p5" viewBox="0 0 48 48">
+      <path d="M 48 0 A 24 24 0 0 0 48 48 Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="p6" viewBox="0 0 48 48">
+      <path d="M 48 0 L 48 48 A 48 48 0 0 1 0 0 Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="p7" viewBox="0 0 48 48">
+      <path d="M 48 48 L 0 48 A 48 48 0 0 1 48 0 Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="p8" viewBox="0 0 48 48">
+      <path d="M 0 48 L 0 0 A 48 48 0 0 1 48 48 Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="p9" viewBox="0 0 48 48">
+      <path d="M 0 0 L 48 0 A 48 48 0 0 1 0 48 Z" fill="currentColor"/>
+    </symbol>
+  </defs>
+
+  <g transform="translate(48,96)" style="color: rgb(23,164,225)"><use href="#p5" x="0" y="0" width="48" height="48"/></g>
+  <g transform="translate(96,96)" style="color: rgb(175,234,95)"><use href="#p0" x="0" y="0" width="48" height="48"/></g>
+  <g transform="translate(144,96)" style="color: rgb(101,135,81)"><use href="#p4" x="0" y="0" width="48" height="48"/></g>
+  <g transform="translate(0,144)" style="color: rgb(210,20,193)"><use href="#p2" x="0" y="0" width="48" height="48"/></g>
+  <g transform="translate(192,144)" style="color: rgb(47,42,12)"><use href="#p2" x="0" y="0" width="48" height="48"/></g>
+  <g transform="translate(0,192)" style="color: rgb(51,151,71)"><use href="#p0" x="0" y="0" width="48" height="48"/></g>
+  <g transform="translate(48,192)" style="color: rgb(127,172,43)"><use href="#p0" x="0" y="0" width="48" height="48"/></g>
+  <g transform="translate(96,192)" style="color: rgb(245,143,79)"><use href="#p0" x="0" y="0" width="48" height="48"/></g>
+  <g transform="translate(144,192)" style="color: rgb(48,63,166)"><use href="#p0" x="0" y="0" width="48" height="48"/></g>
+  <g transform="translate(192,192)" style="color: rgb(126,62,166)"><use href="#p9" x="0" y="0" width="48" height="48"/></g>
+  <g transform="translate(0,240)" style="color: rgb(114,65,127)"><use href="#p3" x="0" y="0" width="48" height="48"/></g>
+  <g transform="translate(48,288)" style="color: rgb(44,63,32)"><use href="#p5" x="0" y="0" width="48" height="48"/></g>
+  <g transform="translate(96,288)" style="color: rgb(230,148,171)"><use href="#p0" x="0" y="0" width="48" height="48"/></g>
+  <g transform="translate(144,288)" style="color: rgb(128,103,48)"><use href="#p0" x="0" y="0" width="48" height="48"/></g>
+  <g transform="translate(192,288)" style="color: rgb(101,141,25)"><use href="#p4" x="0" y="0" width="48" height="48"/></g>
+</svg>

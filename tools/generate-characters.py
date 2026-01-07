@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """
-Generate 5×9 glyph SVGs for A–Z, a–z, and 0–9 using ONLY the 10 primitives.
+Generate 5×9 glyph SVGs for A–Z, a–z, 0–9 using ONLY the 10 primitives,
+but with a RANDOM RGB fill PER TILE (per primitive instance).
 
 - Script location: tools/
-- Output: ../sketches/alphabet-5x9-manual/
+- Output: ../sketches/alphabet-5x9-manual-rgb/
   - upper-A.svg ... upper-Z.svg
   - lower-a.svg ... lower-z.svg
   - digit-0.svg  ... digit-9.svg
@@ -11,6 +12,7 @@ Generate 5×9 glyph SVGs for A–Z, a–z, and 0–9 using ONLY the 10 primitive
 
 from __future__ import annotations
 
+import random
 from pathlib import Path
 from typing import Dict, List, Optional
 
@@ -820,22 +822,31 @@ def pick_primitive(g: List[str], x: int, y: int) -> Optional[int]:
     return 0
 
 
-def glyph_to_svg(g: List[str], fill_color: str = "#000") -> str:
+def rand_rgb() -> str:
+    return f"rgb({random.randint(0,255)},{random.randint(0,255)},{random.randint(0,255)})"
+
+
+def glyph_to_svg_random_rgb(g: List[str], seed: Optional[int] = None) -> str:
+    if seed is not None:
+        random.seed(seed)
+
     w = GRID_W * D
     h = GRID_H * D
     out: List[str] = []
     out.append(f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}">')
     out.append(svg_defs())
-    out.append(f'  <g style="color: {fill_color}">')
 
+    # Each tile gets its own random color via style="color: rgb(...)"
     for y in range(GRID_H):
         for x in range(GRID_W):
             pid = pick_primitive(g, x, y)
             if pid is None:
                 continue
-            out.append(f'    <use href="#p{pid}" x="{x*D}" y="{y*D}" width="{D}" height="{D}" />')
+            out.append(
+                f'  <g transform="translate({x*D},{y*D})" style="color: {rand_rgb()}">'
+                f'<use href="#p{pid}" x="0" y="0" width="{D}" height="{D}"/></g>'
+            )
 
-    out.append("  </g>")
     out.append("</svg>\n")
     return "\n".join(out)
 
@@ -845,19 +856,25 @@ def glyph_to_svg(g: List[str], fill_color: str = "#000") -> str:
 # ----------------------------
 def main() -> None:
     script_dir = Path(__file__).resolve().parent  # tools/
-    out_dir = script_dir.parent / "sketches" / "alphabet-5x9-manual"
+    out_dir = script_dir.parent / "sketches" / "alphabet-5x9-manual-rgb"
     out_dir.mkdir(parents=True, exist_ok=True)
 
+    # Uppercase
     for ch in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
-        (out_dir / f"upper-{ch}.svg").write_text(glyph_to_svg(GLYPHS[ch]), encoding="utf-8")
+        svg = glyph_to_svg_random_rgb(GLYPHS[ch])
+        (out_dir / f"upper-{ch}.svg").write_text(svg, encoding="utf-8")
 
+    # Lowercase
     for ch in "abcdefghijklmnopqrstuvwxyz":
-        (out_dir / f"lower-{ch}.svg").write_text(glyph_to_svg(GLYPHS[ch]), encoding="utf-8")
+        svg = glyph_to_svg_random_rgb(GLYPHS[ch])
+        (out_dir / f"lower-{ch}.svg").write_text(svg, encoding="utf-8")
 
+    # Digits
     for ch in "0123456789":
-        (out_dir / f"digit-{ch}.svg").write_text(glyph_to_svg(GLYPHS[ch]), encoding="utf-8")
+        svg = glyph_to_svg_random_rgb(GLYPHS[ch])
+        (out_dir / f"digit-{ch}.svg").write_text(svg, encoding="utf-8")
 
-    print(f"Wrote 62 glyph SVGs to: {out_dir}")
+    print(f"Wrote 62 glyph SVGs (random RGB per tile) to: {out_dir}")
 
 
 if __name__ == "__main__":
