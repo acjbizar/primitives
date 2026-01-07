@@ -84,9 +84,10 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            white-space: nowrap;
         }
 
-        input[type="range"]{ width: 280px; }
+        input[type="range"]{ width: 260px; }
         input[type="text"]{
             width: min(100%, 800px);
             padding: 10px 12px;
@@ -100,6 +101,16 @@
         }
         input[type="text"]:focus{ border-color: #3a3a45; }
 
+        input[type="color"]{
+            width: 44px;
+            height: 32px;
+            padding: 0;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: transparent;
+            cursor: pointer;
+        }
+
         button{
             padding: 9px 12px;
             border-radius: 10px;
@@ -112,14 +123,40 @@
         }
         button:hover{ border-color: #3a3a45; }
 
+        /* IMPORTANT:
+           Color fonts only allow CSS overriding if the COLR table uses palette
+           colors and the browser supports overriding via font-palette / font-palette-values.
+           This demo provides both:
+           - a "tint" mode (mix blend) that works everywhere (but is a visual effect)
+           - a "palette override" mode that works in browsers that support it.
+        */
+
         .sample{
             font-family: "PrimitivesColor", system-ui, sans-serif;
             font-size: 96px;
             line-height: 1.05;
-            letter-spacing: 0;
             font-variant-ligatures: none;
             white-space: pre-wrap;
             word-break: break-word;
+            /* For palette override mode (when supported) */
+            font-palette: var(--activePalette, normal);
+        }
+
+        /* Tint mode (always works): we draw colored text using the font,
+           then apply a multiply overlay with a chosen tint color. */
+        .tintWrap{
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .tintWrap::after{
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: var(--tint, transparent);
+            mix-blend-mode: multiply;
+            pointer-events: none;
+            opacity: var(--tintOpacity, 0);
         }
 
         .grid{
@@ -147,6 +184,22 @@
             font-family: var(--mono);
             font-size: 12px;
         }
+
+        .pill{
+            font-family: var(--mono);
+            font-size: 11px;
+            padding: 5px 8px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            color: var(--muted);
+        }
+
+        .sep{ width: 1px; height: 20px; background: var(--border); }
+    </style>
+
+    <!-- Palette override definitions (supported in Chromium-based browsers and some others) -->
+    <style id="paletteStyle">
+        /* dynamically filled by JS */
     </style>
 </head>
 
@@ -161,6 +214,21 @@
         <div class="row">
             <label>Font size: <span id="sizeLabel" class="mono">96px</span></label>
             <input id="size" type="range" min="16" max="220" value="96" />
+
+            <div class="sep"></div>
+
+            <label>Override mode:</label>
+            <label><input type="radio" name="mode" value="none" checked> None</label>
+            <label><input type="radio" name="mode" value="tint"> Tint (works everywhere)</label>
+            <label><input type="radio" name="mode" value="palette"> Palette (true override)</label>
+
+            <div class="sep"></div>
+
+            <label>Color:</label>
+            <input id="color" type="color" value="#ff3aa5" />
+            <label>Tint strength: <span id="strengthLabel" class="mono">70%</span></label>
+            <input id="strength" type="range" min="0" max="100" value="70" />
+
             <button id="reset">Reset</button>
             <span id="status" class="mono"></span>
         </div>
@@ -180,35 +248,41 @@ The quick brown fox jumps over the lazy dog."
 
         <div style="height: 14px"></div>
 
-        <div id="sample" class="sample">ABCDEFGHIJKLMNOPQRSTUVWXYZ
-            abcdefghijklmnopqrstuvwxyz
-            0123456789
-            The quick brown fox jumps over the lazy dog.</div>
+        <div id="wrap" class="tintWrap" style="--tint: transparent; --tintOpacity: 0;">
+            <div id="sample" class="sample">ABCDEFGHIJKLMNOPQRSTUVWXYZ
+                abcdefghijklmnopqrstuvwxyz
+                0123456789
+                The quick brown fox jumps over the lazy dog.</div>
+        </div>
 
-        <div class="note mono">
-            Tip: If you see monochrome fallback glyphs, your browser likely isn’t applying COLR (or it failed to load the font).
-            Chrome/Edge generally work well for COLR v1.
+        <div class="note">
+            <div class="mono" style="margin-bottom:6px;">
+                <span class="pill">None</span> uses the font’s built-in palette.
+                <span class="pill">Tint</span> applies a CSS blend overlay (visual effect).
+                <span class="pill">Palette</span> attempts a real COLR palette override (browser support varies).
+            </div>
+            If Palette mode appears unchanged, your browser probably doesn’t support <span class="mono">font-palette</span> / <span class="mono">@font-palette-values</span> for this font.
         </div>
     </section>
 
     <section class="grid">
         <div class="card mini">
             <div class="mono" style="color: var(--muted); font-size: 12px; margin-bottom: 8px;">Alphabet block</div>
-            <div class="sample">ABCDEFGHIJKLMNOPQRSTUVWXYZ
-                abcdefghijklmnopqrstuvwxyz</div>
+            <div class="tintWrap" id="wrap2"><div class="sample" id="sample2">ABCDEFGHIJKLMNOPQRSTUVWXYZ
+                abcdefghijklmnopqrstuvwxyz</div></div>
         </div>
 
         <div class="card mini">
             <div class="mono" style="color: var(--muted); font-size: 12px; margin-bottom: 8px;">Digits block</div>
-            <div class="sample">0123456789
-                9876543210</div>
+            <div class="tintWrap" id="wrap3"><div class="sample" id="sample3">0123456789
+                9876543210</div></div>
         </div>
 
         <div class="card mini">
             <div class="mono" style="color: var(--muted); font-size: 12px; margin-bottom: 8px;">Mixed</div>
-            <div class="sample">Aa Bb Cc Dd Ee
+            <div class="tintWrap" id="wrap4"><div class="sample" id="sample4">Aa Bb Cc Dd Ee
                 Ff Gg Hh Ii Jj
-                123 456 7890</div>
+                123 456 7890</div></div>
         </div>
     </section>
 </main>
@@ -221,13 +295,80 @@ The quick brown fox jumps over the lazy dog."
     const reset = document.getElementById('reset');
     const status = document.getElementById('status');
 
+    const color = document.getElementById('color');
+    const strength = document.getElementById('strength');
+    const strengthLabel = document.getElementById('strengthLabel');
+    const paletteStyle = document.getElementById('paletteStyle');
+
+    const wraps = [
+        document.getElementById('wrap'),
+        document.getElementById('wrap2'),
+        document.getElementById('wrap3'),
+        document.getElementById('wrap4'),
+    ];
+    const samples = [
+        document.getElementById('sample'),
+        document.getElementById('sample2'),
+        document.getElementById('sample3'),
+        document.getElementById('sample4'),
+    ];
+
     function setSize(px){
-        sample.style.fontSize = px + 'px';
+        samples.forEach(el => { if (el) el.style.fontSize = px + 'px'; });
         sizeLabel.textContent = px + 'px';
     }
 
     function setText(v){
         sample.textContent = v;
+    }
+
+    function setTint(hex, pct){
+        const op = Math.max(0, Math.min(1, pct / 100));
+        wraps.forEach(w => {
+            if (!w) return;
+            w.style.setProperty('--tint', hex);
+            w.style.setProperty('--tintOpacity', op.toString());
+        });
+        strengthLabel.textContent = Math.round(op * 100) + '%';
+    }
+
+    function installPaletteOverride(hex){
+        // Create a palette where ALL palette entries map to the same color.
+        // This *actually* overrides COLR palette colors when supported.
+        // Syntax: override { index: color; index: color; ... }
+        // We use 0..255 because the font was built with 256 palette entries.
+        let body = '';
+        for (let i = 0; i < 256; i++){
+            body += `  ${i}: ${hex};\n`;
+        }
+        paletteStyle.textContent =
+            `@font-palette-values --allToOne {
+  font-family: "PrimitivesColor";
+  base-palette: 0;
+  override-colors:
+${body}}`;
+    }
+
+    function setMode(mode){
+        if (mode === 'none'){
+            // disable tint
+            setTint('transparent', 0);
+            // reset palette
+            samples.forEach(el => { if (el) el.style.setProperty('--activePalette', 'normal'); });
+        } else if (mode === 'tint'){
+            // enable tint, keep palette normal
+            samples.forEach(el => { if (el) el.style.setProperty('--activePalette', 'normal'); });
+            setTint(color.value, parseInt(strength.value, 10));
+        } else if (mode === 'palette'){
+            // disable tint overlay, enable palette override
+            setTint('transparent', 0);
+            installPaletteOverride(color.value);
+            samples.forEach(el => { if (el) el.style.setProperty('--activePalette', '--allToOne'); });
+        }
+    }
+
+    function currentMode(){
+        return document.querySelector('input[name="mode"]:checked')?.value || 'none';
     }
 
     // basic font load check
@@ -243,11 +384,35 @@ The quick brown fox jumps over the lazy dog."
         }
     }
 
+    // listeners
     size.addEventListener('input', () => setSize(parseInt(size.value, 10)));
     text.addEventListener('input', () => setText(text.value));
+
+    strength.addEventListener('input', () => {
+        if (currentMode() === 'tint'){
+            setTint(color.value, parseInt(strength.value, 10));
+        } else {
+            strengthLabel.textContent = parseInt(strength.value, 10) + '%';
+        }
+    });
+
+    color.addEventListener('input', () => {
+        const mode = currentMode();
+        if (mode === 'tint'){
+            setTint(color.value, parseInt(strength.value, 10));
+        } else if (mode === 'palette'){
+            installPaletteOverride(color.value);
+        }
+    });
+
+    document.querySelectorAll('input[name="mode"]').forEach(r => {
+        r.addEventListener('change', () => setMode(currentMode()));
+    });
+
     reset.addEventListener('click', () => {
         size.value = 96;
         setSize(96);
+
         const defaultText =
             `ABCDEFGHIJKLMNOPQRSTUVWXYZ
 abcdefghijklmnopqrstuvwxyz
@@ -255,10 +420,21 @@ abcdefghijklmnopqrstuvwxyz
 The quick brown fox jumps over the lazy dog.`;
         text.value = defaultText;
         setText(defaultText);
+
+        color.value = '#ff3aa5';
+        strength.value = 70;
+        strengthLabel.textContent = '70%';
+
+        document.querySelector('input[name="mode"][value="none"]').checked = true;
+        setMode('none');
     });
 
+    // init
     setSize(parseInt(size.value, 10));
     setText(text.value);
+    strengthLabel.textContent = strength.value + '%';
+    installPaletteOverride(color.value); // prebuild so palette mode is instant
+    setMode('none');
     checkFont();
 </script>
 </body>
