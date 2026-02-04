@@ -34,7 +34,7 @@ from fontTools.ttLib.tables import otTables as ot
 # Font / layout config
 # -----------------------------
 FAMILY_NAME = "Primitives"
-STYLE_NAME = "Color"
+STYLE_NAME = "Regular"
 
 UPM = 1000
 
@@ -53,6 +53,7 @@ PALETTE_SEED = 42
 
 OUT_BASENAME = "primitives-color"
 
+SEAM = 3  # try 1.5–3.0 if needed
 
 # ----------------------------
 # Glyph bitmaps (5×9)
@@ -864,9 +865,10 @@ def build_primitive_glyph(pid: int):
 
     s = float(CELL)
     r = s / 2.0
+    SEAM = 0.75  # tiny overlap in font units (sub-pixel at typical sizes)
 
     if pid == 0:
-        draw_rect(pen, 0, 0, s, s)
+        draw_rect(pen, -SEAM, -SEAM, s, s)
 
     elif pid == 1:
         pen.moveTo((s, r))
@@ -890,12 +892,16 @@ def build_primitive_glyph(pid: int):
         pen.lineTo((0, s))
         cubic_arc_to(pen, 0.0, r, r, math.pi / 2.0, -math.pi / 2.0)
         pen.closePath()
+        # overlap into the cell to the left a hair
+        draw_rect(pen, -SEAM, 0, SEAM, s)
 
     elif pid == 5:
         pen.moveTo((s, 0))
         pen.lineTo((s, s))
         cubic_arc_to(pen, s, r, r, math.pi / 2.0, 3.0 * math.pi / 2.0)
         pen.closePath()
+        # overlap into the cell to the right a hair
+        draw_rect(pen, s - SEAM, 0, s + SEAM, s)
 
     elif pid == 6:
         pen.moveTo((0, s))
@@ -1072,6 +1078,16 @@ def repack_web_fonts(out_ttf: Path, out_woff: Path, out_woff2: Path) -> None:
         print("      Install with: pip install brotli")
 
 
+def copy_stylesheet(root_dir: Path, out_dir: Path) -> None:
+    src = root_dir / "src" / "style" / "main.css"
+    dst = out_dir / "primitives.css"
+    if not src.exists():
+        print(f"NOTE: stylesheet not found, skipping: {src}")
+        return
+    dst.write_text(src.read_text(encoding="utf-8"), encoding="utf-8")
+    print(f"Wrote: {dst}")
+
+
 def main() -> None:
     script_dir = Path(__file__).resolve().parent
     root_dir = script_dir.parent
@@ -1089,6 +1105,8 @@ def main() -> None:
     print(f"Wrote: {out_woff}")
     if out_woff2.exists():
         print(f"Wrote: {out_woff2}")
+
+    copy_stylesheet(root_dir, out_dir)
 
 
 if __name__ == "__main__":
