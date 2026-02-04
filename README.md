@@ -11,18 +11,18 @@ Abstract (typographic) design system.
 
 ```css
 @font-face {
-  font-family: "Primitives Color";
+  font-family: "Primitives";
   src:
-    url("https://hetcdn.nl/fonts/primitives-color.woff2") format("woff2"),
-    url("https://hetcdn.nl/fonts/primitives-color.woff") format("woff"),
-    url("https://hetcdn.nl/fonts/primitives-color.ttf") format("truetype");
+    url("https://hetcdn.nl/fonts/primitives.woff2") format("woff2"),
+    url("https://hetcdn.nl/fonts/primitives.woff") format("woff"),
+    url("https://hetcdn.nl/fonts/primitives.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 :root {
-    --font-primitives: "Primitives Color", system-ui, sans-serif;
+    --font-primitives: "Primitives", system-ui, sans-serif;
 }
 
 .font--primitives {
