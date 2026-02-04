@@ -1,17 +1,20 @@
-<!-- Save as: tests/letter-sample.html -->
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Primitives Color Font – Letter Sample</title>
+    <title>Primitives – Letter Sample</title>
 
     <style>
         @font-face{
-            font-family: "PrimitivesColor";
-            src: url("../dist/fonts/primitives-color.ttf?v=2") format("truetype");
+            font-family: "Primitives";
+            src:
+                    url("../dist/fonts/primitives.woff2?v=2") format("woff2"),
+                    url("../dist/fonts/primitives.woff?v=2") format("woff"),
+                    url("../dist/fonts/primitives.ttf?v=2") format("truetype");
             font-weight: 400;
             font-style: normal;
+            font-display: swap;
         }
 
         :root{
@@ -132,7 +135,7 @@
         */
 
         .sample{
-            font-family: "PrimitivesColor", system-ui, sans-serif;
+            font-family: "Primitives", system-ui, sans-serif;
             font-size: 96px;
             line-height: 1.05;
             font-variant-ligatures: none;
@@ -140,6 +143,8 @@
             word-break: break-word;
             /* For palette override mode (when supported) */
             font-palette: var(--activePalette, normal);
+            /* For mono alt via ss01 */
+            font-feature-settings: var(--feat, "ss01" 0);
         }
 
         /* Tint mode (always works): we draw colored text using the font,
@@ -205,8 +210,8 @@
 
 <body>
 <header>
-    <h1>Primitives Color Font – Test Page</h1>
-    <p class="sub">Font: <span class="mono">../dist/fonts/primitives-color.ttf</span> · Page: <span class="mono">tests/letter-sample.html</span></p>
+    <h1>Primitives – Test Page</h1>
+    <p class="sub">Font: <span class="mono">../dist/fonts/primitives.(woff2/woff/ttf)</span> · Page: <span class="mono">tests/letter-sample.html</span></p>
 </header>
 
 <main>
@@ -214,6 +219,12 @@
         <div class="row">
             <label>Font size: <span id="sizeLabel" class="mono">96px</span></label>
             <input id="size" type="range" min="16" max="220" value="96" />
+
+            <div class="sep"></div>
+
+            <label>Glyph style:</label>
+            <label><input type="radio" name="style" value="color" checked> Color</label>
+            <label><input type="radio" name="style" value="mono"> Mono (ss01)</label>
 
             <div class="sep"></div>
 
@@ -256,6 +267,10 @@ The quick brown fox jumps over the lazy dog."
         </div>
 
         <div class="note">
+            <div class="mono" style="margin-bottom:6px;">
+                <span class="pill">Style: Color</span> uses COLR layers (default).
+                <span class="pill">Style: Mono</span> enables <span class="mono">ss01</span>.
+            </div>
             <div class="mono" style="margin-bottom:6px;">
                 <span class="pill">None</span> uses the font’s built-in palette.
                 <span class="pill">Tint</span> applies a CSS blend overlay (visual effect).
@@ -333,17 +348,13 @@ The quick brown fox jumps over the lazy dog."
     }
 
     function installPaletteOverride(hex){
-        // Create a palette where ALL palette entries map to the same color.
-        // This *actually* overrides COLR palette colors when supported.
-        // Syntax: override { index: color; index: color; ... }
-        // We use 0..255 because the font was built with 256 palette entries.
         let body = '';
         for (let i = 0; i < 256; i++){
             body += `  ${i}: ${hex};\n`;
         }
         paletteStyle.textContent =
             `@font-palette-values --allToOne {
-  font-family: "PrimitivesColor";
+  font-family: "Primitives";
   base-palette: 0;
   override-colors:
 ${body}}`;
@@ -351,16 +362,12 @@ ${body}}`;
 
     function setMode(mode){
         if (mode === 'none'){
-            // disable tint
             setTint('transparent', 0);
-            // reset palette
             samples.forEach(el => { if (el) el.style.setProperty('--activePalette', 'normal'); });
         } else if (mode === 'tint'){
-            // enable tint, keep palette normal
             samples.forEach(el => { if (el) el.style.setProperty('--activePalette', 'normal'); });
             setTint(color.value, parseInt(strength.value, 10));
         } else if (mode === 'palette'){
-            // disable tint overlay, enable palette override
             setTint('transparent', 0);
             installPaletteOverride(color.value);
             samples.forEach(el => { if (el) el.style.setProperty('--activePalette', '--allToOne'); });
@@ -371,11 +378,21 @@ ${body}}`;
         return document.querySelector('input[name="mode"]:checked')?.value || 'none';
     }
 
+    function setStyle(style){
+        const feat = (style === 'mono') ? '"ss01" 1' : '"ss01" 0';
+        samples.forEach(el => { if (el) el.style.setProperty('--feat', feat); });
+        // If mono is enabled, palette/tint are less meaningful; we keep behavior as-is.
+    }
+
+    function currentStyle(){
+        return document.querySelector('input[name="style"]:checked')?.value || 'color';
+    }
+
     // basic font load check
     async function checkFont(){
         try{
-            await document.fonts.load('48px "PrimitivesColor"');
-            const ok = document.fonts.check('48px "PrimitivesColor"');
+            await document.fonts.load('48px "Primitives"');
+            const ok = document.fonts.check('48px "Primitives"');
             status.textContent = ok ? 'font loaded ✓' : 'font not loaded';
             status.className = ok ? 'ok' : 'warn';
         }catch(e){
@@ -409,6 +426,10 @@ ${body}}`;
         r.addEventListener('change', () => setMode(currentMode()));
     });
 
+    document.querySelectorAll('input[name="style"]').forEach(r => {
+        r.addEventListener('change', () => setStyle(currentStyle()));
+    });
+
     reset.addEventListener('click', () => {
         size.value = 96;
         setSize(96);
@@ -425,6 +446,9 @@ The quick brown fox jumps over the lazy dog.`;
         strength.value = 70;
         strengthLabel.textContent = '70%';
 
+        document.querySelector('input[name="style"][value="color"]').checked = true;
+        setStyle('color');
+
         document.querySelector('input[name="mode"][value="none"]').checked = true;
         setMode('none');
     });
@@ -434,6 +458,7 @@ The quick brown fox jumps over the lazy dog.`;
     setText(text.value);
     strengthLabel.textContent = strength.value + '%';
     installPaletteOverride(color.value); // prebuild so palette mode is instant
+    setStyle('color');
     setMode('none');
     checkFont();
 </script>

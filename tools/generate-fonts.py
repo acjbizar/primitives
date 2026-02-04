@@ -5,9 +5,14 @@ and ALSO generate WOFF + WOFF2 (when possible), writing everything to: ../dist/f
 
 Put this script in: tools/
 Outputs:
-  dist/fonts/primitives-color.ttf
-  dist/fonts/primitives-color.woff
-  dist/fonts/primitives-color.woff2   (if brotli/woff2 support is available)
+  dist/fonts/primitives.ttf
+  dist/fonts/primitives.woff
+  dist/fonts/primitives.woff2   (if brotli/woff2 support is available)
+
+Also:
+- Adds a monochrome alternate for every glyph behind OpenType feature ss01.
+  (When ss01 is enabled, U+0041 uses U0041.mono etc; mono glyphs have no COLR mapping.)
+- Copies src/style/main.css to dist/fonts/primitives.css
 
 Notes:
 - Colors are baked into the font (fonts can't randomize at render-time).
@@ -23,6 +28,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 from fontTools.colorLib.builder import buildCOLR, buildCPAL
+from fontTools.feaLib.builder import addOpenTypeFeaturesFromString
 from fontTools.fontBuilder import FontBuilder
 from fontTools.pens.cu2quPen import Cu2QuPen
 from fontTools.pens.ttGlyphPen import TTGlyphPen
@@ -51,9 +57,8 @@ TOP = 600
 PALETTE_SIZE = 256
 PALETTE_SEED = 42
 
-OUT_BASENAME = "primitives-color"
+OUT_BASENAME = "primitives"
 
-SEAM = 3  # try 1.5–3.0 if needed
 
 # ----------------------------
 # Glyph bitmaps (5×9)
@@ -784,9 +789,9 @@ def pick_primitive(g: List[str], x: int, y: int) -> Optional[int]:
         if up:
             return 3
         if rt:
-            return 4
-        if lf:
             return 5
+        if lf:
+            return 4
         return 0
     if n == 2 and ((up and lf) or (up and rt) or (dn and lf) or (dn and rt)):
         if up and lf:
@@ -865,10 +870,9 @@ def build_primitive_glyph(pid: int):
 
     s = float(CELL)
     r = s / 2.0
-    SEAM = 0.75  # tiny overlap in font units (sub-pixel at typical sizes)
 
     if pid == 0:
-        draw_rect(pen, -SEAM, -SEAM, s, s)
+        draw_rect(pen, 0, 0, s, s)
 
     elif pid == 1:
         pen.moveTo((s, r))
@@ -888,17 +892,15 @@ def build_primitive_glyph(pid: int):
         pen.closePath()
 
     elif pid == 4:
-        # LEFT half of a circle: flat edge on the RIGHT side of the cell
-        pen.moveTo((s, 0))
-        pen.lineTo((s, s))
-        cubic_arc_to(pen, s, r, r, math.pi / 2.0, 3.0 * math.pi / 2.0)  # left semicircle
+        pen.moveTo((0, 0))
+        pen.lineTo((0, s))
+        cubic_arc_to(pen, 0.0, r, r, math.pi / 2.0, -math.pi / 2.0)
         pen.closePath()
 
     elif pid == 5:
-        # RIGHT half of a circle: flat edge on the LEFT side of the cell
-        pen.moveTo((0, 0))
-        pen.lineTo((0, s))
-        cubic_arc_to(pen, 0.0, r, r, math.pi / 2.0, -math.pi / 2.0)      # right semicircle
+        pen.moveTo((s, 0))
+        pen.lineTo((s, s))
+        cubic_arc_to(pen, s, r, r, math.pi / 2.0, 3.0 * math.pi / 2.0)
         pen.closePath()
 
     elif pid == 6:
@@ -948,6 +950,19 @@ def build_fallback_glyph(bitmap: List[str]):
     return pen.glyph()
 
 
+def build_mono_composite_glyph(tiles: List[Tuple[int, int, int]], glyphset) -> object:
+    """
+    Monochrome version built as a composite of p0..p9 components (no COLR mapping).
+    glyphset just needs to support:  `name in glyphset`
+    """
+    pen = TTGlyphPen(glyphset)
+    for col, row, pid in tiles:
+        dx = LEFT + col * CELL
+        dy = TOP - (row + 1) * CELL
+        pen.addComponent(f"p{pid}", (1, 0, 0, 1, dx, dy))
+    return pen.glyph()
+
+
 def build_notdef():
     pen = TTGlyphPen(None)
     draw_rect(pen, 50, -250, 550, 650)
@@ -970,8 +985,10 @@ def build_ttf(out_ttf: Path) -> None:
     cmap[0x20] = "space"
 
     base_glyphs = [cmap[ord(ch)] for ch in chars]
+    mono_glyphs = [f"{cmap[ord(ch)]}.mono" for ch in chars]
     primitives = [f"p{i}" for i in range(10)]
-    glyph_order = [".notdef", "space"] + base_glyphs + primitives
+    primitive_glyphset = set(primitives)
+    glyph_order = [".notdef", "space"] + base_glyphs + mono_glyphs + primitives
 
     fb = FontBuilder(UPM, isTTF=True)
     fb.setupGlyphOrder(glyph_order)
@@ -1003,21 +1020,23 @@ def build_ttf(out_ttf: Path) -> None:
     glyf = {".notdef": build_notdef(), "space": TTGlyphPen(None).glyph()}
     for i in range(10):
         glyf[f"p{i}"] = build_primitive_glyph(i)
+
+    # Base glyphs (fallback outlines) + mono alternates (composites)
     for ch in chars:
         gname = codepoint_name(ch)
+        tiles = tiles_for_glyph(GLYPHS[ch])
         glyf[gname] = build_fallback_glyph(GLYPHS[ch])
+        glyf[f"{gname}.mono"] = build_mono_composite_glyph(tiles, primitive_glyphset)
 
     fb.setupGlyf(glyf)
 
-    # FIX: LSB must match xMin (otherwise some glyphs appear shifted)
+    # Ensure LSB matches xMin (prevents some renderers from shifting glyphs unexpectedly)
     glyf_table = fb.font["glyf"]
     hmtx_table = fb.font["hmtx"]
-
     for gn in glyph_order:
         g = glyf_table[gn]
         g.recalcBounds(glyf_table)
         x_min = int(getattr(g, "xMin", 0) or 0)
-
         aw, _ = hmtx_table.metrics.get(gn, (ADVANCE_WIDTH, 0))
         hmtx_table.metrics[gn] = (int(aw), x_min)
 
@@ -1025,10 +1044,12 @@ def build_ttf(out_ttf: Path) -> None:
 
     tt = fb.font
 
+    # Palette
     rng = random.Random(PALETTE_SEED)
     palette = [(rng.random(), rng.random(), rng.random(), 1.0) for _ in range(PALETTE_SIZE)]
     tt["CPAL"] = buildCPAL([palette])
 
+    # COLR v1 mapping ONLY for base glyphs (mono glyphs intentionally omitted)
     colorGlyphs: Dict[str, dict] = {}
     for ch in chars:
         gname = codepoint_name(ch)
@@ -1069,6 +1090,14 @@ def build_ttf(out_ttf: Path) -> None:
         }
 
     tt["COLR"] = buildCOLR(colorGlyphs, version=1, glyphMap=tt.getReverseGlyphMap())
+
+    # GSUB: ss01 swaps base glyphs to their monochrome alternates
+    fea = ["feature ss01 {"]
+    for ch in chars:
+        gname = codepoint_name(ch)
+        fea.append(f"  sub {gname} by {gname}.mono;")
+    fea.append("} ss01;")
+    addOpenTypeFeaturesFromString(tt, "\n".join(fea))
 
     tt.save(out_ttf)
 
