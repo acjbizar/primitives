@@ -784,9 +784,9 @@ def pick_primitive(g: List[str], x: int, y: int) -> Optional[int]:
         if up:
             return 3
         if rt:
-            return 5
-        if lf:
             return 4
+        if lf:
+            return 5
         return 0
     if n == 2 and ((up and lf) or (up and rt) or (dn and lf) or (dn and rt)):
         if up and lf:
@@ -888,20 +888,18 @@ def build_primitive_glyph(pid: int):
         pen.closePath()
 
     elif pid == 4:
-        pen.moveTo((0, 0))
-        pen.lineTo((0, s))
-        cubic_arc_to(pen, 0.0, r, r, math.pi / 2.0, -math.pi / 2.0)
-        pen.closePath()
-        # overlap into the cell to the left a hair
-        draw_rect(pen, -SEAM, 0, SEAM, s)
-
-    elif pid == 5:
+        # LEFT half of a circle: flat edge on the RIGHT side of the cell
         pen.moveTo((s, 0))
         pen.lineTo((s, s))
-        cubic_arc_to(pen, s, r, r, math.pi / 2.0, 3.0 * math.pi / 2.0)
+        cubic_arc_to(pen, s, r, r, math.pi / 2.0, 3.0 * math.pi / 2.0)  # left semicircle
         pen.closePath()
-        # overlap into the cell to the right a hair
-        draw_rect(pen, s - SEAM, 0, s + SEAM, s)
+
+    elif pid == 5:
+        # RIGHT half of a circle: flat edge on the LEFT side of the cell
+        pen.moveTo((0, 0))
+        pen.lineTo((0, s))
+        cubic_arc_to(pen, 0.0, r, r, math.pi / 2.0, -math.pi / 2.0)      # right semicircle
+        pen.closePath()
 
     elif pid == 6:
         pen.moveTo((0, s))
@@ -1010,6 +1008,19 @@ def build_ttf(out_ttf: Path) -> None:
         glyf[gname] = build_fallback_glyph(GLYPHS[ch])
 
     fb.setupGlyf(glyf)
+
+    # FIX: LSB must match xMin (otherwise some glyphs appear shifted)
+    glyf_table = fb.font["glyf"]
+    hmtx_table = fb.font["hmtx"]
+
+    for gn in glyph_order:
+        g = glyf_table[gn]
+        g.recalcBounds(glyf_table)
+        x_min = int(getattr(g, "xMin", 0) or 0)
+
+        aw, _ = hmtx_table.metrics.get(gn, (ADVANCE_WIDTH, 0))
+        hmtx_table.metrics[gn] = (int(aw), x_min)
+
     fb.setupMaxp()
 
     tt = fb.font
