@@ -1,0 +1,81 @@
+{
+  "manifestVersion": 1,
+  "generatedAt": "2026-02-18T12:09:27.422631+00:00",
+  "name": "primitives",
+  "metadata": {
+    "family": "Primitives",
+    "subfamily": "Regular",
+    "fullName": "Primitives Regular",
+    "postScriptName": "Primitives-Regular",
+    "unitsPerEm": 1000,
+    "glyphCount": 136
+  },
+  "files": [
+    {
+      "ext": "woff2",
+      "file": "primitives.woff2",
+      "recommendedFile": "primitives.woff2",
+      "bytes": 9352,
+      "sha256": "f6324ce0e7e5c40676da6ad873232759740b951adfda75be1dce0f3ac7b20e00"
+    },
+    {
+      "ext": "woff",
+      "file": "primitives.woff",
+      "recommendedFile": "primitives.woff",
+      "bytes": 13100,
+      "sha256": "baa124f655a2312bf1015d0992c81bcce7e65e84d55e96ac8a6ff0fc8bde8978"
+    },
+    {
+      "ext": "ttf",
+      "file": "primitives.ttf",
+      "recommendedFile": "primitives.ttf",
+      "bytes": 38428,
+      "sha256": "968b3a2c88e8126142c4525c956754a3f7a9aef79367374c0740bc1ed0f2f9a9"
+    }
+  ],
+  "unicodeRanges": [
+    [
+      32,
+      32
+    ],
+    [
+      48,
+      57
+    ],
+    [
+      65,
+      90
+    ],
+    [
+      97,
+      122
+    ]
+  ],
+  "counts": {
+    "codepointsTotal": 63,
+    "codepointsBMP": 63,
+    "codepointsAstral": 0
+  },
+  "features": {
+    "GSUB": [
+      "ss01"
+    ],
+    "GPOS": []
+  },
+  "hints": {
+    "commonBlocks": {
+      "basicLatin": true,
+      "latin1Supplement": false,
+      "latinExtendedA": false,
+      "latinExtendedB": false
+    },
+    "preferredLowercaseFilenames": true,
+    "hasCasingMismatches": false,
+    "notes": [
+      "unicodeRanges is derived from cmap.getBestCmap() across all parseable font files.",
+      "GSUB/GPOS feature tags are extracted when those tables exist.",
+      "Ligature contents are not enumerated here (by design); use shaping in your sample to demonstrate them.",
+      "If files[].file differs from files[].recommendedFile, consider renaming to the recommended lowercase filenames for portability (CDN/Linux)."
+    ]
+  }
+}
