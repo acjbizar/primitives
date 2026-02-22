@@ -18,6 +18,7 @@
             --on: #111;
             --off: #fff;
             --preview-bg: #fff;
+            --baseline: #3b82f6;
         }
 
         @media (prefers-color-scheme: dark){
@@ -31,6 +32,7 @@
                 --on: #f2f4f8;
                 --off: #0f1115;
                 --preview-bg: #fff;
+                --baseline: #60a5fa;
             }
         }
 
@@ -134,12 +136,29 @@
             -webkit-user-select:none;
         }
 
+        .grid-stage{
+            position:relative;
+            display:inline-block;
+        }
+
+        .baseline-line{
+            position:absolute;
+            left:0;
+            height:1px;
+            background:var(--baseline);
+            box-shadow: 0 0 0 1px color-mix(in oklab, var(--baseline) 25%, transparent);
+            pointer-events:none;
+            z-index:10;
+            opacity:.95;
+        }
+
         .glyph-grid{
             display:grid;
-            grid-template-columns: repeat(5, var(--cell));
             grid-template-rows: repeat(9, var(--cell));
             gap: var(--cell-gap);
             touch-action:none;
+            position:relative;
+            z-index:1;
         }
 
         .cell{
@@ -370,35 +389,18 @@
 <body>
 <div class="app">
     <div class="left-col">
-        <div class="panel">
-            <p class="section-title">Presets</p>
-            <div class="row" style="margin-bottom:8px;">
-                <input id="presetSearch" type="text" placeholder="Filter presets (e.g. A, g, 7)" style="width:100%;" />
-            </div>
-            <div class="preset-panel">
-                <div class="preset-group">
-                    <h4>Uppercase A–Z</h4>
-                    <div id="presetUpper" class="preset-grid"></div>
-                </div>
-                <div class="preset-group">
-                    <h4>Lowercase a–z</h4>
-                    <div id="presetLower" class="preset-grid"></div>
-                </div>
-                <div class="preset-group">
-                    <h4>Digits 0–9</h4>
-                    <div id="presetDigit" class="preset-grid"></div>
-                </div>
-            </div>
-            <div class="toolbar">
-                <button id="loadByCharBtn">Load current character</button>
-            </div>
-        </div>
 
+        <!-- Editor moved up -->
         <div class="panel">
             <div class="row" style="margin-bottom:10px;">
-                <div style="flex:1; min-width:140px;">
+                <div style="flex:1; min-width:120px;">
                     <label for="charInput">Character</label><br />
                     <input id="charInput" type="text" maxlength="2" value="A" style="width:100%;" />
+                </div>
+
+                <div>
+                    <label for="colsInput">Columns</label><br />
+                    <input id="colsInput" type="number" min="1" max="12" value="5" style="width:82px;" />
                 </div>
 
                 <div>
@@ -432,7 +434,10 @@
             </div>
 
             <div class="grid-wrap">
-                <div id="glyphGrid" class="glyph-grid" aria-label="5 by 9 glyph grid"></div>
+                <div class="grid-stage" id="gridStage">
+                    <div id="baselineLine" class="baseline-line"></div>
+                    <div id="glyphGrid" class="glyph-grid" aria-label="glyph grid"></div>
+                </div>
             </div>
 
             <div class="toolbar">
@@ -455,7 +460,35 @@
                 <button id="copyBitmapBtn">Copy bitmap</button>
             </div>
             <p class="muted small" style="margin:8px 0 0 0;">
-                Accepts 9 rows of 5 chars using <code>#</code> and <code>.</code>.
+                Accepts 9 rows of <strong>1–12</strong> chars using <code>#</code> and <code>.</code>. The grid will resize to the pasted width.
+            </p>
+        </div>
+
+        <!-- Presets moved down -->
+        <div class="panel">
+            <p class="section-title">Presets</p>
+            <div class="row" style="margin-bottom:8px;">
+                <input id="presetSearch" type="text" placeholder="Filter presets (e.g. A, g, 7)" style="width:100%;" />
+            </div>
+            <div class="preset-panel">
+                <div class="preset-group">
+                    <h4>Uppercase A–Z</h4>
+                    <div id="presetUpper" class="preset-grid"></div>
+                </div>
+                <div class="preset-group">
+                    <h4>Lowercase a–z</h4>
+                    <div id="presetLower" class="preset-grid"></div>
+                </div>
+                <div class="preset-group">
+                    <h4>Digits 0–9</h4>
+                    <div id="presetDigit" class="preset-grid"></div>
+                </div>
+            </div>
+            <div class="toolbar">
+                <button id="loadByCharBtn">Load current character</button>
+            </div>
+            <p class="muted small" style="margin:8px 0 0 0;">
+                Loading a preset resets the grid to 5 columns, since the built-in presets are 5×9.
             </p>
         </div>
     </div>
@@ -472,7 +505,7 @@
                     <div class="stat"><span class="muted">Character</span><strong id="statChar">A</strong></div>
                     <div class="stat"><span class="muted">Codepoint</span><strong id="statCp">U+0041</strong></div>
                     <div class="stat"><span class="muted">On pixels</span><strong id="statOn">0</strong></div>
-                    <div class="stat"><span class="muted">Tiles</span><strong>5×9</strong></div>
+                    <div class="stat"><span class="muted">Tiles</span><strong id="statTiles">5×9</strong></div>
                     <div class="stat"><span class="muted">SVG size</span><strong id="statSize">240×432</strong></div>
                     <div class="pill"><span>Primitives</span><strong id="statPrimitiveCounts">—</strong></div>
                 </div>
@@ -513,8 +546,13 @@
 
 <script>
     (() => {
-        const GRID_W = 5;
         const GRID_H = 9;
+        const MIN_COLS = 1;
+        const MAX_COLS = 12;
+        let gridW = 5;
+
+        // Baseline line is drawn between rows 6 and 7 (0-indexed), i.e. above the descender area.
+        const BASELINE_AFTER_ROW = 6;
 
         // Presets copied from your Python GLYPHS dict (A–Z, a–z, 0–9)
         const PRESETS = {
@@ -586,7 +624,11 @@
 
         const el = {
             grid: document.getElementById('glyphGrid'),
+            gridStage: document.getElementById('gridStage'),
+            baselineLine: document.getElementById('baselineLine'),
+
             charInput: document.getElementById('charInput'),
+            colsInput: document.getElementById('colsInput'),
             tileSize: document.getElementById('tileSize'),
             randomColors: document.getElementById('randomColors'),
             flatColor: document.getElementById('flatColor'),
@@ -607,6 +649,7 @@
             statChar: document.getElementById('statChar'),
             statCp: document.getElementById('statCp'),
             statOn: document.getElementById('statOn'),
+            statTiles: document.getElementById('statTiles'),
             statSize: document.getElementById('statSize'),
             statPrimitiveCounts: document.getElementById('statPrimitiveCounts'),
             legendGrid: document.getElementById('legendGrid'),
@@ -620,7 +663,7 @@
         };
 
         // Internal bitmap state: true = "#", false = "."
-        let bitmap = Array.from({ length: GRID_H }, () => Array(GRID_W).fill(false));
+        let bitmap = makeEmptyBitmap(gridW);
 
         // Drag painting state
         let isPointerDown = false;
@@ -629,9 +672,14 @@
 
         // Reroll nonce so user can randomize colors without changing seed/bitmap
         let rerollCounter = 0;
+        let gridEventsBound = false;
 
         // ---------- Utilities ----------
         function clamp(n, a, b) { return Math.max(a, Math.min(b, n)); }
+
+        function makeEmptyBitmap(cols) {
+            return Array.from({ length: GRID_H }, () => Array(cols).fill(false));
+        }
 
         function getCharValue() {
             const raw = (el.charInput.value || '').trim();
@@ -703,7 +751,7 @@
 
         // ---------- Primitive selection (same logic as Python) ----------
         function isOn(x, y) {
-            return y >= 0 && y < GRID_H && x >= 0 && x < GRID_W && bitmap[y][x];
+            return y >= 0 && y < GRID_H && x >= 0 && x < gridW && bitmap[y][x];
         }
 
         function pickPrimitive(x, y) {
@@ -782,7 +830,7 @@
             const d = clamp(parseInt(el.tileSize.value || '48', 10) || 48, 8, 256);
             el.tileSize.value = String(d);
 
-            const w = GRID_W * d;
+            const w = gridW * d;
             const h = GRID_H * d;
             const ch = getCharValue();
 
@@ -796,7 +844,7 @@
             const flat = el.flatColor.value || '#111111';
 
             for (let y = 0; y < GRID_H; y++) {
-                for (let x = 0; x < GRID_W; x++) {
+                for (let x = 0; x < gridW; x++) {
                     const pid = pickPrimitive(x, y);
                     if (pid == null) continue;
 
@@ -812,10 +860,12 @@
         }
 
         // ---------- UI rendering ----------
-        function buildGrid() {
+        function rebuildGridCells() {
             el.grid.innerHTML = '';
+            el.grid.style.gridTemplateColumns = `repeat(${gridW}, var(--cell))`;
+
             for (let y = 0; y < GRID_H; y++) {
-                for (let x = 0; x < GRID_W; x++) {
+                for (let x = 0; x < gridW; x++) {
                     const cell = document.createElement('button');
                     cell.type = 'button';
                     cell.className = 'cell';
@@ -826,7 +876,13 @@
                 }
             }
 
-            // Pointer events for click+drag painting
+            queueMicrotask(updateBaselineLine);
+        }
+
+        function bindGridPointerEventsOnce() {
+            if (gridEventsBound) return;
+            gridEventsBound = true;
+
             el.grid.addEventListener('pointerdown', (ev) => {
                 const cell = ev.target.closest('.cell');
                 if (!cell) return;
@@ -859,6 +915,27 @@
             el.grid.addEventListener('pointerup', stopPaint);
             el.grid.addEventListener('pointercancel', stopPaint);
             window.addEventListener('pointerup', stopPaint);
+        }
+
+        function updateBaselineLine() {
+            if (GRID_H < 2) {
+                el.baselineLine.style.display = 'none';
+                return;
+            }
+
+            const a = el.grid.querySelector(`.cell[data-x="0"][data-y="${BASELINE_AFTER_ROW}"]`);
+            const b = el.grid.querySelector(`.cell[data-x="0"][data-y="${BASELINE_AFTER_ROW + 1}"]`);
+
+            if (!a || !b) {
+                el.baselineLine.style.display = 'none';
+                return;
+            }
+
+            const y = (a.offsetTop + a.offsetHeight + b.offsetTop) / 2;
+            el.baselineLine.style.display = 'block';
+            el.baselineLine.style.top = `${y}px`;
+            el.baselineLine.style.left = `0px`;
+            el.baselineLine.style.width = `${el.grid.offsetWidth}px`;
         }
 
         function applyPaint(x, y, value) {
@@ -895,6 +972,8 @@
                 .filter(Boolean)
                 .join(' ');
             el.statPrimitiveCounts.textContent = parts || 'none';
+
+            updateBaselineLine();
         }
 
         function updateBitmapTextarea() {
@@ -917,7 +996,8 @@ ${rows}
             el.statChar.textContent = ch;
             el.statCp.textContent = cpLabel;
             el.statOn.textContent = String(onCount());
-            el.statSize.textContent = `${GRID_W*d}×${GRID_H*d}`;
+            el.statTiles.textContent = `${gridW}×${GRID_H}`;
+            el.statSize.textContent = `${gridW*d}×${GRID_H*d}`;
         }
 
         function updatePreview(svgText) {
@@ -932,10 +1012,41 @@ ${rows}
             return rows.map(row => Array.from(row).map(ch => ch === '#'));
         }
 
+        function setColumns(newCols, { preserve = true } = {}) {
+            newCols = clamp(parseInt(newCols, 10) || 5, MIN_COLS, MAX_COLS);
+            if (newCols === gridW) {
+                el.colsInput.value = String(gridW);
+                return;
+            }
+
+            const next = makeEmptyBitmap(newCols);
+
+            if (preserve) {
+                for (let y = 0; y < GRID_H; y++) {
+                    for (let x = 0; x < Math.min(gridW, newCols); x++) {
+                        next[y][x] = !!bitmap[y][x];
+                    }
+                }
+            }
+
+            gridW = newCols;
+            bitmap = next;
+            el.colsInput.value = String(gridW);
+            rebuildGridCells();
+            updateAll();
+        }
+
         function loadPreset(ch) {
             if (!PRESETS[ch]) return false;
             el.charInput.value = ch;
+
+            // Built-in presets are always 5×9
+            gridW = 5;
+            el.colsInput.value = '5';
             bitmap = bitmapFromRows(PRESETS[ch]);
+
+            rebuildGridCells();
+
             if (!el.seedInput.dataset.userEdited) {
                 el.seedInput.value = ch;
             }
@@ -992,6 +1103,8 @@ ${rows}
                 el.charInput.value = chars[0];
             }
 
+            el.colsInput.value = String(gridW);
+
             const svgText = buildSvgString();
             renderGridCells();
             updateBitmapTextarea();
@@ -1009,12 +1122,12 @@ ${rows}
 
         // ---------- Actions ----------
         function clearBitmap() {
-            bitmap = Array.from({ length: GRID_H }, () => Array(GRID_W).fill(false));
+            bitmap = makeEmptyBitmap(gridW);
             updateAll();
         }
 
         function fillBitmap() {
-            bitmap = Array.from({ length: GRID_H }, () => Array(GRID_W).fill(true));
+            bitmap = Array.from({ length: GRID_H }, () => Array(gridW).fill(true));
             updateAll();
         }
 
@@ -1026,7 +1139,7 @@ ${rows}
         function centerContents() {
             const points = [];
             for (let y = 0; y < GRID_H; y++) {
-                for (let x = 0; x < GRID_W; x++) {
+                for (let x = 0; x < gridW; x++) {
                     if (bitmap[y][x]) points.push([x, y]);
                 }
             }
@@ -1039,15 +1152,15 @@ ${rows}
             const w = maxX - minX + 1;
             const h = maxY - minY + 1;
 
-            const targetX = Math.floor((GRID_W - w) / 2);
+            const targetX = Math.floor((gridW - w) / 2);
             const targetY = Math.floor((GRID_H - h) / 2);
             const dx = targetX - minX;
             const dy = targetY - minY;
 
-            const next = Array.from({ length: GRID_H }, () => Array(GRID_W).fill(false));
+            const next = makeEmptyBitmap(gridW);
             for (const [x, y] of points) {
                 const nx = x + dx, ny = y + dy;
-                if (nx >= 0 && nx < GRID_W && ny >= 0 && ny < GRID_H) next[ny][nx] = true;
+                if (nx >= 0 && nx < gridW && ny >= 0 && ny < GRID_H) next[ny][nx] = true;
             }
             bitmap = next;
             updateAll();
@@ -1063,11 +1176,16 @@ ${rows}
                 throw new Error(`Expected ${GRID_H} non-empty rows, got ${rawRows.length}.`);
             }
 
+            const width = rawRows[0]?.length ?? 0;
+            if (width < MIN_COLS || width > MAX_COLS) {
+                throw new Error(`Bitmap width must be between ${MIN_COLS} and ${MAX_COLS} columns (got ${width}).`);
+            }
+
             const next = [];
             for (let y = 0; y < GRID_H; y++) {
                 const row = rawRows[y];
-                if (row.length !== GRID_W) {
-                    throw new Error(`Row ${y+1} must be ${GRID_W} chars long.`);
+                if (row.length !== width) {
+                    throw new Error(`Row ${y+1} length (${row.length}) does not match row 1 length (${width}).`);
                 }
                 const arr = [];
                 for (const ch of row) {
@@ -1077,7 +1195,7 @@ ${rows}
                 }
                 next.push(arr);
             }
-            return next;
+            return { width, bitmap: next };
         }
 
         async function copyText(text, label = 'Copied') {
@@ -1176,6 +1294,11 @@ ${svgDefs(d)}
             updateAll();
         });
 
+        el.colsInput.addEventListener('input', () => {
+            const v = clamp(parseInt(el.colsInput.value || '5', 10) || 5, MIN_COLS, MAX_COLS);
+            setColumns(v, { preserve: true });
+        });
+
         el.seedInput.addEventListener('input', () => {
             el.seedInput.dataset.userEdited = '1';
             updateAll();
@@ -1198,7 +1321,11 @@ ${svgDefs(d)}
 
         el.applyBitmapBtn.addEventListener('click', () => {
             try {
-                bitmap = parseBitmapText(el.bitmapText.value);
+                const parsed = parseBitmapText(el.bitmapText.value);
+                gridW = parsed.width;
+                bitmap = parsed.bitmap;
+                el.colsInput.value = String(gridW);
+                rebuildGridCells();
                 updateAll();
             } catch (err) {
                 alert(err.message);
@@ -1219,8 +1346,11 @@ ${svgDefs(d)}
             }
         });
 
+        window.addEventListener('resize', updateBaselineLine);
+
         // ---------- Initialize ----------
-        buildGrid();
+        bindGridPointerEventsOnce();
+        rebuildGridCells();
         buildLegend();
         buildPresetButtons();
 
