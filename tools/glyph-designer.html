@@ -1,0 +1,1031 @@
+<!-- tools/glyphs-designer.html -->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Glyphs Designer (5×9 primitives)</title>
+    <style>
+        :root{
+            --bg: #f5f5f7;
+            --panel: #ffffff;
+            --text: #111;
+            --muted: #666;
+            --line: #d8d8de;
+            --accent: #2563eb;
+            --cell: 52px;
+            --cell-gap: 6px;
+            --on: #111;
+            --off: #fff;
+            --preview-bg: #fff;
+        }
+
+        @media (prefers-color-scheme: dark){
+            :root{
+                --bg: #0f1115;
+                --panel: #161920;
+                --text: #f2f4f8;
+                --muted: #9aa3b2;
+                --line: #2a3040;
+                --accent: #60a5fa;
+                --on: #f2f4f8;
+                --off: #0f1115;
+                --preview-bg: #fff;
+            }
+        }
+
+        *{ box-sizing:border-box; }
+        html,body{ height:100%; }
+        body{
+            margin:0;
+            font: 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            color:var(--text);
+            background:var(--bg);
+        }
+
+        .app{
+            display:grid;
+            grid-template-columns: 420px 1fr;
+            gap:16px;
+            padding:16px;
+            min-height:100vh;
+        }
+
+        .panel{
+            background:var(--panel);
+            border:1px solid var(--line);
+            border-radius:14px;
+            padding:14px;
+            box-shadow: 0 2px 10px rgba(0,0,0,.04);
+        }
+
+        .left-col{
+            display:flex;
+            flex-direction:column;
+            gap:16px;
+        }
+
+        .row{
+            display:flex;
+            gap:8px;
+            align-items:center;
+            flex-wrap:wrap;
+        }
+
+        label{
+            font-weight:600;
+            font-size:12px;
+            color:var(--muted);
+            letter-spacing:.02em;
+            text-transform:uppercase;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        select{
+            background:transparent;
+            color:var(--text);
+            border:1px solid var(--line);
+            border-radius:10px;
+            padding:8px 10px;
+            font: inherit;
+        }
+
+        input[type="text"], input[type="number"]{
+            height:38px;
+        }
+
+        input[type="color"]{
+            width:38px;
+            height:38px;
+            border:none;
+            background:transparent;
+            padding:0;
+            border-radius:8px;
+            cursor:pointer;
+        }
+
+        button{
+            height:38px;
+            border:1px solid var(--line);
+            background:transparent;
+            color:var(--text);
+            padding:0 12px;
+            border-radius:10px;
+            cursor:pointer;
+            font: inherit;
+        }
+        button:hover{ border-color:var(--accent); }
+        button.primary{
+            background:var(--accent);
+            color:white;
+            border-color:var(--accent);
+        }
+
+        .grid-wrap{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:10px;
+            border:1px dashed var(--line);
+            border-radius:12px;
+            user-select:none;
+            -webkit-user-select:none;
+        }
+
+        .glyph-grid{
+            display:grid;
+            grid-template-columns: repeat(5, var(--cell));
+            grid-template-rows: repeat(9, var(--cell));
+            gap: var(--cell-gap);
+            touch-action:none;
+        }
+
+        .cell{
+            width:var(--cell);
+            height:var(--cell);
+            border:1px solid var(--line);
+            border-radius:10px;
+            background:var(--off);
+            position:relative;
+            cursor:pointer;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            transition: transform .03s ease, border-color .1s ease;
+        }
+        .cell:hover{
+            border-color:var(--accent);
+            transform: translateY(-1px);
+        }
+        .cell.on{
+            background:var(--on);
+            color: white;
+            border-color: color-mix(in oklab, var(--accent) 35%, var(--line));
+        }
+
+        .cell .coord{
+            position:absolute;
+            top:4px;
+            left:6px;
+            font-size:10px;
+            line-height:1;
+            opacity:.55;
+            color:var(--muted);
+            pointer-events:none;
+            font-variant-numeric: tabular-nums;
+        }
+        .cell.on .coord{
+            color: rgba(255,255,255,.6);
+        }
+
+        .cell .pid{
+            font-size:14px;
+            font-weight:700;
+            letter-spacing:.02em;
+            opacity:.95;
+            pointer-events:none;
+        }
+
+        .muted{ color:var(--muted); }
+
+        .right-col{
+            display:grid;
+            grid-template-rows: auto auto 1fr;
+            gap:16px;
+            min-width:0;
+        }
+
+        .preview-shell{
+            display:grid;
+            grid-template-columns: 1fr auto;
+            gap:12px;
+            align-items:start;
+        }
+
+        .preview-box{
+            border:1px solid var(--line);
+            border-radius:12px;
+            padding:10px;
+            min-height:140px;
+            background:
+                    linear-gradient(45deg, #eee 25%, transparent 25%) 0 0 / 16px 16px,
+                    linear-gradient(-45deg, #eee 25%, transparent 25%) 0 0 / 16px 16px,
+                    linear-gradient(45deg, transparent 75%, #eee 75%) 0 0 / 16px 16px,
+                    linear-gradient(-45deg, transparent 75%, #eee 75%) 0 0 / 16px 16px,
+                    var(--preview-bg);
+            overflow:auto;
+        }
+        @media (prefers-color-scheme: dark){
+            .preview-box{
+                background:
+                        linear-gradient(45deg, #202633 25%, transparent 25%) 0 0 / 16px 16px,
+                        linear-gradient(-45deg, #202633 25%, transparent 25%) 0 0 / 16px 16px,
+                        linear-gradient(45deg, transparent 75%, #202633 75%) 0 0 / 16px 16px,
+                        linear-gradient(-45deg, transparent 75%, #202633 75%) 0 0 / 16px 16px,
+                        #fff;
+            }
+        }
+
+        .preview-box svg{
+            max-width:100%;
+            height:auto;
+            display:block;
+            margin:auto;
+            border-radius:8px;
+            background:#fff;
+        }
+
+        .statbox{
+            border:1px solid var(--line);
+            border-radius:12px;
+            padding:10px;
+            min-width:140px;
+            display:grid;
+            gap:8px;
+        }
+        .stat{
+            display:flex;
+            justify-content:space-between;
+            gap:10px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .split{
+            display:grid;
+            grid-template-columns: 1fr 1fr;
+            gap:16px;
+            min-width:0;
+        }
+
+        textarea{
+            width:100%;
+            min-height:220px;
+            resize:vertical;
+            font: 12px/1.35 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            white-space:pre;
+        }
+
+        .toolbar{
+            display:flex;
+            flex-wrap:wrap;
+            gap:8px;
+            margin-top:8px;
+        }
+
+        .small{
+            font-size:12px;
+        }
+
+        .pill{
+            display:inline-flex;
+            align-items:center;
+            gap:6px;
+            border:1px solid var(--line);
+            border-radius:999px;
+            padding:6px 10px;
+            font-size:12px;
+            color:var(--muted);
+        }
+
+        .section-title{
+            margin:0 0 8px 0;
+            font-size:13px;
+            letter-spacing:.03em;
+            text-transform:uppercase;
+            color:var(--muted);
+        }
+
+        .checkbox{
+            display:inline-flex;
+            align-items:center;
+            gap:8px;
+            border:1px solid var(--line);
+            border-radius:10px;
+            padding:8px 10px;
+            height:38px;
+        }
+
+        .checkbox input{ margin:0; }
+
+        @media (max-width: 1100px){
+            .app{
+                grid-template-columns: 1fr;
+            }
+            .split{
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="app">
+    <div class="left-col">
+        <div class="panel">
+            <div class="row" style="margin-bottom:10px;">
+                <div style="flex:1; min-width:140px;">
+                    <label for="charInput">Character</label><br />
+                    <input id="charInput" type="text" maxlength="2" value="A" style="width:100%;" />
+                </div>
+
+                <div>
+                    <label for="tileSize">Tile px</label><br />
+                    <input id="tileSize" type="number" min="8" max="256" value="48" style="width:88px;" />
+                </div>
+            </div>
+
+            <div class="row" style="margin-bottom:8px;">
+                <label class="checkbox">
+                    <input id="randomColors" type="checkbox" checked />
+                    Random RGB per tile
+                </label>
+
+                <div class="row" style="gap:6px;">
+                    <input id="seedInput" type="text" value="A" placeholder="seed" style="width:110px;" />
+                    <button id="rerollBtn" title="Change random colors (same bitmap)">Reroll</button>
+                </div>
+            </div>
+
+            <div class="row" style="margin-bottom:10px;">
+                <label class="checkbox">
+                    <input id="showPrimitiveIds" type="checkbox" checked />
+                    Show primitive IDs
+                </label>
+
+                <div class="row" style="gap:6px;">
+                    <label for="flatColor" class="small" style="text-transform:none; letter-spacing:0; font-weight:500;">Flat color</label>
+                    <input id="flatColor" type="color" value="#111111" />
+                </div>
+            </div>
+
+            <div class="grid-wrap">
+                <div id="glyphGrid" class="glyph-grid" aria-label="5 by 9 glyph grid"></div>
+            </div>
+
+            <div class="toolbar">
+                <button id="clearBtn">Clear</button>
+                <button id="fillBtn">Fill</button>
+                <button id="invertBtn">Invert</button>
+                <button id="centerBtn">Center contents</button>
+            </div>
+
+            <p class="muted small" style="margin:10px 0 0 0;">
+                Click or drag to draw/erase. Primitive shape is chosen automatically from neighbors (same logic as your Python script).
+            </p>
+        </div>
+
+        <div class="panel">
+            <p class="section-title">Bitmap import/export</p>
+            <textarea id="bitmapText" spellcheck="false"></textarea>
+            <div class="toolbar">
+                <button id="applyBitmapBtn">Apply bitmap</button>
+                <button id="copyBitmapBtn">Copy bitmap</button>
+            </div>
+            <p class="muted small" style="margin:8px 0 0 0;">
+                Accepts 9 rows of 5 chars using <code>#</code> and <code>.</code>.
+            </p>
+        </div>
+    </div>
+
+    <div class="right-col">
+        <div class="panel">
+            <div class="preview-shell">
+                <div style="min-width:0;">
+                    <p class="section-title">Live SVG preview</p>
+                    <div id="previewBox" class="preview-box"></div>
+                </div>
+
+                <div class="statbox">
+                    <div class="stat"><span class="muted">Character</span><strong id="statChar">A</strong></div>
+                    <div class="stat"><span class="muted">Codepoint</span><strong id="statCp">U+0041</strong></div>
+                    <div class="stat"><span class="muted">On pixels</span><strong id="statOn">0</strong></div>
+                    <div class="stat"><span class="muted">Tiles</span><strong>5×9</strong></div>
+                    <div class="stat"><span class="muted">SVG size</span><strong id="statSize">240×432</strong></div>
+                    <div class="pill"><span>Primitives</span><strong id="statPrimitiveCounts">—</strong></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <p class="section-title">Generated SVG</p>
+            <textarea id="svgText" spellcheck="false" style="min-height:260px;"></textarea>
+            <div class="toolbar">
+                <button id="copySvgBtn">Copy SVG</button>
+                <button id="downloadSvgBtn" class="primary">Download SVG</button>
+            </div>
+        </div>
+
+        <div class="split">
+            <div class="panel">
+                <p class="section-title">Primitive legend</p>
+                <div id="legendGrid" style="display:grid; grid-template-columns: repeat(2, minmax(140px, 1fr)); gap:10px;"></div>
+                <p class="muted small" style="margin:10px 0 0 0;">
+                    p0..p9 are the same 10 primitives used in your script.
+                </p>
+            </div>
+
+            <div class="panel">
+                <p class="section-title">Python snippet</p>
+                <textarea id="pythonSnippet" spellcheck="false" style="min-height:180px;"></textarea>
+                <div class="toolbar">
+                    <button id="copyPythonBtn">Copy snippet</button>
+                </div>
+                <p class="muted small" style="margin:8px 0 0 0;">
+                    Ready to paste into a <code>GLYPHS</code> dict using <code>bm("""...""")</code>.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (() => {
+        const GRID_W = 5;
+        const GRID_H = 9;
+
+        const el = {
+            grid: document.getElementById('glyphGrid'),
+            charInput: document.getElementById('charInput'),
+            tileSize: document.getElementById('tileSize'),
+            randomColors: document.getElementById('randomColors'),
+            flatColor: document.getElementById('flatColor'),
+            seedInput: document.getElementById('seedInput'),
+            rerollBtn: document.getElementById('rerollBtn'),
+            showPrimitiveIds: document.getElementById('showPrimitiveIds'),
+            clearBtn: document.getElementById('clearBtn'),
+            fillBtn: document.getElementById('fillBtn'),
+            invertBtn: document.getElementById('invertBtn'),
+            centerBtn: document.getElementById('centerBtn'),
+            bitmapText: document.getElementById('bitmapText'),
+            applyBitmapBtn: document.getElementById('applyBitmapBtn'),
+            copyBitmapBtn: document.getElementById('copyBitmapBtn'),
+            previewBox: document.getElementById('previewBox'),
+            svgText: document.getElementById('svgText'),
+            copySvgBtn: document.getElementById('copySvgBtn'),
+            downloadSvgBtn: document.getElementById('downloadSvgBtn'),
+            statChar: document.getElementById('statChar'),
+            statCp: document.getElementById('statCp'),
+            statOn: document.getElementById('statOn'),
+            statSize: document.getElementById('statSize'),
+            statPrimitiveCounts: document.getElementById('statPrimitiveCounts'),
+            legendGrid: document.getElementById('legendGrid'),
+            pythonSnippet: document.getElementById('pythonSnippet'),
+            copyPythonBtn: document.getElementById('copyPythonBtn'),
+        };
+
+        // Internal bitmap state: true = "#", false = "."
+        let bitmap = Array.from({ length: GRID_H }, () => Array(GRID_W).fill(false));
+
+        // Drag painting state
+        let isPointerDown = false;
+        let dragValue = null; // boolean
+        let paintedThisDrag = new Set();
+
+        // Reroll nonce so user can randomize colors without changing seed/bitmap
+        let rerollCounter = 0;
+
+        // ---------- Utilities ----------
+        function clamp(n, a, b) { return Math.max(a, Math.min(b, n)); }
+
+        function getCharValue() {
+            const raw = (el.charInput.value || '').trim();
+            return raw.length ? Array.from(raw)[0] : 'A';
+        }
+
+        function getCodepointLabel(ch) {
+            const cp = ch.codePointAt(0);
+            return 'U+' + cp.toString(16).toUpperCase().padStart(cp <= 0xFFFF ? 4 : 6, '0');
+        }
+
+        function codepointFilenamePart(ch) {
+            const cps = Array.from(ch).map(c => c.codePointAt(0).toString(16).toLowerCase());
+            return cps.join('-');
+        }
+
+        function escapeXml(s) {
+            return String(s)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&apos;');
+        }
+
+        function bitmapRows() {
+            return bitmap.map(row => row.map(v => (v ? '#' : '.')).join(''));
+        }
+
+        function onCount() {
+            let n = 0;
+            for (const row of bitmap) for (const v of row) if (v) n++;
+            return n;
+        }
+
+        // Deterministic seeded PRNG (Mulberry32)
+        function hashStringToUint32(str) {
+            let h = 2166136261 >>> 0;
+            for (let i = 0; i < str.length; i++) {
+                h ^= str.charCodeAt(i);
+                h = Math.imul(h, 16777619);
+            }
+            return h >>> 0;
+        }
+
+        function mulberry32(seed) {
+            let a = seed >>> 0;
+            return function() {
+                a |= 0; a = (a + 0x6D2B79F5) | 0;
+                let t = Math.imul(a ^ (a >>> 15), 1 | a);
+                t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+                return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+            };
+        }
+
+        function randRgbFn() {
+            const ch = getCharValue();
+            const seedStr = `${el.seedInput.value}|${ch}|${bitmapRows().join('/') }|${rerollCounter}`;
+            const rnd = mulberry32(hashStringToUint32(seedStr));
+            return () => {
+                const r = Math.floor(rnd() * 256);
+                const g = Math.floor(rnd() * 256);
+                const b = Math.floor(rnd() * 256);
+                return `rgb(${r},${g},${b})`;
+            };
+        }
+
+        // ---------- Primitive selection (same logic as Python) ----------
+        function isOn(x, y) {
+            return y >= 0 && y < GRID_H && x >= 0 && x < GRID_W && bitmap[y][x];
+        }
+
+        function pickPrimitive(x, y) {
+            if (!isOn(x, y)) return null;
+
+            const up = isOn(x, y - 1);
+            const dn = isOn(x, y + 1);
+            const lf = isOn(x - 1, y);
+            const rt = isOn(x + 1, y);
+
+            const n = Number(up) + Number(dn) + Number(lf) + Number(rt);
+
+            // isolated -> dot
+            if (n === 0) return 1;
+
+            // endpoints -> use a half with FLAT edge facing the neighbor
+            if (n === 1) {
+                if (dn) return 2; // connects downward => flat bottom
+                if (up) return 3; // connects upward   => flat top
+                if (rt) return 5; // connects right    => flat right
+                if (lf) return 4; // connects left     => flat left
+                return 0;
+            }
+
+            // orthogonal corner -> quarter with flats on connected edges
+            if (n === 2 && ((up && lf) || (up && rt) || (dn && lf) || (dn && rt))) {
+                if (up && lf) return 9; // flat top+left
+                if (up && rt) return 6; // flat top+right
+                if (dn && lf) return 8; // flat bottom+left
+                if (dn && rt) return 7; // flat bottom+right
+                return 0;
+            }
+
+            // straight segments / junctions -> square
+            return 0;
+        }
+
+        // ---------- SVG defs (same 10 primitives) ----------
+        function svgDefs(d) {
+            const r = d / 2;
+            return `  <defs>
+    <symbol id="p0" viewBox="0 0 ${d} ${d}">
+      <rect x="0" y="0" width="${d}" height="${d}" fill="currentColor"/>
+    </symbol>
+    <symbol id="p1" viewBox="0 0 ${d} ${d}">
+      <circle cx="${r}" cy="${r}" r="${r}" fill="currentColor"/>
+    </symbol>
+    <symbol id="p2" viewBox="0 0 ${d} ${d}">
+      <path d="M ${d} ${d} A ${r} ${r} 0 0 0 0 ${d} Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="p3" viewBox="0 0 ${d} ${d}">
+      <path d="M 0 0 A ${r} ${r} 0 0 0 ${d} 0 Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="p4" viewBox="0 0 ${d} ${d}">
+      <path d="M 0 ${d} A ${r} ${r} 0 0 0 0 0 Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="p5" viewBox="0 0 ${d} ${d}">
+      <path d="M ${d} 0 A ${r} ${r} 0 0 0 ${d} ${d} Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="p6" viewBox="0 0 ${d} ${d}">
+      <path d="M ${d} 0 L ${d} ${d} A ${d} ${d} 0 0 1 0 0 Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="p7" viewBox="0 0 ${d} ${d}">
+      <path d="M ${d} ${d} L 0 ${d} A ${d} ${d} 0 0 1 ${d} 0 Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="p8" viewBox="0 0 ${d} ${d}">
+      <path d="M 0 ${d} L 0 0 A ${d} ${d} 0 0 1 ${d} ${d} Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="p9" viewBox="0 0 ${d} ${d}">
+      <path d="M 0 0 L ${d} 0 A ${d} ${d} 0 0 1 0 ${d} Z" fill="currentColor"/>
+    </symbol>
+  </defs>`;
+        }
+
+        function buildSvgString() {
+            const d = clamp(parseInt(el.tileSize.value || '48', 10) || 48, 8, 256);
+            el.tileSize.value = String(d);
+
+            const w = GRID_W * d;
+            const h = GRID_H * d;
+            const ch = getCharValue();
+
+            const lines = [];
+            lines.push(`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">`);
+            lines.push(`  <!-- character: ${escapeXml(ch)} (${getCodepointLabel(ch)}) -->`);
+            lines.push(svgDefs(d));
+
+            const getRandRgb = randRgbFn();
+            const useRandom = el.randomColors.checked;
+            const flat = el.flatColor.value || '#111111';
+
+            for (let y = 0; y < GRID_H; y++) {
+                for (let x = 0; x < GRID_W; x++) {
+                    const pid = pickPrimitive(x, y);
+                    if (pid == null) continue;
+
+                    const color = useRandom ? getRandRgb() : flat;
+                    lines.push(
+                        `  <g transform="translate(${x*d},${y*d})" style="color: ${color}"><use href="#p${pid}" x="0" y="0" width="${d}" height="${d}"/></g>`
+                    );
+                }
+            }
+
+            lines.push(`</svg>`);
+            return lines.join('\n');
+        }
+
+        // ---------- UI rendering ----------
+        function buildGrid() {
+            el.grid.innerHTML = '';
+            for (let y = 0; y < GRID_H; y++) {
+                for (let x = 0; x < GRID_W; x++) {
+                    const cell = document.createElement('button');
+                    cell.type = 'button';
+                    cell.className = 'cell';
+                    cell.dataset.x = String(x);
+                    cell.dataset.y = String(y);
+                    cell.innerHTML = `<span class="coord">${x},${y}</span><span class="pid"></span>`;
+                    el.grid.appendChild(cell);
+                }
+            }
+
+            // Pointer events for click+drag painting
+            el.grid.addEventListener('pointerdown', (ev) => {
+                const cell = ev.target.closest('.cell');
+                if (!cell) return;
+                ev.preventDefault();
+
+                const x = Number(cell.dataset.x);
+                const y = Number(cell.dataset.y);
+
+                isPointerDown = true;
+                paintedThisDrag = new Set();
+                dragValue = !bitmap[y][x];
+                applyPaint(x, y, dragValue);
+                cell.setPointerCapture?.(ev.pointerId);
+            });
+
+            el.grid.addEventListener('pointermove', (ev) => {
+                if (!isPointerDown) return;
+                const cell = ev.target.closest('.cell');
+                if (!cell) return;
+                const x = Number(cell.dataset.x);
+                const y = Number(cell.dataset.y);
+                applyPaint(x, y, dragValue);
+            });
+
+            const stopPaint = () => {
+                isPointerDown = false;
+                dragValue = null;
+                paintedThisDrag.clear();
+            };
+            el.grid.addEventListener('pointerup', stopPaint);
+            el.grid.addEventListener('pointercancel', stopPaint);
+            window.addEventListener('pointerup', stopPaint);
+        }
+
+        function applyPaint(x, y, value) {
+            const key = `${x},${y}`;
+            if (paintedThisDrag.has(key)) return;
+            paintedThisDrag.add(key);
+            bitmap[y][x] = !!value;
+            updateAll();
+        }
+
+        function renderGridCells() {
+            const showPids = el.showPrimitiveIds.checked;
+            const counts = Array(10).fill(0);
+
+            for (const cell of el.grid.children) {
+                const x = Number(cell.dataset.x);
+                const y = Number(cell.dataset.y);
+                const on = bitmap[y][x];
+                const pid = pickPrimitive(x, y);
+
+                cell.classList.toggle('on', on);
+
+                const pidEl = cell.querySelector('.pid');
+                if (on && pid != null) {
+                    counts[pid]++;
+                    pidEl.textContent = showPids ? `p${pid}` : '';
+                } else {
+                    pidEl.textContent = '';
+                }
+            }
+
+            const parts = counts
+                .map((n, i) => n ? `p${i}:${n}` : null)
+                .filter(Boolean)
+                .join(' ');
+            el.statPrimitiveCounts.textContent = parts || 'none';
+        }
+
+        function updateBitmapTextarea() {
+            el.bitmapText.value = bitmapRows().join('\n');
+        }
+
+        function updatePythonSnippet() {
+            const ch = getCharValue();
+            const rows = bitmapRows().map(r => `    ${r}`).join('\n');
+            el.pythonSnippet.value =
+                `"${ch}": bm("""
+${rows}
+"""),`;
+        }
+
+        function updateStats(svgText) {
+            const ch = getCharValue();
+            const cpLabel = getCodepointLabel(ch);
+            const d = clamp(parseInt(el.tileSize.value || '48', 10) || 48, 8, 256);
+            el.statChar.textContent = ch;
+            el.statCp.textContent = cpLabel;
+            el.statOn.textContent = String(onCount());
+            el.statSize.textContent = `${GRID_W*d}×${GRID_H*d}`;
+        }
+
+        function updatePreview(svgText) {
+            el.previewBox.innerHTML = svgText;
+        }
+
+        function updateSvgTextarea(svgText) {
+            el.svgText.value = svgText;
+        }
+
+        function updateAll() {
+            // Keep char input to a single Unicode character
+            const chars = Array.from(el.charInput.value || '');
+            if (chars.length === 0) {
+                el.charInput.value = 'A';
+            } else if (chars.length > 1) {
+                el.charInput.value = chars[0];
+            }
+
+            const svgText = buildSvgString();
+            renderGridCells();
+            updateBitmapTextarea();
+            updatePythonSnippet();
+            updateStats(svgText);
+            updatePreview(svgText);
+            updateSvgTextarea(svgText);
+
+            // Sync default seed to character if seed empty
+            if (!el.seedInput.value.trim()) {
+                el.seedInput.value = getCharValue();
+            }
+        }
+
+        // ---------- Actions ----------
+        function clearBitmap() {
+            bitmap = Array.from({ length: GRID_H }, () => Array(GRID_W).fill(false));
+            updateAll();
+        }
+
+        function fillBitmap() {
+            bitmap = Array.from({ length: GRID_H }, () => Array(GRID_W).fill(true));
+            updateAll();
+        }
+
+        function invertBitmap() {
+            bitmap = bitmap.map(row => row.map(v => !v));
+            updateAll();
+        }
+
+        function centerContents() {
+            const points = [];
+            for (let y = 0; y < GRID_H; y++) {
+                for (let x = 0; x < GRID_W; x++) {
+                    if (bitmap[y][x]) points.push([x, y]);
+                }
+            }
+            if (!points.length) return;
+
+            const xs = points.map(p => p[0]);
+            const ys = points.map(p => p[1]);
+            const minX = Math.min(...xs), maxX = Math.max(...xs);
+            const minY = Math.min(...ys), maxY = Math.max(...ys);
+            const w = maxX - minX + 1;
+            const h = maxY - minY + 1;
+
+            const targetX = Math.floor((GRID_W - w) / 2);
+            const targetY = Math.floor((GRID_H - h) / 2);
+            const dx = targetX - minX;
+            const dy = targetY - minY;
+
+            const next = Array.from({ length: GRID_H }, () => Array(GRID_W).fill(false));
+            for (const [x, y] of points) {
+                const nx = x + dx, ny = y + dy;
+                if (nx >= 0 && nx < GRID_W && ny >= 0 && ny < GRID_H) next[ny][nx] = true;
+            }
+            bitmap = next;
+            updateAll();
+        }
+
+        function parseBitmapText(text) {
+            const rawRows = text
+                .split(/\r?\n/)
+                .map(s => s.trim())
+                .filter(Boolean);
+
+            if (rawRows.length !== GRID_H) {
+                throw new Error(`Expected ${GRID_H} non-empty rows, got ${rawRows.length}.`);
+            }
+
+            const next = [];
+            for (let y = 0; y < GRID_H; y++) {
+                const row = rawRows[y];
+                if (row.length !== GRID_W) {
+                    throw new Error(`Row ${y+1} must be ${GRID_W} chars long.`);
+                }
+                const arr = [];
+                for (const ch of row) {
+                    if (ch === '#') arr.push(true);
+                    else if (ch === '.') arr.push(false);
+                    else throw new Error(`Invalid char "${ch}" in row ${y+1}. Use only # and .`);
+                }
+                next.push(arr);
+            }
+            return next;
+        }
+
+        async function copyText(text, label = 'Copied') {
+            try {
+                await navigator.clipboard.writeText(text);
+                flashMessage(`${label}.`);
+            } catch {
+                flashMessage(`Clipboard blocked. Select/copy manually.`);
+            }
+        }
+
+        function flashMessage(msg) {
+            const note = document.createElement('div');
+            note.textContent = msg;
+            note.style.position = 'fixed';
+            note.style.right = '16px';
+            note.style.bottom = '16px';
+            note.style.padding = '10px 12px';
+            note.style.background = 'rgba(17,17,17,.92)';
+            note.style.color = '#fff';
+            note.style.borderRadius = '10px';
+            note.style.zIndex = '9999';
+            note.style.fontSize = '13px';
+            note.style.boxShadow = '0 6px 18px rgba(0,0,0,.25)';
+            document.body.appendChild(note);
+            setTimeout(() => note.remove(), 1400);
+        }
+
+        function downloadSvg() {
+            const ch = getCharValue();
+            const cp = codepointFilenamePart(ch);
+            const svg = el.svgText.value;
+            const blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `glyph-u${cp}.svg`;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            URL.revokeObjectURL(url);
+        }
+
+        function buildLegend() {
+            el.legendGrid.innerHTML = '';
+            const d = 48;
+            for (let pid = 0; pid <= 9; pid++) {
+                const box = document.createElement('div');
+                box.style.border = '1px solid var(--line)';
+                box.style.borderRadius = '10px';
+                box.style.padding = '8px';
+                box.style.display = 'grid';
+                box.style.gridTemplateColumns = '48px 1fr';
+                box.style.gap = '8px';
+                box.style.alignItems = 'center';
+
+                const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${d}" height="${d}" viewBox="0 0 ${d} ${d}">
+${svgDefs(d)}
+<g style="color:#111"><use href="#p${pid}" x="0" y="0" width="${d}" height="${d}"/></g>
+</svg>`;
+
+                box.innerHTML = `
+            <div style="width:48px;height:48px;border-radius:8px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;background:#fff;">
+              ${svg}
+            </div>
+            <div>
+              <div style="font-weight:700;">p${pid}</div>
+              <div class="muted small">${primitiveDescription(pid)}</div>
+            </div>
+          `;
+                el.legendGrid.appendChild(box);
+            }
+        }
+
+        function primitiveDescription(pid) {
+            const map = {
+                0: 'square / full tile',
+                1: 'circle / isolated dot',
+                2: 'bottom half-round (flat bottom)',
+                3: 'top half-round (flat top)',
+                4: 'left half-round (flat left)',
+                5: 'right half-round (flat right)',
+                6: 'quarter (flat top+right)',
+                7: 'quarter (flat bottom+right)',
+                8: 'quarter (flat bottom+left)',
+                9: 'quarter (flat top+left)',
+            };
+            return map[pid] || '';
+        }
+
+        // ---------- Event wiring ----------
+        el.charInput.addEventListener('input', () => {
+            if (!el.seedInput.dataset.userEdited) {
+                el.seedInput.value = getCharValue();
+            }
+            updateAll();
+        });
+
+        el.seedInput.addEventListener('input', () => {
+            el.seedInput.dataset.userEdited = '1';
+            updateAll();
+        });
+
+        el.tileSize.addEventListener('input', updateAll);
+        el.randomColors.addEventListener('change', updateAll);
+        el.flatColor.addEventListener('input', updateAll);
+        el.showPrimitiveIds.addEventListener('change', updateAll);
+
+        el.rerollBtn.addEventListener('click', () => {
+            rerollCounter++;
+            updateAll();
+        });
+
+        el.clearBtn.addEventListener('click', clearBitmap);
+        el.fillBtn.addEventListener('click', fillBitmap);
+        el.invertBtn.addEventListener('click', invertBitmap);
+        el.centerBtn.addEventListener('click', centerContents);
+
+        el.applyBitmapBtn.addEventListener('click', () => {
+            try {
+                bitmap = parseBitmapText(el.bitmapText.value);
+                updateAll();
+            } catch (err) {
+                alert(err.message);
+            }
+        });
+
+        el.copyBitmapBtn.addEventListener('click', () => copyText(el.bitmapText.value, 'Bitmap copied'));
+        el.copySvgBtn.addEventListener('click', () => copyText(el.svgText.value, 'SVG copied'));
+        el.copyPythonBtn.addEventListener('click', () => copyText(el.pythonSnippet.value, 'Python snippet copied'));
+        el.downloadSvgBtn.addEventListener('click', downloadSvg);
+
+        // ---------- Initialize ----------
+        buildGrid();
+        buildLegend();
+
+        // Seed with "A" from your example script
+        const initialRows = [
+            ".###.",
+            "#...#",
+            "#...#",
+            "#####",
+            "#...#",
+            "#...#",
+            "#...#",
+            ".....",
+            "....."
+        ];
+        bitmap = parseBitmapText(initialRows.join('\n'));
+        updateAll();
+    })();
+</script>
+</body>
+</html>
