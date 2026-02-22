@@ -45,7 +45,7 @@
 
         .app{
             display:grid;
-            grid-template-columns: 420px 1fr;
+            grid-template-columns: 460px 1fr;
             gap:16px;
             padding:16px;
             min-height:100vh;
@@ -241,7 +241,7 @@
             border:1px solid var(--line);
             border-radius:12px;
             padding:10px;
-            min-width:140px;
+            min-width:160px;
             display:grid;
             gap:8px;
         }
@@ -309,7 +309,55 @@
 
         .checkbox input{ margin:0; }
 
-        @media (max-width: 1100px){
+        .preset-panel{
+            max-height:340px;
+            overflow:auto;
+            border:1px solid var(--line);
+            border-radius:12px;
+            padding:10px;
+        }
+
+        .preset-group + .preset-group{
+            margin-top:10px;
+            padding-top:10px;
+            border-top:1px dashed var(--line);
+        }
+
+        .preset-group h4{
+            margin:0 0 8px 0;
+            font-size:12px;
+            color:var(--muted);
+            letter-spacing:.03em;
+            text-transform:uppercase;
+        }
+
+        .preset-grid{
+            display:grid;
+            grid-template-columns: repeat(8, minmax(0, 1fr));
+            gap:6px;
+        }
+
+        .preset-btn{
+            height:32px;
+            border:1px solid var(--line);
+            border-radius:8px;
+            background:transparent;
+            color:var(--text);
+            cursor:pointer;
+            font: 12px/1 system-ui, sans-serif;
+            padding:0;
+        }
+        .preset-btn:hover{
+            border-color:var(--accent);
+            transform: translateY(-1px);
+        }
+        .preset-btn.active{
+            border-color:var(--accent);
+            background: color-mix(in oklab, var(--accent) 12%, transparent);
+            box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--accent) 35%, transparent);
+        }
+
+        @media (max-width: 1200px){
             .app{
                 grid-template-columns: 1fr;
             }
@@ -322,6 +370,30 @@
 <body>
 <div class="app">
     <div class="left-col">
+        <div class="panel">
+            <p class="section-title">Presets</p>
+            <div class="row" style="margin-bottom:8px;">
+                <input id="presetSearch" type="text" placeholder="Filter presets (e.g. A, g, 7)" style="width:100%;" />
+            </div>
+            <div class="preset-panel">
+                <div class="preset-group">
+                    <h4>Uppercase A–Z</h4>
+                    <div id="presetUpper" class="preset-grid"></div>
+                </div>
+                <div class="preset-group">
+                    <h4>Lowercase a–z</h4>
+                    <div id="presetLower" class="preset-grid"></div>
+                </div>
+                <div class="preset-group">
+                    <h4>Digits 0–9</h4>
+                    <div id="presetDigit" class="preset-grid"></div>
+                </div>
+            </div>
+            <div class="toolbar">
+                <button id="loadByCharBtn">Load current character</button>
+            </div>
+        </div>
+
         <div class="panel">
             <div class="row" style="margin-bottom:10px;">
                 <div style="flex:1; min-width:140px;">
@@ -444,6 +516,74 @@
         const GRID_W = 5;
         const GRID_H = 9;
 
+        // Presets copied from your Python GLYPHS dict (A–Z, a–z, 0–9)
+        const PRESETS = {
+            "A": [".###.","#...#","#...#","#####","#...#","#...#","#...#",".....","....."],
+            "B": ["####.","#...#","#...#","####.","#...#","#...#","####.",".....","....."],
+            "C": [".####","#....","#....","#....","#....","#....",".####",".....","....."],
+            "D": ["####.","#...#","#...#","#...#","#...#","#...#","####.",".....","....."],
+            "E": ["#####","#....","#....","####.","#....","#....","#####",".....","....."],
+            "F": ["#####","#....","#....","####.","#....","#....","#....",".....","....."],
+            "G": [".####","#....","#....","#.###","#...#","#...#",".###.",".....","....."],
+            "H": ["#...#","#...#","#...#","#####","#...#","#...#","#...#",".....","....."],
+            "I": ["#####","..#..","..#..","..#..","..#..","..#..","#####",".....","....."],
+            "J": ["..###","...#.","...#.","...#.","...#.","#..#.",".##..",".....","....."],
+            "K": ["#...#","#..#.","#.#..","##...","#.#..","#..#.","#...#",".....","....."],
+            "L": ["#....","#....","#....","#....","#....","#....","#####",".....","....."],
+            "M": ["#...#","##.##","#.#.#","#...#","#...#","#...#","#...#",".....","....."],
+            "N": ["#...#","##..#","#.#.#","#..##","#...#","#...#","#...#",".....","....."],
+            "O": [".###.","#...#","#...#","#...#","#...#","#...#",".###.",".....","....."],
+            "P": ["####.","#...#","#...#","####.","#....","#....","#....",".....","....."],
+            "Q": [".###.","#...#","#...#","#...#","#.#.#","#..#.",".##.#",".....","....."],
+            "R": ["####.","#...#","#...#","####.","#.#..","#..#.","#...#",".....","....."],
+            "S": [".####","#....","#....",".###.","....#","....#","####.",".....","....."],
+            "T": ["#####","..#..","..#..","..#..","..#..","..#..","..#..",".....","....."],
+            "U": ["#...#","#...#","#...#","#...#","#...#","#...#",".###.",".....","....."],
+            "V": ["#...#","#...#","#...#","#...#","#...#",".#.#.","..#..",".....","....."],
+            "W": ["#...#","#...#","#...#","#...#","#.#.#","##.##","#...#",".....","....."],
+            "X": ["#...#","#...#",".#.#.","..#..",".#.#.","#...#","#...#",".....","....."],
+            "Y": ["#...#","#...#",".#.#.","..#..","..#..","..#..","..#..",".....","....."],
+            "Z": ["#####","....#","...#.","..#..",".#...","#....","#####",".....","....."],
+
+            "a": [".....",".....",".###.","....#",".####","#...#",".####",".....","....."],
+            "b": ["#....","#....","####.","#...#","#...#","#...#","####.",".....","....."],
+            "c": [".....",".....",".####","#....","#....","#....",".####",".....","....."],
+            "d": ["....#","....#",".####","#...#","#...#","#...#",".####",".....","....."],
+            "e": [".....",".....",".###.","#...#","#####","#....",".####",".....","....."],
+            "f": ["..##.",".#..#",".#...","###..",".#...",".#...",".#...",".....","....."],
+            "g": [".....",".....",".####","#...#","#...#",".####","....#",".###.","....."],
+            "h": ["#....","#....","####.","#...#","#...#","#...#","#...#",".....","....."],
+            "i": ["..#..",".....",".##..","..#..","..#..","..#..",".###.",".....","....."],
+            "j": ["...#.",".....","..##.","...#.","...#.","...#.","#..#.",".##..","....."],
+            "k": ["#....","#....","#..#.","#.#..","##...","#.#..","#..#.",".....","....."],
+            "l": [".##..","..#..","..#..","..#..","..#..","..#..",".###.",".....","....."],
+            "m": [".....",".....","##.#.","#.#.#","#.#.#","#...#","#...#",".....","....."],
+            "n": [".....",".....","####.","#...#","#...#","#...#","#...#",".....","....."],
+            "o": [".....",".....",".###.","#...#","#...#","#...#",".###.",".....","....."],
+            "p": [".....",".....","####.","#...#","#...#","####.","#....","#....","....."],
+            "q": [".....",".....",".####","#...#","#...#",".####","....#","....#","....."],
+            "r": [".....",".....","####.","#...#","#....","#....","#....",".....","....."],
+            "s": [".....",".....",".####","#....",".###.","....#","####.",".....","....."],
+            "t": ["..#..","..#..","####.","..#..","..#..","..#..","...##",".....","....."],
+            "u": [".....",".....","#...#","#...#","#...#","#...#",".####",".....","....."],
+            "v": [".....",".....","#...#","#...#","#...#",".#.#.","..#..",".....","....."],
+            "w": [".....",".....","#...#","#...#","#.#.#","#.#.#",".#.#.",".....","....."],
+            "x": [".....",".....","#...#",".#.#.","..#..",".#.#.","#...#",".....","....."],
+            "y": [".....",".....","#...#","#...#","#...#",".####","....#",".###.","....."],
+            "z": [".....",".....","#####","...#.","..#..",".#...","#####",".....","....."],
+
+            "0": [".###.","#...#","#..##","#.#.#","##..#","#...#",".###.",".....","....."],
+            "1": ["..#..",".##..","..#..","..#..","..#..","..#..",".###.",".....","....."],
+            "2": [".###.","#...#","....#","...#.","..#..",".#...","#####",".....","....."],
+            "3": ["####.","....#","...#.","..##.","....#","#...#",".###.",".....","....."],
+            "4": ["...#.","..##.",".#.#.","#..#.","#####","...#.","...#.",".....","....."],
+            "5": ["#####","#....","####.","....#","....#","#...#",".###.",".....","....."],
+            "6": [".###.","#....","####.","#...#","#...#","#...#",".###.",".....","....."],
+            "7": ["#####","....#","...#.","..#..",".#...",".#...",".#...",".....","....."],
+            "8": [".###.","#...#","#...#",".###.","#...#","#...#",".###.",".....","....."],
+            "9": [".###.","#...#","#...#",".####","....#","...#.",".##..",".....","....."]
+        };
+
         const el = {
             grid: document.getElementById('glyphGrid'),
             charInput: document.getElementById('charInput'),
@@ -472,6 +612,11 @@
             legendGrid: document.getElementById('legendGrid'),
             pythonSnippet: document.getElementById('pythonSnippet'),
             copyPythonBtn: document.getElementById('copyPythonBtn'),
+            presetSearch: document.getElementById('presetSearch'),
+            presetUpper: document.getElementById('presetUpper'),
+            presetLower: document.getElementById('presetLower'),
+            presetDigit: document.getElementById('presetDigit'),
+            loadByCharBtn: document.getElementById('loadByCharBtn'),
         };
 
         // Internal bitmap state: true = "#", false = "."
@@ -495,11 +640,13 @@
 
         function getCodepointLabel(ch) {
             const cp = ch.codePointAt(0);
-            return 'U+' + cp.toString(16).toUpperCase().padStart(cp <= 0xFFFF ? 4 : 6, '0');
+            return 'U+' + cp.toString(16).toUpperCase().padStart(4, '0');
         }
 
         function codepointFilenamePart(ch) {
-            const cps = Array.from(ch).map(c => c.codePointAt(0).toString(16).toLowerCase());
+            const cps = Array.from(ch).map(c =>
+                c.codePointAt(0).toString(16).toLowerCase().padStart(4, '0')
+            );
             return cps.join('-');
         }
 
@@ -544,7 +691,7 @@
 
         function randRgbFn() {
             const ch = getCharValue();
-            const seedStr = `${el.seedInput.value}|${ch}|${bitmapRows().join('/') }|${rerollCounter}`;
+            const seedStr = `${el.seedInput.value}|${ch}|${bitmapRows().join('/')}|${rerollCounter}`;
             const rnd = mulberry32(hashStringToUint32(seedStr));
             return () => {
                 const r = Math.floor(rnd() * 256);
@@ -763,7 +910,7 @@ ${rows}
 """),`;
         }
 
-        function updateStats(svgText) {
+        function updateStats() {
             const ch = getCharValue();
             const cpLabel = getCodepointLabel(ch);
             const d = clamp(parseInt(el.tileSize.value || '48', 10) || 48, 8, 256);
@@ -781,6 +928,61 @@ ${rows}
             el.svgText.value = svgText;
         }
 
+        function bitmapFromRows(rows) {
+            return rows.map(row => Array.from(row).map(ch => ch === '#'));
+        }
+
+        function loadPreset(ch) {
+            if (!PRESETS[ch]) return false;
+            el.charInput.value = ch;
+            bitmap = bitmapFromRows(PRESETS[ch]);
+            if (!el.seedInput.dataset.userEdited) {
+                el.seedInput.value = ch;
+            }
+            updateAll();
+            return true;
+        }
+
+        function highlightActivePreset() {
+            const ch = getCharValue();
+            document.querySelectorAll('.preset-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.ch === ch);
+            });
+        }
+
+        function buildPresetButtons() {
+            const groups = [
+                { container: el.presetUpper, chars: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' },
+                { container: el.presetLower, chars: 'abcdefghijklmnopqrstuvwxyz' },
+                { container: el.presetDigit, chars: '0123456789' },
+            ];
+
+            for (const { container, chars } of groups) {
+                container.innerHTML = '';
+                for (const ch of chars) {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'preset-btn';
+                    btn.dataset.ch = ch;
+                    btn.textContent = ch;
+                    btn.title = `Load ${ch}`;
+                    btn.addEventListener('click', () => loadPreset(ch));
+                    container.appendChild(btn);
+                }
+            }
+            highlightActivePreset();
+            applyPresetFilter();
+        }
+
+        function applyPresetFilter() {
+            const q = (el.presetSearch.value || '').trim().toLowerCase();
+            document.querySelectorAll('.preset-btn').forEach(btn => {
+                const ch = btn.dataset.ch;
+                const show = !q || ch.toLowerCase().includes(q);
+                btn.style.display = show ? '' : 'none';
+            });
+        }
+
         function updateAll() {
             // Keep char input to a single Unicode character
             const chars = Array.from(el.charInput.value || '');
@@ -794,9 +996,10 @@ ${rows}
             renderGridCells();
             updateBitmapTextarea();
             updatePythonSnippet();
-            updateStats(svgText);
+            updateStats();
             updatePreview(svgText);
             updateSvgTextarea(svgText);
+            highlightActivePreset();
 
             // Sync default seed to character if seed empty
             if (!el.seedInput.value.trim()) {
@@ -911,7 +1114,7 @@ ${rows}
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `glyph-u${cp}.svg`;
+            a.download = `character-u${cp}.svg`;
             document.body.appendChild(a);
             a.click();
             a.remove();
@@ -1007,24 +1210,22 @@ ${svgDefs(d)}
         el.copyPythonBtn.addEventListener('click', () => copyText(el.pythonSnippet.value, 'Python snippet copied'));
         el.downloadSvgBtn.addEventListener('click', downloadSvg);
 
+        el.presetSearch.addEventListener('input', applyPresetFilter);
+
+        el.loadByCharBtn.addEventListener('click', () => {
+            const ch = getCharValue();
+            if (!loadPreset(ch)) {
+                flashMessage(`No preset for "${ch}"`);
+            }
+        });
+
         // ---------- Initialize ----------
         buildGrid();
         buildLegend();
+        buildPresetButtons();
 
-        // Seed with "A" from your example script
-        const initialRows = [
-            ".###.",
-            "#...#",
-            "#...#",
-            "#####",
-            "#...#",
-            "#...#",
-            "#...#",
-            ".....",
-            "....."
-        ];
-        bitmap = parseBitmapText(initialRows.join('\n'));
-        updateAll();
+        // Start with "A"
+        loadPreset('A');
     })();
 </script>
 </body>
