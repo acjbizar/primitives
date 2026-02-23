@@ -1,13 +1,48 @@
 {
   "meta": {
-    "generated_at": "2026-02-23T08:41:17.073633+00:00",
+    "generated_at": "2026-02-23T15:14:23.060623+00:00",
     "source_pattern": "src/svg/character-u*.svg",
-    "glyph_count": 25,
+    "glyph_count": 64,
     "format_version": 1
   },
   "char_index": {
+    " ": "0020",
+    "!": "0021",
+    "0": "0030",
+    "1": "0031",
+    "2": "0032",
+    "3": "0033",
+    "4": "0034",
+    "5": "0035",
+    "6": "0036",
+    "7": "0037",
+    "8": "0038",
+    "9": "0039",
     "A": "0041",
+    "B": "0042",
+    "C": "0043",
+    "D": "0044",
+    "E": "0045",
+    "F": "0046",
+    "G": "0047",
+    "H": "0048",
+    "I": "0049",
+    "J": "004a",
+    "K": "004b",
+    "L": "004c",
+    "M": "004d",
+    "N": "004e",
+    "O": "004f",
+    "P": "0050",
+    "Q": "0051",
+    "R": "0052",
+    "S": "0053",
+    "T": "0054",
+    "U": "0055",
+    "V": "0056",
+    "W": "0057",
     "X": "0058",
+    "Y": "0059",
     "Z": "005a",
     "a": "0061",
     "b": "0062",
@@ -19,6 +54,7 @@
     "h": "0068",
     "i": "0069",
     "j": "006a",
+    "k": "006b",
     "l": "006c",
     "m": "006d",
     "n": "006e",
@@ -29,10 +65,2958 @@
     "s": "0073",
     "t": "0074",
     "u": "0075",
+    "v": "0076",
     "w": "0077",
+    "x": "0078",
+    "y": "0079",
     "z": "007a"
   },
   "glyphs_by_codepoint": {
+    "0020": {
+      "filename": "character-u0020.svg",
+      "codepoint_key": "0020",
+      "codepoints": [
+        32
+      ],
+      "codepoints_hex": [
+        "0020"
+      ],
+      "text": " ",
+      "grid_w": 1,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        48,
+        432
+      ],
+      "bitmap": [
+        ".",
+        ".",
+        ".",
+        ".",
+        ".",
+        ".",
+        ".",
+        ".",
+        "."
+      ],
+      "primitive_grid": [
+        [
+          null
+        ],
+        [
+          null
+        ],
+        [
+          null
+        ],
+        [
+          null
+        ],
+        [
+          null
+        ],
+        [
+          null
+        ],
+        [
+          null
+        ],
+        [
+          null
+        ],
+        [
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          null
+        ],
+        [
+          null
+        ],
+        [
+          null
+        ],
+        [
+          null
+        ],
+        [
+          null
+        ],
+        [
+          null
+        ],
+        [
+          null
+        ],
+        [
+          null
+        ],
+        [
+          null
+        ]
+      ],
+      "tiles": []
+    },
+    "0021": {
+      "filename": "character-u0021.svg",
+      "codepoint_key": "0021",
+      "codepoints": [
+        33
+      ],
+      "codepoints_hex": [
+        "0021"
+      ],
+      "text": "!",
+      "grid_w": 1,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        48,
+        432
+      ],
+      "bitmap": [
+        "#",
+        "#",
+        "#",
+        "#",
+        "#",
+        ".",
+        "#",
+        ".",
+        "."
+      ],
+      "primitive_grid": [
+        [
+          2
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          3
+        ],
+        [
+          null
+        ],
+        [
+          1
+        ],
+        [
+          null
+        ],
+        [
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          "rgb(218,47,97)"
+        ],
+        [
+          "rgb(144,142,116)"
+        ],
+        [
+          "rgb(69,175,90)"
+        ],
+        [
+          "rgb(100,85,214)"
+        ],
+        [
+          "rgb(88,96,163)"
+        ],
+        [
+          null
+        ],
+        [
+          "rgb(95,211,123)"
+        ],
+        [
+          null
+        ],
+        [
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "primitive": 2,
+          "color": "rgb(218,47,97)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(144,142,116)"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(69,175,90)"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(100,85,214)"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "primitive": 3,
+          "color": "rgb(88,96,163)"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "primitive": 1,
+          "color": "rgb(95,211,123)"
+        }
+      ]
+    },
+    "0030": {
+      "filename": "character-u0030.svg",
+      "codepoint_key": "0030",
+      "codepoints": [
+        48
+      ],
+      "codepoints_hex": [
+        "0030"
+      ],
+      "text": "0",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        "#####",
+        "#...#",
+        "#..##",
+        "#.#.#",
+        "##..#",
+        "#...#",
+        "#####",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          7,
+          0,
+          0,
+          0,
+          8
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          5,
+          0
+        ],
+        [
+          0,
+          null,
+          1,
+          null,
+          0
+        ],
+        [
+          0,
+          4,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          6,
+          0,
+          0,
+          0,
+          9
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          "rgb(127,152,77)",
+          "rgb(241,20,205)",
+          "rgb(18,134,209)",
+          "rgb(194,22,41)",
+          "rgb(205,139,56)"
+        ],
+        [
+          "rgb(110,123,233)",
+          null,
+          null,
+          null,
+          "rgb(173,87,113)"
+        ],
+        [
+          "rgb(48,238,184)",
+          null,
+          null,
+          "rgb(149,238,209)",
+          "rgb(62,36,54)"
+        ],
+        [
+          "rgb(201,80,76)",
+          null,
+          "rgb(165,80,75)",
+          null,
+          "rgb(175,58,68)"
+        ],
+        [
+          "rgb(122,16,81)",
+          "rgb(156,150,145)",
+          null,
+          null,
+          "rgb(111,225,19)"
+        ],
+        [
+          "rgb(169,80,160)",
+          null,
+          null,
+          null,
+          "rgb(10,163,180)"
+        ],
+        [
+          "rgb(29,26,212)",
+          "rgb(148,86,216)",
+          "rgb(140,75,13)",
+          "rgb(201,126,80)",
+          "rgb(25,201,177)"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "primitive": 7,
+          "color": "rgb(127,152,77)"
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(241,20,205)"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(18,134,209)"
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(194,22,41)"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "primitive": 8,
+          "color": "rgb(205,139,56)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(110,123,233)"
+        },
+        {
+          "x": 4,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(173,87,113)"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(48,238,184)"
+        },
+        {
+          "x": 3,
+          "y": 2,
+          "primitive": 5,
+          "color": "rgb(149,238,209)"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(62,36,54)"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(201,80,76)"
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "primitive": 1,
+          "color": "rgb(165,80,75)"
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(175,58,68)"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(122,16,81)"
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "primitive": 4,
+          "color": "rgb(156,150,145)"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(111,225,19)"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(169,80,160)"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(10,163,180)"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "primitive": 6,
+          "color": "rgb(29,26,212)"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(148,86,216)"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(140,75,13)"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(201,126,80)"
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "primitive": 9,
+          "color": "rgb(25,201,177)"
+        }
+      ]
+    },
+    "0031": {
+      "filename": "character-u0031.svg",
+      "codepoint_key": "0031",
+      "codepoints": [
+        49
+      ],
+      "codepoints_hex": [
+        "0031"
+      ],
+      "text": "1",
+      "grid_w": 3,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        144,
+        432
+      ],
+      "bitmap": [
+        ".#.",
+        "##.",
+        ".#.",
+        ".#.",
+        ".#.",
+        ".#.",
+        "###",
+        "...",
+        "..."
+      ],
+      "primitive_grid": [
+        [
+          null,
+          2,
+          null
+        ],
+        [
+          5,
+          0,
+          null
+        ],
+        [
+          null,
+          0,
+          null
+        ],
+        [
+          null,
+          0,
+          null
+        ],
+        [
+          null,
+          0,
+          null
+        ],
+        [
+          null,
+          0,
+          null
+        ],
+        [
+          5,
+          0,
+          4
+        ],
+        [
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          null,
+          "rgb(10,12,94)",
+          null
+        ],
+        [
+          "rgb(232,129,111)",
+          "rgb(180,115,194)",
+          null
+        ],
+        [
+          null,
+          "rgb(63,3,170)",
+          null
+        ],
+        [
+          null,
+          "rgb(199,253,163)",
+          null
+        ],
+        [
+          null,
+          "rgb(205,99,236)",
+          null
+        ],
+        [
+          null,
+          "rgb(79,219,146)",
+          null
+        ],
+        [
+          "rgb(16,12,156)",
+          "rgb(232,99,104)",
+          "rgb(244,64,40)"
+        ],
+        [
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 1,
+          "y": 0,
+          "primitive": 2,
+          "color": "rgb(10,12,94)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 5,
+          "color": "rgb(232,129,111)"
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(180,115,194)"
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(63,3,170)"
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(199,253,163)"
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(205,99,236)"
+        },
+        {
+          "x": 1,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(79,219,146)"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "primitive": 5,
+          "color": "rgb(16,12,156)"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(232,99,104)"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "primitive": 4,
+          "color": "rgb(244,64,40)"
+        }
+      ]
+    },
+    "0032": {
+      "filename": "character-u0032.svg",
+      "codepoint_key": "0032",
+      "codepoints": [
+        50
+      ],
+      "codepoints_hex": [
+        "0032"
+      ],
+      "text": "2",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        ".####",
+        "##..#",
+        "...##",
+        "..##.",
+        ".##..",
+        "##...",
+        "#####",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          null,
+          7,
+          0,
+          0,
+          8
+        ],
+        [
+          5,
+          9,
+          null,
+          null,
+          0
+        ],
+        [
+          null,
+          null,
+          null,
+          7,
+          9
+        ],
+        [
+          null,
+          null,
+          7,
+          9,
+          null
+        ],
+        [
+          null,
+          7,
+          9,
+          null,
+          null
+        ],
+        [
+          7,
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          6,
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          null,
+          "rgb(150,192,77)",
+          "rgb(205,93,182)",
+          "rgb(72,163,154)",
+          "rgb(80,107,17)"
+        ],
+        [
+          "rgb(3,246,218)",
+          "rgb(181,214,226)",
+          null,
+          null,
+          "rgb(197,204,218)"
+        ],
+        [
+          null,
+          null,
+          null,
+          "rgb(16,98,158)",
+          "rgb(182,200,178)"
+        ],
+        [
+          null,
+          null,
+          "rgb(189,55,19)",
+          "rgb(112,118,34)",
+          null
+        ],
+        [
+          null,
+          "rgb(70,37,75)",
+          "rgb(19,101,189)",
+          null,
+          null
+        ],
+        [
+          "rgb(148,129,87)",
+          "rgb(216,79,152)",
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(58,214,205)",
+          "rgb(151,4,237)",
+          "rgb(18,207,233)",
+          "rgb(13,93,234)",
+          "rgb(30,184,177)"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 1,
+          "y": 0,
+          "primitive": 7,
+          "color": "rgb(150,192,77)"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(205,93,182)"
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(72,163,154)"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "primitive": 8,
+          "color": "rgb(80,107,17)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 5,
+          "color": "rgb(3,246,218)"
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "primitive": 9,
+          "color": "rgb(181,214,226)"
+        },
+        {
+          "x": 4,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(197,204,218)"
+        },
+        {
+          "x": 3,
+          "y": 2,
+          "primitive": 7,
+          "color": "rgb(16,98,158)"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "primitive": 9,
+          "color": "rgb(182,200,178)"
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "primitive": 7,
+          "color": "rgb(189,55,19)"
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "primitive": 9,
+          "color": "rgb(112,118,34)"
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "primitive": 7,
+          "color": "rgb(70,37,75)"
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "primitive": 9,
+          "color": "rgb(19,101,189)"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "primitive": 7,
+          "color": "rgb(148,129,87)"
+        },
+        {
+          "x": 1,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(216,79,152)"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "primitive": 6,
+          "color": "rgb(58,214,205)"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(151,4,237)"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(18,207,233)"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(13,93,234)"
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "primitive": 4,
+          "color": "rgb(30,184,177)"
+        }
+      ]
+    },
+    "0033": {
+      "filename": "character-u0033.svg",
+      "codepoint_key": "0033",
+      "codepoints": [
+        51
+      ],
+      "codepoints_hex": [
+        "0033"
+      ],
+      "text": "3",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        ".###.",
+        "##.##",
+        "...##",
+        "..##.",
+        "...##",
+        "##.##",
+        ".###.",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          null,
+          7,
+          0,
+          8,
+          null
+        ],
+        [
+          5,
+          9,
+          null,
+          0,
+          8
+        ],
+        [
+          null,
+          null,
+          null,
+          0,
+          9
+        ],
+        [
+          null,
+          null,
+          5,
+          0,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          0,
+          8
+        ],
+        [
+          5,
+          8,
+          null,
+          0,
+          9
+        ],
+        [
+          null,
+          6,
+          0,
+          9,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          null,
+          "rgb(149,110,176)",
+          "rgb(0,152,50)",
+          "rgb(208,130,233)",
+          null
+        ],
+        [
+          "rgb(136,184,152)",
+          "rgb(78,72,190)",
+          null,
+          "rgb(77,193,220)",
+          "rgb(39,129,222)"
+        ],
+        [
+          null,
+          null,
+          null,
+          "rgb(217,37,225)",
+          "rgb(31,228,64)"
+        ],
+        [
+          null,
+          null,
+          "rgb(74,200,157)",
+          "rgb(3,239,170)",
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          "rgb(31,239,122)",
+          "rgb(218,245,187)"
+        ],
+        [
+          "rgb(117,191,217)",
+          "rgb(80,144,108)",
+          null,
+          "rgb(39,223,234)",
+          "rgb(147,38,242)"
+        ],
+        [
+          null,
+          "rgb(206,57,11)",
+          "rgb(244,216,182)",
+          "rgb(1,63,45)",
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 1,
+          "y": 0,
+          "primitive": 7,
+          "color": "rgb(149,110,176)"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(0,152,50)"
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "primitive": 8,
+          "color": "rgb(208,130,233)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 5,
+          "color": "rgb(136,184,152)"
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "primitive": 9,
+          "color": "rgb(78,72,190)"
+        },
+        {
+          "x": 3,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(77,193,220)"
+        },
+        {
+          "x": 4,
+          "y": 1,
+          "primitive": 8,
+          "color": "rgb(39,129,222)"
+        },
+        {
+          "x": 3,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(217,37,225)"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "primitive": 9,
+          "color": "rgb(31,228,64)"
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "primitive": 5,
+          "color": "rgb(74,200,157)"
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(3,239,170)"
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(31,239,122)"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "primitive": 8,
+          "color": "rgb(218,245,187)"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "primitive": 5,
+          "color": "rgb(117,191,217)"
+        },
+        {
+          "x": 1,
+          "y": 5,
+          "primitive": 8,
+          "color": "rgb(80,144,108)"
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(39,223,234)"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "primitive": 9,
+          "color": "rgb(147,38,242)"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "primitive": 6,
+          "color": "rgb(206,57,11)"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(244,216,182)"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "primitive": 9,
+          "color": "rgb(1,63,45)"
+        }
+      ]
+    },
+    "0034": {
+      "filename": "character-u0034.svg",
+      "codepoint_key": "0034",
+      "codepoints": [
+        52
+      ],
+      "codepoints_hex": [
+        "0034"
+      ],
+      "text": "4",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        "...#.",
+        "..##.",
+        ".###.",
+        "##.#.",
+        "#####",
+        "...#.",
+        "...#.",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          null,
+          null,
+          null,
+          2,
+          null
+        ],
+        [
+          null,
+          null,
+          7,
+          0,
+          null
+        ],
+        [
+          null,
+          7,
+          0,
+          0,
+          null
+        ],
+        [
+          7,
+          0,
+          null,
+          0,
+          null
+        ],
+        [
+          6,
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          null,
+          null,
+          null,
+          0,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          3,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          null,
+          null,
+          null,
+          "rgb(103,45,91)",
+          null
+        ],
+        [
+          null,
+          null,
+          "rgb(8,229,158)",
+          "rgb(244,45,79)",
+          null
+        ],
+        [
+          null,
+          "rgb(183,140,113)",
+          "rgb(107,177,87)",
+          "rgb(10,162,85)",
+          null
+        ],
+        [
+          "rgb(215,166,99)",
+          "rgb(13,50,83)",
+          null,
+          "rgb(84,59,226)",
+          null
+        ],
+        [
+          "rgb(237,189,16)",
+          "rgb(170,133,90)",
+          "rgb(121,127,218)",
+          "rgb(168,103,225)",
+          "rgb(73,54,171)"
+        ],
+        [
+          null,
+          null,
+          null,
+          "rgb(88,138,186)",
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          "rgb(28,222,165)",
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 3,
+          "y": 0,
+          "primitive": 2,
+          "color": "rgb(103,45,91)"
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "primitive": 7,
+          "color": "rgb(8,229,158)"
+        },
+        {
+          "x": 3,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(244,45,79)"
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "primitive": 7,
+          "color": "rgb(183,140,113)"
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(107,177,87)"
+        },
+        {
+          "x": 3,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(10,162,85)"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "primitive": 7,
+          "color": "rgb(215,166,99)"
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(13,50,83)"
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(84,59,226)"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "primitive": 6,
+          "color": "rgb(237,189,16)"
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(170,133,90)"
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(121,127,218)"
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(168,103,225)"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "primitive": 4,
+          "color": "rgb(73,54,171)"
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(88,138,186)"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "primitive": 3,
+          "color": "rgb(28,222,165)"
+        }
+      ]
+    },
+    "0035": {
+      "filename": "character-u0035.svg",
+      "codepoint_key": "0035",
+      "codepoints": [
+        53
+      ],
+      "codepoints_hex": [
+        "0035"
+      ],
+      "text": "5",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        "#####",
+        "#....",
+        "####.",
+        "...##",
+        "....#",
+        "##.##",
+        ".###.",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          7,
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          6,
+          0,
+          0,
+          8,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          6,
+          8
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          5,
+          8,
+          null,
+          7,
+          9
+        ],
+        [
+          null,
+          6,
+          0,
+          9,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          "rgb(59,189,134)",
+          "rgb(254,163,208)",
+          "rgb(67,154,4)",
+          "rgb(16,36,162)",
+          "rgb(79,218,51)"
+        ],
+        [
+          "rgb(239,76,14)",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(144,97,81)",
+          "rgb(122,125,39)",
+          "rgb(2,136,244)",
+          "rgb(208,187,77)",
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          "rgb(110,49,175)",
+          "rgb(131,50,137)"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          "rgb(26,189,234)"
+        ],
+        [
+          "rgb(3,9,4)",
+          "rgb(52,55,68)",
+          null,
+          "rgb(57,229,165)",
+          "rgb(175,24,4)"
+        ],
+        [
+          null,
+          "rgb(241,72,102)",
+          "rgb(40,102,241)",
+          "rgb(171,204,65)",
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "primitive": 7,
+          "color": "rgb(59,189,134)"
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(254,163,208)"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(67,154,4)"
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(16,36,162)"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "primitive": 4,
+          "color": "rgb(79,218,51)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(239,76,14)"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 6,
+          "color": "rgb(144,97,81)"
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(122,125,39)"
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(2,136,244)"
+        },
+        {
+          "x": 3,
+          "y": 2,
+          "primitive": 8,
+          "color": "rgb(208,187,77)"
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "primitive": 6,
+          "color": "rgb(110,49,175)"
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "primitive": 8,
+          "color": "rgb(131,50,137)"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(26,189,234)"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "primitive": 5,
+          "color": "rgb(3,9,4)"
+        },
+        {
+          "x": 1,
+          "y": 5,
+          "primitive": 8,
+          "color": "rgb(52,55,68)"
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "primitive": 7,
+          "color": "rgb(57,229,165)"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "primitive": 9,
+          "color": "rgb(175,24,4)"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "primitive": 6,
+          "color": "rgb(241,72,102)"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(40,102,241)"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "primitive": 9,
+          "color": "rgb(171,204,65)"
+        }
+      ]
+    },
+    "0036": {
+      "filename": "character-u0036.svg",
+      "codepoint_key": "0036",
+      "codepoints": [
+        54
+      ],
+      "codepoints_hex": [
+        "0036"
+      ],
+      "text": "6",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        "####.",
+        "#....",
+        "####.",
+        "#..##",
+        "#...#",
+        "##.##",
+        ".###.",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          7,
+          0,
+          0,
+          4,
+          null
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          0,
+          0,
+          0,
+          8,
+          null
+        ],
+        [
+          0,
+          null,
+          null,
+          6,
+          8
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          6,
+          8,
+          null,
+          7,
+          9
+        ],
+        [
+          null,
+          6,
+          0,
+          9,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          "rgb(183,90,60)",
+          "rgb(215,65,212)",
+          "rgb(138,66,138)",
+          "rgb(78,148,39)",
+          null
+        ],
+        [
+          "rgb(14,219,236)",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(154,193,4)",
+          "rgb(187,185,159)",
+          "rgb(182,207,243)",
+          "rgb(7,112,1)",
+          null
+        ],
+        [
+          "rgb(175,141,93)",
+          null,
+          null,
+          "rgb(165,159,175)",
+          "rgb(80,20,36)"
+        ],
+        [
+          "rgb(219,69,233)",
+          null,
+          null,
+          null,
+          "rgb(248,114,183)"
+        ],
+        [
+          "rgb(122,204,187)",
+          "rgb(85,213,132)",
+          null,
+          "rgb(240,14,17)",
+          "rgb(147,177,230)"
+        ],
+        [
+          null,
+          "rgb(179,95,125)",
+          "rgb(252,145,60)",
+          "rgb(104,173,44)",
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "primitive": 7,
+          "color": "rgb(183,90,60)"
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(215,65,212)"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(138,66,138)"
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "primitive": 4,
+          "color": "rgb(78,148,39)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(14,219,236)"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(154,193,4)"
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(187,185,159)"
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(182,207,243)"
+        },
+        {
+          "x": 3,
+          "y": 2,
+          "primitive": 8,
+          "color": "rgb(7,112,1)"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(175,141,93)"
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "primitive": 6,
+          "color": "rgb(165,159,175)"
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "primitive": 8,
+          "color": "rgb(80,20,36)"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(219,69,233)"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(248,114,183)"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "primitive": 6,
+          "color": "rgb(122,204,187)"
+        },
+        {
+          "x": 1,
+          "y": 5,
+          "primitive": 8,
+          "color": "rgb(85,213,132)"
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "primitive": 7,
+          "color": "rgb(240,14,17)"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "primitive": 9,
+          "color": "rgb(147,177,230)"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "primitive": 6,
+          "color": "rgb(179,95,125)"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(252,145,60)"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "primitive": 9,
+          "color": "rgb(104,173,44)"
+        }
+      ]
+    },
+    "0037": {
+      "filename": "character-u0037.svg",
+      "codepoint_key": "0037",
+      "codepoints": [
+        55
+      ],
+      "codepoints_hex": [
+        "0037"
+      ],
+      "text": "7",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        "#####",
+        "....#",
+        "..###",
+        ".##..",
+        ".#...",
+        ".#...",
+        ".#...",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          5,
+          0,
+          0,
+          0,
+          8
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          null,
+          null,
+          7,
+          0,
+          9
+        ],
+        [
+          null,
+          7,
+          9,
+          null,
+          null
+        ],
+        [
+          null,
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          3,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          "rgb(90,10,26)",
+          "rgb(174,91,230)",
+          "rgb(104,198,142)",
+          "rgb(71,132,37)",
+          "rgb(109,99,199)"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          "rgb(66,190,155)"
+        ],
+        [
+          null,
+          null,
+          "rgb(10,131,42)",
+          "rgb(250,82,232)",
+          "rgb(250,35,175)"
+        ],
+        [
+          null,
+          "rgb(227,97,155)",
+          "rgb(167,182,68)",
+          null,
+          null
+        ],
+        [
+          null,
+          "rgb(73,127,54)",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          "rgb(34,131,144)",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          "rgb(233,105,27)",
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "primitive": 5,
+          "color": "rgb(90,10,26)"
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(174,91,230)"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(104,198,142)"
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(71,132,37)"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "primitive": 8,
+          "color": "rgb(109,99,199)"
+        },
+        {
+          "x": 4,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(66,190,155)"
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "primitive": 7,
+          "color": "rgb(10,131,42)"
+        },
+        {
+          "x": 3,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(250,82,232)"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "primitive": 9,
+          "color": "rgb(250,35,175)"
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "primitive": 7,
+          "color": "rgb(227,97,155)"
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "primitive": 9,
+          "color": "rgb(167,182,68)"
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(73,127,54)"
+        },
+        {
+          "x": 1,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(34,131,144)"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "primitive": 3,
+          "color": "rgb(233,105,27)"
+        }
+      ]
+    },
+    "0038": {
+      "filename": "character-u0038.svg",
+      "codepoint_key": "0038",
+      "codepoints": [
+        56
+      ],
+      "codepoints_hex": [
+        "0038"
+      ],
+      "text": "8",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        "#####",
+        "#...#",
+        "##.##",
+        ".###.",
+        "##.##",
+        "#...#",
+        "#####",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          7,
+          0,
+          0,
+          0,
+          8
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          6,
+          8,
+          null,
+          7,
+          9
+        ],
+        [
+          null,
+          0,
+          0,
+          0,
+          null
+        ],
+        [
+          7,
+          9,
+          null,
+          6,
+          8
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          6,
+          0,
+          0,
+          0,
+          9
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          "rgb(129,57,159)",
+          "rgb(116,170,70)",
+          "rgb(140,218,45)",
+          "rgb(103,231,28)",
+          "rgb(233,127,235)"
+        ],
+        [
+          "rgb(36,206,249)",
+          null,
+          null,
+          null,
+          "rgb(56,29,111)"
+        ],
+        [
+          "rgb(139,157,18)",
+          "rgb(173,107,48)",
+          null,
+          "rgb(166,110,119)",
+          "rgb(165,226,40)"
+        ],
+        [
+          null,
+          "rgb(228,57,204)",
+          "rgb(62,240,196)",
+          "rgb(112,184,90)",
+          null
+        ],
+        [
+          "rgb(72,66,161)",
+          "rgb(77,32,146)",
+          null,
+          "rgb(56,16,173)",
+          "rgb(84,81,83)"
+        ],
+        [
+          "rgb(75,111,164)",
+          null,
+          null,
+          null,
+          "rgb(114,215,163)"
+        ],
+        [
+          "rgb(214,126,65)",
+          "rgb(83,162,107)",
+          "rgb(191,165,233)",
+          "rgb(122,213,53)",
+          "rgb(183,40,162)"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "primitive": 7,
+          "color": "rgb(129,57,159)"
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(116,170,70)"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(140,218,45)"
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(103,231,28)"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "primitive": 8,
+          "color": "rgb(233,127,235)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(36,206,249)"
+        },
+        {
+          "x": 4,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(56,29,111)"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 6,
+          "color": "rgb(139,157,18)"
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "primitive": 8,
+          "color": "rgb(173,107,48)"
+        },
+        {
+          "x": 3,
+          "y": 2,
+          "primitive": 7,
+          "color": "rgb(166,110,119)"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "primitive": 9,
+          "color": "rgb(165,226,40)"
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(228,57,204)"
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(62,240,196)"
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(112,184,90)"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "primitive": 7,
+          "color": "rgb(72,66,161)"
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "primitive": 9,
+          "color": "rgb(77,32,146)"
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "primitive": 6,
+          "color": "rgb(56,16,173)"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "primitive": 8,
+          "color": "rgb(84,81,83)"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(75,111,164)"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(114,215,163)"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "primitive": 6,
+          "color": "rgb(214,126,65)"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(83,162,107)"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(191,165,233)"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(122,213,53)"
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "primitive": 9,
+          "color": "rgb(183,40,162)"
+        }
+      ]
+    },
+    "0039": {
+      "filename": "character-u0039.svg",
+      "codepoint_key": "0039",
+      "codepoints": [
+        57
+      ],
+      "codepoints_hex": [
+        "0039"
+      ],
+      "text": "9",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        ".####",
+        "##..#",
+        "#...#",
+        "#####",
+        "....#",
+        "...##",
+        ".###.",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          null,
+          7,
+          0,
+          0,
+          8
+        ],
+        [
+          7,
+          9,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          6,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          null,
+          null,
+          null,
+          7,
+          9
+        ],
+        [
+          null,
+          5,
+          0,
+          9,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          null,
+          "rgb(247,175,155)",
+          "rgb(87,34,215)",
+          "rgb(132,205,56)",
+          "rgb(178,0,110)"
+        ],
+        [
+          "rgb(130,115,25)",
+          "rgb(27,182,101)",
+          null,
+          null,
+          "rgb(177,40,137)"
+        ],
+        [
+          "rgb(182,22,45)",
+          null,
+          null,
+          null,
+          "rgb(29,87,70)"
+        ],
+        [
+          "rgb(17,71,197)",
+          "rgb(255,199,207)",
+          "rgb(9,116,14)",
+          "rgb(64,126,118)",
+          "rgb(82,38,14)"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          "rgb(86,55,189)"
+        ],
+        [
+          null,
+          null,
+          null,
+          "rgb(83,71,124)",
+          "rgb(203,100,178)"
+        ],
+        [
+          null,
+          "rgb(159,162,190)",
+          "rgb(130,31,45)",
+          "rgb(12,203,202)",
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 1,
+          "y": 0,
+          "primitive": 7,
+          "color": "rgb(247,175,155)"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(87,34,215)"
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(132,205,56)"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "primitive": 8,
+          "color": "rgb(178,0,110)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 7,
+          "color": "rgb(130,115,25)"
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "primitive": 9,
+          "color": "rgb(27,182,101)"
+        },
+        {
+          "x": 4,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(177,40,137)"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(182,22,45)"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(29,87,70)"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "primitive": 6,
+          "color": "rgb(17,71,197)"
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(255,199,207)"
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(9,116,14)"
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(64,126,118)"
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(82,38,14)"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(86,55,189)"
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "primitive": 7,
+          "color": "rgb(83,71,124)"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "primitive": 9,
+          "color": "rgb(203,100,178)"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "primitive": 5,
+          "color": "rgb(159,162,190)"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(130,31,45)"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "primitive": 9,
+          "color": "rgb(12,203,202)"
+        }
+      ]
+    },
     "0041": {
       "filename": "character-u0041.svg",
       "codepoint_key": "0041",
@@ -316,6 +3300,5950 @@
         }
       ]
     },
+    "0042": {
+      "filename": "character-u0042.svg",
+      "codepoint_key": "0042",
+      "codepoints": [
+        66
+      ],
+      "codepoints_hex": [
+        "0042"
+      ],
+      "text": "B",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        "#####",
+        "#...#",
+        "#..##",
+        "####.",
+        "#..##",
+        "#...#",
+        "#####",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          7,
+          0,
+          0,
+          0,
+          8
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          7,
+          9
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          null
+        ],
+        [
+          0,
+          null,
+          null,
+          6,
+          8
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          6,
+          0,
+          0,
+          0,
+          9
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          "rgb(2,242,44)",
+          "rgb(185,62,200)",
+          "rgb(173,102,159)",
+          "rgb(182,179,0)",
+          "rgb(214,184,143)"
+        ],
+        [
+          "rgb(99,71,46)",
+          null,
+          null,
+          null,
+          "rgb(147,91,211)"
+        ],
+        [
+          "rgb(220,78,228)",
+          null,
+          null,
+          "rgb(248,153,137)",
+          "rgb(4,192,191)"
+        ],
+        [
+          "rgb(249,59,61)",
+          "rgb(9,184,123)",
+          "rgb(248,162,181)",
+          "rgb(223,157,16)",
+          null
+        ],
+        [
+          "rgb(56,15,101)",
+          null,
+          null,
+          "rgb(84,62,89)",
+          "rgb(90,114,131)"
+        ],
+        [
+          "rgb(16,131,111)",
+          null,
+          null,
+          null,
+          "rgb(184,116,227)"
+        ],
+        [
+          "rgb(250,248,128)",
+          "rgb(12,149,84)",
+          "rgb(97,111,43)",
+          "rgb(80,162,203)",
+          "rgb(224,78,39)"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "primitive": 7,
+          "color": "rgb(2,242,44)"
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(185,62,200)"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(173,102,159)"
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(182,179,0)"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "primitive": 8,
+          "color": "rgb(214,184,143)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(99,71,46)"
+        },
+        {
+          "x": 4,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(147,91,211)"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(220,78,228)"
+        },
+        {
+          "x": 3,
+          "y": 2,
+          "primitive": 7,
+          "color": "rgb(248,153,137)"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "primitive": 9,
+          "color": "rgb(4,192,191)"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(249,59,61)"
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(9,184,123)"
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(248,162,181)"
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(223,157,16)"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(56,15,101)"
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "primitive": 6,
+          "color": "rgb(84,62,89)"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "primitive": 8,
+          "color": "rgb(90,114,131)"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(16,131,111)"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(184,116,227)"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "primitive": 6,
+          "color": "rgb(250,248,128)"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(12,149,84)"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(97,111,43)"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(80,162,203)"
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "primitive": 9,
+          "color": "rgb(224,78,39)"
+        }
+      ]
+    },
+    "0043": {
+      "filename": "character-u0043.svg",
+      "codepoint_key": "0043",
+      "codepoints": [
+        67
+      ],
+      "codepoints_hex": [
+        "0043"
+      ],
+      "text": "C",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        "#####",
+        "#....",
+        "#....",
+        "#....",
+        "#....",
+        "#....",
+        "#####",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          7,
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          6,
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          "rgb(33,200,96)",
+          "rgb(204,156,250)",
+          "rgb(233,61,65)",
+          "rgb(213,130,210)",
+          "rgb(52,117,169)"
+        ],
+        [
+          "rgb(106,89,109)",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(65,92,48)",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(195,164,70)",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(254,136,2)",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(214,32,72)",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(253,224,132)",
+          "rgb(169,97,250)",
+          "rgb(115,126,159)",
+          "rgb(102,48,32)",
+          "rgb(144,37,209)"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "primitive": 7,
+          "color": "rgb(33,200,96)"
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(204,156,250)"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(233,61,65)"
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(213,130,210)"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "primitive": 4,
+          "color": "rgb(52,117,169)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(106,89,109)"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(65,92,48)"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(195,164,70)"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(254,136,2)"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(214,32,72)"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "primitive": 6,
+          "color": "rgb(253,224,132)"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(169,97,250)"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(115,126,159)"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(102,48,32)"
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "primitive": 4,
+          "color": "rgb(144,37,209)"
+        }
+      ]
+    },
+    "0044": {
+      "filename": "character-u0044.svg",
+      "codepoint_key": "0044",
+      "codepoints": [
+        68
+      ],
+      "codepoints_hex": [
+        "0044"
+      ],
+      "text": "D",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        "####.",
+        "#..##",
+        "#...#",
+        "#...#",
+        "#...#",
+        "#..##",
+        "####.",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          7,
+          0,
+          0,
+          8,
+          null
+        ],
+        [
+          0,
+          null,
+          null,
+          6,
+          8
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          7,
+          9
+        ],
+        [
+          6,
+          0,
+          0,
+          9,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          "rgb(44,22,79)",
+          "rgb(225,145,104)",
+          "rgb(140,223,88)",
+          "rgb(95,215,201)",
+          null
+        ],
+        [
+          "rgb(63,225,247)",
+          null,
+          null,
+          "rgb(210,39,225)",
+          "rgb(27,207,53)"
+        ],
+        [
+          "rgb(131,113,105)",
+          null,
+          null,
+          null,
+          "rgb(122,141,194)"
+        ],
+        [
+          "rgb(213,114,133)",
+          null,
+          null,
+          null,
+          "rgb(202,1,27)"
+        ],
+        [
+          "rgb(163,65,122)",
+          null,
+          null,
+          null,
+          "rgb(146,2,134)"
+        ],
+        [
+          "rgb(28,211,58)",
+          null,
+          null,
+          "rgb(239,175,162)",
+          "rgb(1,158,141)"
+        ],
+        [
+          "rgb(128,20,39)",
+          "rgb(58,28,185)",
+          "rgb(86,100,187)",
+          "rgb(183,114,46)",
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "primitive": 7,
+          "color": "rgb(44,22,79)"
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(225,145,104)"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(140,223,88)"
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "primitive": 8,
+          "color": "rgb(95,215,201)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(63,225,247)"
+        },
+        {
+          "x": 3,
+          "y": 1,
+          "primitive": 6,
+          "color": "rgb(210,39,225)"
+        },
+        {
+          "x": 4,
+          "y": 1,
+          "primitive": 8,
+          "color": "rgb(27,207,53)"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(131,113,105)"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(122,141,194)"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(213,114,133)"
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(202,1,27)"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(163,65,122)"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(146,2,134)"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(28,211,58)"
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "primitive": 7,
+          "color": "rgb(239,175,162)"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "primitive": 9,
+          "color": "rgb(1,158,141)"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "primitive": 6,
+          "color": "rgb(128,20,39)"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(58,28,185)"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(86,100,187)"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "primitive": 9,
+          "color": "rgb(183,114,46)"
+        }
+      ]
+    },
+    "0045": {
+      "filename": "character-u0045.svg",
+      "codepoint_key": "0045",
+      "codepoints": [
+        69
+      ],
+      "codepoints_hex": [
+        "0045"
+      ],
+      "text": "E",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        "#####",
+        "#....",
+        "#....",
+        "####.",
+        "#....",
+        "#....",
+        "#####",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          7,
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          0,
+          0,
+          0,
+          4,
+          null
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          6,
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          "rgb(60,151,224)",
+          "rgb(246,84,17)",
+          "rgb(65,141,35)",
+          "rgb(37,85,191)",
+          "rgb(102,203,98)"
+        ],
+        [
+          "rgb(224,54,251)",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(7,215,124)",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(144,115,81)",
+          "rgb(120,152,152)",
+          "rgb(205,113,212)",
+          "rgb(129,82,181)",
+          null
+        ],
+        [
+          "rgb(103,66,31)",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(230,138,139)",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(249,218,159)",
+          "rgb(119,98,43)",
+          "rgb(4,38,210)",
+          "rgb(232,18,205)",
+          "rgb(117,191,81)"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "primitive": 7,
+          "color": "rgb(60,151,224)"
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(246,84,17)"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(65,141,35)"
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(37,85,191)"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "primitive": 4,
+          "color": "rgb(102,203,98)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(224,54,251)"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(7,215,124)"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(144,115,81)"
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(120,152,152)"
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(205,113,212)"
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "primitive": 4,
+          "color": "rgb(129,82,181)"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(103,66,31)"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(230,138,139)"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "primitive": 6,
+          "color": "rgb(249,218,159)"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(119,98,43)"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(4,38,210)"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(232,18,205)"
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "primitive": 4,
+          "color": "rgb(117,191,81)"
+        }
+      ]
+    },
+    "0046": {
+      "filename": "character-u0046.svg",
+      "codepoint_key": "0046",
+      "codepoints": [
+        70
+      ],
+      "codepoints_hex": [
+        "0046"
+      ],
+      "text": "F",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        "#####",
+        "#....",
+        "#....",
+        "####.",
+        "#....",
+        "#....",
+        "#....",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          7,
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          0,
+          0,
+          0,
+          4,
+          null
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          3,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          "rgb(36,89,102)",
+          "rgb(61,211,173)",
+          "rgb(209,60,248)",
+          "rgb(181,160,76)",
+          "rgb(116,197,85)"
+        ],
+        [
+          "rgb(70,71,37)",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(107,64,156)",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(127,4,242)",
+          "rgb(215,130,147)",
+          "rgb(119,255,177)",
+          "rgb(203,189,25)",
+          null
+        ],
+        [
+          "rgb(193,8,49)",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(65,181,245)",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(1,180,193)",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "primitive": 7,
+          "color": "rgb(36,89,102)"
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(61,211,173)"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(209,60,248)"
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(181,160,76)"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "primitive": 4,
+          "color": "rgb(116,197,85)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(70,71,37)"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(107,64,156)"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(127,4,242)"
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(215,130,147)"
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(119,255,177)"
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "primitive": 4,
+          "color": "rgb(203,189,25)"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(193,8,49)"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(65,181,245)"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "primitive": 3,
+          "color": "rgb(1,180,193)"
+        }
+      ]
+    },
+    "0047": {
+      "filename": "character-u0047.svg",
+      "codepoint_key": "0047",
+      "codepoints": [
+        71
+      ],
+      "codepoints_hex": [
+        "0047"
+      ],
+      "text": "G",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        "#####",
+        "#....",
+        "#....",
+        "#.###",
+        "#...#",
+        "#...#",
+        "#####",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          7,
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          0,
+          null,
+          5,
+          0,
+          8
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          6,
+          0,
+          0,
+          0,
+          9
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          "rgb(84,49,105)",
+          "rgb(83,73,162)",
+          "rgb(90,254,91)",
+          "rgb(49,220,234)",
+          "rgb(221,153,58)"
+        ],
+        [
+          "rgb(166,159,245)",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(133,68,174)",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(217,143,9)",
+          null,
+          "rgb(85,174,233)",
+          "rgb(226,48,203)",
+          "rgb(64,58,33)"
+        ],
+        [
+          "rgb(197,45,68)",
+          null,
+          null,
+          null,
+          "rgb(88,116,42)"
+        ],
+        [
+          "rgb(123,40,228)",
+          null,
+          null,
+          null,
+          "rgb(85,165,47)"
+        ],
+        [
+          "rgb(142,26,166)",
+          "rgb(79,252,91)",
+          "rgb(122,7,103)",
+          "rgb(146,158,169)",
+          "rgb(57,216,25)"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "primitive": 7,
+          "color": "rgb(84,49,105)"
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(83,73,162)"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(90,254,91)"
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(49,220,234)"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "primitive": 4,
+          "color": "rgb(221,153,58)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(166,159,245)"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(133,68,174)"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(217,143,9)"
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "primitive": 5,
+          "color": "rgb(85,174,233)"
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(226,48,203)"
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "primitive": 8,
+          "color": "rgb(64,58,33)"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(197,45,68)"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(88,116,42)"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(123,40,228)"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(85,165,47)"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "primitive": 6,
+          "color": "rgb(142,26,166)"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(79,252,91)"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(122,7,103)"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(146,158,169)"
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "primitive": 9,
+          "color": "rgb(57,216,25)"
+        }
+      ]
+    },
+    "0048": {
+      "filename": "character-u0048.svg",
+      "codepoint_key": "0048",
+      "codepoints": [
+        72
+      ],
+      "codepoints_hex": [
+        "0048"
+      ],
+      "text": "H",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        "#...#",
+        "#...#",
+        "#...#",
+        "#####",
+        "#...#",
+        "#...#",
+        "#...#",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          2,
+          null,
+          null,
+          null,
+          2
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          3,
+          null,
+          null,
+          null,
+          3
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          "rgb(115,23,215)",
+          null,
+          null,
+          null,
+          "rgb(169,82,27)"
+        ],
+        [
+          "rgb(234,69,73)",
+          null,
+          null,
+          null,
+          "rgb(181,223,176)"
+        ],
+        [
+          "rgb(25,99,213)",
+          null,
+          null,
+          null,
+          "rgb(143,172,217)"
+        ],
+        [
+          "rgb(213,245,136)",
+          "rgb(155,205,155)",
+          "rgb(110,160,31)",
+          "rgb(251,131,22)",
+          "rgb(172,83,189)"
+        ],
+        [
+          "rgb(17,236,147)",
+          null,
+          null,
+          null,
+          "rgb(211,235,187)"
+        ],
+        [
+          "rgb(16,226,9)",
+          null,
+          null,
+          null,
+          "rgb(219,35,179)"
+        ],
+        [
+          "rgb(161,20,143)",
+          null,
+          null,
+          null,
+          "rgb(112,202,229)"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "primitive": 2,
+          "color": "rgb(115,23,215)"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "primitive": 2,
+          "color": "rgb(169,82,27)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(234,69,73)"
+        },
+        {
+          "x": 4,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(181,223,176)"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(25,99,213)"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(143,172,217)"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(213,245,136)"
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(155,205,155)"
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(110,160,31)"
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(251,131,22)"
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(172,83,189)"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(17,236,147)"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(211,235,187)"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(16,226,9)"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(219,35,179)"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "primitive": 3,
+          "color": "rgb(161,20,143)"
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "primitive": 3,
+          "color": "rgb(112,202,229)"
+        }
+      ]
+    },
+    "0049": {
+      "filename": "character-u0049.svg",
+      "codepoint_key": "0049",
+      "codepoints": [
+        73
+      ],
+      "codepoints_hex": [
+        "0049"
+      ],
+      "text": "I",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        "#####",
+        "..#..",
+        "..#..",
+        "..#..",
+        "..#..",
+        "..#..",
+        "#####",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          5,
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          null,
+          null,
+          0,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          0,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          0,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          0,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          0,
+          null,
+          null
+        ],
+        [
+          5,
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          "rgb(100,25,121)",
+          "rgb(147,13,202)",
+          "rgb(199,196,174)",
+          "rgb(86,202,165)",
+          "rgb(2,167,159)"
+        ],
+        [
+          null,
+          null,
+          "rgb(110,1,231)",
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          "rgb(211,231,63)",
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          "rgb(89,81,140)",
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          "rgb(129,4,27)",
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          "rgb(31,63,50)",
+          null,
+          null
+        ],
+        [
+          "rgb(138,115,5)",
+          "rgb(156,231,36)",
+          "rgb(112,135,0)",
+          "rgb(66,235,153)",
+          "rgb(57,185,249)"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "primitive": 5,
+          "color": "rgb(100,25,121)"
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(147,13,202)"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(199,196,174)"
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(86,202,165)"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "primitive": 4,
+          "color": "rgb(2,167,159)"
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(110,1,231)"
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(211,231,63)"
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(89,81,140)"
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(129,4,27)"
+        },
+        {
+          "x": 2,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(31,63,50)"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "primitive": 5,
+          "color": "rgb(138,115,5)"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(156,231,36)"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(112,135,0)"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(66,235,153)"
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "primitive": 4,
+          "color": "rgb(57,185,249)"
+        }
+      ]
+    },
+    "004a": {
+      "filename": "character-u004a.svg",
+      "codepoint_key": "004a",
+      "codepoints": [
+        74
+      ],
+      "codepoints_hex": [
+        "004a"
+      ],
+      "text": "J",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        ".####",
+        "...#.",
+        "...#.",
+        "...#.",
+        "...#.",
+        "#..#.",
+        "####.",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          null,
+          5,
+          0,
+          0,
+          4
+        ],
+        [
+          null,
+          null,
+          null,
+          0,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          0,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          0,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          0,
+          null
+        ],
+        [
+          2,
+          null,
+          null,
+          0,
+          null
+        ],
+        [
+          6,
+          0,
+          0,
+          9,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          null,
+          "rgb(103,114,43)",
+          "rgb(45,129,60)",
+          "rgb(203,39,2)",
+          "rgb(49,86,98)"
+        ],
+        [
+          null,
+          null,
+          null,
+          "rgb(199,237,193)",
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          "rgb(79,194,105)",
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          "rgb(211,121,46)",
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          "rgb(5,93,46)",
+          null
+        ],
+        [
+          "rgb(94,216,97)",
+          null,
+          null,
+          "rgb(23,156,195)",
+          null
+        ],
+        [
+          "rgb(175,27,67)",
+          "rgb(245,51,144)",
+          "rgb(17,253,139)",
+          "rgb(98,76,20)",
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 1,
+          "y": 0,
+          "primitive": 5,
+          "color": "rgb(103,114,43)"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(45,129,60)"
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(203,39,2)"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "primitive": 4,
+          "color": "rgb(49,86,98)"
+        },
+        {
+          "x": 3,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(199,237,193)"
+        },
+        {
+          "x": 3,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(79,194,105)"
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(211,121,46)"
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(5,93,46)"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "primitive": 2,
+          "color": "rgb(94,216,97)"
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(23,156,195)"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "primitive": 6,
+          "color": "rgb(175,27,67)"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(245,51,144)"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(17,253,139)"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "primitive": 9,
+          "color": "rgb(98,76,20)"
+        }
+      ]
+    },
+    "004b": {
+      "filename": "character-u004b.svg",
+      "codepoint_key": "004b",
+      "codepoints": [
+        75
+      ],
+      "codepoints_hex": [
+        "004b"
+      ],
+      "text": "K",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        "#..##",
+        "#.##.",
+        "#.#..",
+        "###..",
+        "#.#..",
+        "#.##.",
+        "#..##",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          2,
+          null,
+          null,
+          7,
+          4
+        ],
+        [
+          0,
+          null,
+          7,
+          9,
+          null
+        ],
+        [
+          0,
+          null,
+          0,
+          null,
+          null
+        ],
+        [
+          0,
+          0,
+          0,
+          null,
+          null
+        ],
+        [
+          0,
+          null,
+          0,
+          null,
+          null
+        ],
+        [
+          0,
+          null,
+          6,
+          8,
+          null
+        ],
+        [
+          3,
+          null,
+          null,
+          6,
+          4
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          "rgb(106,218,217)",
+          null,
+          null,
+          "rgb(202,87,169)",
+          "rgb(85,2,79)"
+        ],
+        [
+          "rgb(226,35,105)",
+          null,
+          "rgb(135,83,116)",
+          "rgb(96,36,49)",
+          null
+        ],
+        [
+          "rgb(43,42,216)",
+          null,
+          "rgb(123,28,91)",
+          null,
+          null
+        ],
+        [
+          "rgb(208,117,141)",
+          "rgb(35,1,179)",
+          "rgb(78,174,225)",
+          null,
+          null
+        ],
+        [
+          "rgb(107,146,112)",
+          null,
+          "rgb(98,255,121)",
+          null,
+          null
+        ],
+        [
+          "rgb(155,186,133)",
+          null,
+          "rgb(46,103,151)",
+          "rgb(160,240,181)",
+          null
+        ],
+        [
+          "rgb(64,200,139)",
+          null,
+          null,
+          "rgb(123,109,69)",
+          "rgb(130,203,26)"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "primitive": 2,
+          "color": "rgb(106,218,217)"
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "primitive": 7,
+          "color": "rgb(202,87,169)"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "primitive": 4,
+          "color": "rgb(85,2,79)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(226,35,105)"
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "primitive": 7,
+          "color": "rgb(135,83,116)"
+        },
+        {
+          "x": 3,
+          "y": 1,
+          "primitive": 9,
+          "color": "rgb(96,36,49)"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(43,42,216)"
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(123,28,91)"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(208,117,141)"
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(35,1,179)"
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(78,174,225)"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(107,146,112)"
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(98,255,121)"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(155,186,133)"
+        },
+        {
+          "x": 2,
+          "y": 5,
+          "primitive": 6,
+          "color": "rgb(46,103,151)"
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "primitive": 8,
+          "color": "rgb(160,240,181)"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "primitive": 3,
+          "color": "rgb(64,200,139)"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "primitive": 6,
+          "color": "rgb(123,109,69)"
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "primitive": 4,
+          "color": "rgb(130,203,26)"
+        }
+      ]
+    },
+    "004c": {
+      "filename": "character-u004c.svg",
+      "codepoint_key": "004c",
+      "codepoints": [
+        76
+      ],
+      "codepoints_hex": [
+        "004c"
+      ],
+      "text": "L",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        "#....",
+        "#....",
+        "#....",
+        "#....",
+        "#....",
+        "#....",
+        "#####",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          2,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          6,
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          "rgb(207,78,94)",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(49,117,72)",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(212,28,224)",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(44,52,32)",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(146,55,93)",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(114,204,51)",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(148,177,209)",
+          "rgb(78,174,222)",
+          "rgb(160,90,229)",
+          "rgb(117,112,183)",
+          "rgb(217,60,164)"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "primitive": 2,
+          "color": "rgb(207,78,94)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(49,117,72)"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(212,28,224)"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(44,52,32)"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(146,55,93)"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(114,204,51)"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "primitive": 6,
+          "color": "rgb(148,177,209)"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(78,174,222)"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(160,90,229)"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(117,112,183)"
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "primitive": 4,
+          "color": "rgb(217,60,164)"
+        }
+      ]
+    },
+    "004d": {
+      "filename": "character-u004d.svg",
+      "codepoint_key": "004d",
+      "codepoints": [
+        77
+      ],
+      "codepoints_hex": [
+        "004d"
+      ],
+      "text": "M",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        "##.##",
+        "#####",
+        "#.#.#",
+        "#...#",
+        "#...#",
+        "#...#",
+        "#...#",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          7,
+          8,
+          null,
+          7,
+          8
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          null,
+          3,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          3,
+          null,
+          null,
+          null,
+          3
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          "rgb(171,10,86)",
+          "rgb(161,139,11)",
+          null,
+          "rgb(169,244,99)",
+          "rgb(137,33,80)"
+        ],
+        [
+          "rgb(233,21,191)",
+          "rgb(167,218,175)",
+          "rgb(190,200,216)",
+          "rgb(98,53,171)",
+          "rgb(1,64,162)"
+        ],
+        [
+          "rgb(176,52,242)",
+          null,
+          "rgb(216,132,129)",
+          null,
+          "rgb(163,11,60)"
+        ],
+        [
+          "rgb(209,242,176)",
+          null,
+          null,
+          null,
+          "rgb(69,135,249)"
+        ],
+        [
+          "rgb(61,193,230)",
+          null,
+          null,
+          null,
+          "rgb(191,132,29)"
+        ],
+        [
+          "rgb(123,145,215)",
+          null,
+          null,
+          null,
+          "rgb(178,26,147)"
+        ],
+        [
+          "rgb(79,138,161)",
+          null,
+          null,
+          null,
+          "rgb(196,69,118)"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "primitive": 7,
+          "color": "rgb(171,10,86)"
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "primitive": 8,
+          "color": "rgb(161,139,11)"
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "primitive": 7,
+          "color": "rgb(169,244,99)"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "primitive": 8,
+          "color": "rgb(137,33,80)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(233,21,191)"
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(167,218,175)"
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(190,200,216)"
+        },
+        {
+          "x": 3,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(98,53,171)"
+        },
+        {
+          "x": 4,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(1,64,162)"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(176,52,242)"
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "primitive": 3,
+          "color": "rgb(216,132,129)"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(163,11,60)"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(209,242,176)"
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(69,135,249)"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(61,193,230)"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(191,132,29)"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(123,145,215)"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(178,26,147)"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "primitive": 3,
+          "color": "rgb(79,138,161)"
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "primitive": 3,
+          "color": "rgb(196,69,118)"
+        }
+      ]
+    },
+    "004e": {
+      "filename": "character-u004e.svg",
+      "codepoint_key": "004e",
+      "codepoints": [
+        78
+      ],
+      "codepoints_hex": [
+        "004e"
+      ],
+      "text": "N",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        "##..#",
+        "###.#",
+        "#.#.#",
+        "#.###",
+        "#..##",
+        "#...#",
+        "#...#",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          7,
+          8,
+          null,
+          null,
+          2
+        ],
+        [
+          0,
+          0,
+          8,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          0,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          6,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          3,
+          null,
+          null,
+          null,
+          3
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          "rgb(204,210,11)",
+          "rgb(189,200,9)",
+          null,
+          null,
+          "rgb(87,163,79)"
+        ],
+        [
+          "rgb(24,212,7)",
+          "rgb(236,126,65)",
+          "rgb(189,229,139)",
+          null,
+          "rgb(114,82,8)"
+        ],
+        [
+          "rgb(69,158,252)",
+          null,
+          "rgb(215,90,147)",
+          null,
+          "rgb(216,118,11)"
+        ],
+        [
+          "rgb(9,9,249)",
+          null,
+          "rgb(85,200,59)",
+          "rgb(167,162,160)",
+          "rgb(151,195,102)"
+        ],
+        [
+          "rgb(95,33,45)",
+          null,
+          null,
+          "rgb(62,61,62)",
+          "rgb(184,121,43)"
+        ],
+        [
+          "rgb(71,182,73)",
+          null,
+          null,
+          null,
+          "rgb(74,92,122)"
+        ],
+        [
+          "rgb(9,81,113)",
+          null,
+          null,
+          null,
+          "rgb(126,0,194)"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "primitive": 7,
+          "color": "rgb(204,210,11)"
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "primitive": 8,
+          "color": "rgb(189,200,9)"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "primitive": 2,
+          "color": "rgb(87,163,79)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(24,212,7)"
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(236,126,65)"
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "primitive": 8,
+          "color": "rgb(189,229,139)"
+        },
+        {
+          "x": 4,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(114,82,8)"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(69,158,252)"
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(215,90,147)"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(216,118,11)"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(9,9,249)"
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "primitive": 6,
+          "color": "rgb(85,200,59)"
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(167,162,160)"
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(151,195,102)"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(95,33,45)"
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "primitive": 6,
+          "color": "rgb(62,61,62)"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(184,121,43)"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(71,182,73)"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(74,92,122)"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "primitive": 3,
+          "color": "rgb(9,81,113)"
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "primitive": 3,
+          "color": "rgb(126,0,194)"
+        }
+      ]
+    },
+    "004f": {
+      "filename": "character-u004f.svg",
+      "codepoint_key": "004f",
+      "codepoints": [
+        79
+      ],
+      "codepoints_hex": [
+        "004f"
+      ],
+      "text": "O",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        ".###.",
+        "##.##",
+        "#...#",
+        "#...#",
+        "#...#",
+        "##.##",
+        ".###.",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          null,
+          7,
+          0,
+          8,
+          null
+        ],
+        [
+          7,
+          9,
+          null,
+          6,
+          8
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          6,
+          8,
+          null,
+          7,
+          9
+        ],
+        [
+          null,
+          6,
+          0,
+          9,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          null,
+          "rgb(218,38,26)",
+          "rgb(97,52,139)",
+          "rgb(97,78,101)",
+          null
+        ],
+        [
+          "rgb(103,123,217)",
+          "rgb(35,129,98)",
+          null,
+          "rgb(211,10,55)",
+          "rgb(255,167,176)"
+        ],
+        [
+          "rgb(162,185,86)",
+          null,
+          null,
+          null,
+          "rgb(189,37,58)"
+        ],
+        [
+          "rgb(119,12,163)",
+          null,
+          null,
+          null,
+          "rgb(243,43,17)"
+        ],
+        [
+          "rgb(171,252,108)",
+          null,
+          null,
+          null,
+          "rgb(61,233,133)"
+        ],
+        [
+          "rgb(42,163,151)",
+          "rgb(151,33,192)",
+          null,
+          "rgb(32,181,117)",
+          "rgb(119,163,216)"
+        ],
+        [
+          null,
+          "rgb(255,4,119)",
+          "rgb(111,124,13)",
+          "rgb(138,132,204)",
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 1,
+          "y": 0,
+          "primitive": 7,
+          "color": "rgb(218,38,26)"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(97,52,139)"
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "primitive": 8,
+          "color": "rgb(97,78,101)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 7,
+          "color": "rgb(103,123,217)"
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "primitive": 9,
+          "color": "rgb(35,129,98)"
+        },
+        {
+          "x": 3,
+          "y": 1,
+          "primitive": 6,
+          "color": "rgb(211,10,55)"
+        },
+        {
+          "x": 4,
+          "y": 1,
+          "primitive": 8,
+          "color": "rgb(255,167,176)"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(162,185,86)"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(189,37,58)"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(119,12,163)"
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(243,43,17)"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(171,252,108)"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(61,233,133)"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "primitive": 6,
+          "color": "rgb(42,163,151)"
+        },
+        {
+          "x": 1,
+          "y": 5,
+          "primitive": 8,
+          "color": "rgb(151,33,192)"
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "primitive": 7,
+          "color": "rgb(32,181,117)"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "primitive": 9,
+          "color": "rgb(119,163,216)"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "primitive": 6,
+          "color": "rgb(255,4,119)"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(111,124,13)"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "primitive": 9,
+          "color": "rgb(138,132,204)"
+        }
+      ]
+    },
+    "0050": {
+      "filename": "character-u0050.svg",
+      "codepoint_key": "0050",
+      "codepoints": [
+        80
+      ],
+      "codepoints_hex": [
+        "0050"
+      ],
+      "text": "P",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        "#####",
+        "#...#",
+        "#...#",
+        "#####",
+        "#....",
+        "#....",
+        "#....",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          7,
+          0,
+          0,
+          0,
+          8
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          9
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          3,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          "rgb(119,152,155)",
+          "rgb(153,176,225)",
+          "rgb(17,71,99)",
+          "rgb(115,80,245)",
+          "rgb(181,161,143)"
+        ],
+        [
+          "rgb(198,181,190)",
+          null,
+          null,
+          null,
+          "rgb(66,234,255)"
+        ],
+        [
+          "rgb(173,211,152)",
+          null,
+          null,
+          null,
+          "rgb(134,48,240)"
+        ],
+        [
+          "rgb(82,51,243)",
+          "rgb(64,26,136)",
+          "rgb(224,99,214)",
+          "rgb(240,110,218)",
+          "rgb(157,115,101)"
+        ],
+        [
+          "rgb(88,132,198)",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(31,103,107)",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(81,161,198)",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "primitive": 7,
+          "color": "rgb(119,152,155)"
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(153,176,225)"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(17,71,99)"
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(115,80,245)"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "primitive": 8,
+          "color": "rgb(181,161,143)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(198,181,190)"
+        },
+        {
+          "x": 4,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(66,234,255)"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(173,211,152)"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(134,48,240)"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(82,51,243)"
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(64,26,136)"
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(224,99,214)"
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(240,110,218)"
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "primitive": 9,
+          "color": "rgb(157,115,101)"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(88,132,198)"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(31,103,107)"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "primitive": 3,
+          "color": "rgb(81,161,198)"
+        }
+      ]
+    },
+    "0051": {
+      "filename": "character-u0051.svg",
+      "codepoint_key": "0051",
+      "codepoints": [
+        81
+      ],
+      "codepoints_hex": [
+        "0051"
+      ],
+      "text": "Q",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        "#####",
+        "#...#",
+        "#...#",
+        "#.#.#",
+        "#.###",
+        "#...#",
+        "#####",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          7,
+          0,
+          0,
+          0,
+          8
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          2,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          6,
+          0,
+          0,
+          0,
+          9
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          "rgb(109,118,131)",
+          "rgb(160,105,218)",
+          "rgb(210,55,148)",
+          "rgb(78,84,218)",
+          "rgb(234,94,120)"
+        ],
+        [
+          "rgb(252,80,214)",
+          null,
+          null,
+          null,
+          "rgb(133,46,167)"
+        ],
+        [
+          "rgb(234,44,173)",
+          null,
+          null,
+          null,
+          "rgb(52,233,75)"
+        ],
+        [
+          "rgb(87,203,218)",
+          null,
+          "rgb(182,255,65)",
+          null,
+          "rgb(31,149,130)"
+        ],
+        [
+          "rgb(113,80,60)",
+          null,
+          "rgb(124,177,29)",
+          "rgb(250,72,26)",
+          "rgb(202,85,157)"
+        ],
+        [
+          "rgb(150,176,106)",
+          null,
+          null,
+          null,
+          "rgb(114,153,213)"
+        ],
+        [
+          "rgb(125,189,159)",
+          "rgb(246,150,170)",
+          "rgb(253,111,16)",
+          "rgb(44,142,201)",
+          "rgb(184,68,95)"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "primitive": 7,
+          "color": "rgb(109,118,131)"
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(160,105,218)"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(210,55,148)"
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(78,84,218)"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "primitive": 8,
+          "color": "rgb(234,94,120)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(252,80,214)"
+        },
+        {
+          "x": 4,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(133,46,167)"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(234,44,173)"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(52,233,75)"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(87,203,218)"
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "primitive": 2,
+          "color": "rgb(182,255,65)"
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(31,149,130)"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(113,80,60)"
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "primitive": 6,
+          "color": "rgb(124,177,29)"
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(250,72,26)"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(202,85,157)"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(150,176,106)"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(114,153,213)"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "primitive": 6,
+          "color": "rgb(125,189,159)"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(246,150,170)"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(253,111,16)"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(44,142,201)"
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "primitive": 9,
+          "color": "rgb(184,68,95)"
+        }
+      ]
+    },
+    "0052": {
+      "filename": "character-u0052.svg",
+      "codepoint_key": "0052",
+      "codepoints": [
+        82
+      ],
+      "codepoints_hex": [
+        "0052"
+      ],
+      "text": "R",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        "#####",
+        "#...#",
+        "#...#",
+        "#####",
+        "#..#.",
+        "#..##",
+        "#...#",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          7,
+          0,
+          0,
+          0,
+          8
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          9
+        ],
+        [
+          0,
+          null,
+          null,
+          0,
+          null
+        ],
+        [
+          0,
+          null,
+          null,
+          6,
+          8
+        ],
+        [
+          3,
+          null,
+          null,
+          null,
+          3
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          "rgb(248,65,143)",
+          "rgb(50,232,198)",
+          "rgb(28,160,16)",
+          "rgb(69,178,90)",
+          "rgb(230,100,80)"
+        ],
+        [
+          "rgb(211,235,204)",
+          null,
+          null,
+          null,
+          "rgb(93,204,208)"
+        ],
+        [
+          "rgb(31,52,66)",
+          null,
+          null,
+          null,
+          "rgb(93,38,7)"
+        ],
+        [
+          "rgb(56,158,134)",
+          "rgb(162,141,17)",
+          "rgb(181,103,129)",
+          "rgb(235,102,196)",
+          "rgb(169,23,64)"
+        ],
+        [
+          "rgb(82,158,24)",
+          null,
+          null,
+          "rgb(62,252,9)",
+          null
+        ],
+        [
+          "rgb(70,241,251)",
+          null,
+          null,
+          "rgb(64,122,151)",
+          "rgb(64,203,128)"
+        ],
+        [
+          "rgb(218,19,171)",
+          null,
+          null,
+          null,
+          "rgb(4,30,79)"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "primitive": 7,
+          "color": "rgb(248,65,143)"
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(50,232,198)"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(28,160,16)"
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(69,178,90)"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "primitive": 8,
+          "color": "rgb(230,100,80)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(211,235,204)"
+        },
+        {
+          "x": 4,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(93,204,208)"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(31,52,66)"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(93,38,7)"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(56,158,134)"
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(162,141,17)"
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(181,103,129)"
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(235,102,196)"
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "primitive": 9,
+          "color": "rgb(169,23,64)"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(82,158,24)"
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(62,252,9)"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(70,241,251)"
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "primitive": 6,
+          "color": "rgb(64,122,151)"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "primitive": 8,
+          "color": "rgb(64,203,128)"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "primitive": 3,
+          "color": "rgb(218,19,171)"
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "primitive": 3,
+          "color": "rgb(4,30,79)"
+        }
+      ]
+    },
+    "0053": {
+      "filename": "character-u0053.svg",
+      "codepoint_key": "0053",
+      "codepoints": [
+        83
+      ],
+      "codepoints_hex": [
+        "0053"
+      ],
+      "text": "S",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        ".####",
+        "##...",
+        "#....",
+        "#####",
+        "....#",
+        "...##",
+        "####.",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          null,
+          7,
+          0,
+          0,
+          4
+        ],
+        [
+          7,
+          9,
+          null,
+          null,
+          null
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          6,
+          0,
+          0,
+          0,
+          8
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          null,
+          null,
+          null,
+          7,
+          9
+        ],
+        [
+          5,
+          0,
+          0,
+          9,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          null,
+          "rgb(29,20,228)",
+          "rgb(68,13,175)",
+          "rgb(37,127,234)",
+          "rgb(150,40,220)"
+        ],
+        [
+          "rgb(58,65,96)",
+          "rgb(136,78,183)",
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(83,19,179)",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(107,251,157)",
+          "rgb(96,45,31)",
+          "rgb(155,223,58)",
+          "rgb(238,106,31)",
+          "rgb(48,169,246)"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          "rgb(72,223,116)"
+        ],
+        [
+          null,
+          null,
+          null,
+          "rgb(164,13,155)",
+          "rgb(103,231,209)"
+        ],
+        [
+          "rgb(185,250,124)",
+          "rgb(35,26,10)",
+          "rgb(27,245,99)",
+          "rgb(198,149,13)",
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 1,
+          "y": 0,
+          "primitive": 7,
+          "color": "rgb(29,20,228)"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(68,13,175)"
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(37,127,234)"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "primitive": 4,
+          "color": "rgb(150,40,220)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 7,
+          "color": "rgb(58,65,96)"
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "primitive": 9,
+          "color": "rgb(136,78,183)"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(83,19,179)"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "primitive": 6,
+          "color": "rgb(107,251,157)"
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(96,45,31)"
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(155,223,58)"
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(238,106,31)"
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "primitive": 8,
+          "color": "rgb(48,169,246)"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(72,223,116)"
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "primitive": 7,
+          "color": "rgb(164,13,155)"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "primitive": 9,
+          "color": "rgb(103,231,209)"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "primitive": 5,
+          "color": "rgb(185,250,124)"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(35,26,10)"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(27,245,99)"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "primitive": 9,
+          "color": "rgb(198,149,13)"
+        }
+      ]
+    },
+    "0054": {
+      "filename": "character-u0054.svg",
+      "codepoint_key": "0054",
+      "codepoints": [
+        84
+      ],
+      "codepoints_hex": [
+        "0054"
+      ],
+      "text": "T",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        "#####",
+        "..#..",
+        "..#..",
+        "..#..",
+        "..#..",
+        "..#..",
+        "..#..",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          5,
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          null,
+          null,
+          0,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          0,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          0,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          0,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          0,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          3,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          "rgb(121,160,36)",
+          "rgb(239,40,51)",
+          "rgb(156,204,121)",
+          "rgb(48,94,79)",
+          "rgb(15,113,184)"
+        ],
+        [
+          null,
+          null,
+          "rgb(255,161,96)",
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          "rgb(252,5,42)",
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          "rgb(118,250,229)",
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          "rgb(40,11,191)",
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          "rgb(53,8,72)",
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          "rgb(61,13,248)",
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "primitive": 5,
+          "color": "rgb(121,160,36)"
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(239,40,51)"
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(156,204,121)"
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "primitive": 0,
+          "color": "rgb(48,94,79)"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "primitive": 4,
+          "color": "rgb(15,113,184)"
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(255,161,96)"
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(252,5,42)"
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(118,250,229)"
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(40,11,191)"
+        },
+        {
+          "x": 2,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(53,8,72)"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "primitive": 3,
+          "color": "rgb(61,13,248)"
+        }
+      ]
+    },
+    "0055": {
+      "filename": "character-u0055.svg",
+      "codepoint_key": "0055",
+      "codepoints": [
+        85
+      ],
+      "codepoints_hex": [
+        "0055"
+      ],
+      "text": "U",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        "#...#",
+        "#...#",
+        "#...#",
+        "#...#",
+        "#...#",
+        "#...#",
+        "#####",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          2,
+          null,
+          null,
+          null,
+          2
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          6,
+          0,
+          0,
+          0,
+          9
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          "rgb(212,54,204)",
+          null,
+          null,
+          null,
+          "rgb(83,145,194)"
+        ],
+        [
+          "rgb(149,236,181)",
+          null,
+          null,
+          null,
+          "rgb(84,97,214)"
+        ],
+        [
+          "rgb(208,218,57)",
+          null,
+          null,
+          null,
+          "rgb(218,208,3)"
+        ],
+        [
+          "rgb(56,192,30)",
+          null,
+          null,
+          null,
+          "rgb(223,163,208)"
+        ],
+        [
+          "rgb(255,120,229)",
+          null,
+          null,
+          null,
+          "rgb(218,172,218)"
+        ],
+        [
+          "rgb(213,25,34)",
+          null,
+          null,
+          null,
+          "rgb(13,208,8)"
+        ],
+        [
+          "rgb(7,169,63)",
+          "rgb(132,103,112)",
+          "rgb(1,36,9)",
+          "rgb(10,221,212)",
+          "rgb(15,69,239)"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "primitive": 2,
+          "color": "rgb(212,54,204)"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "primitive": 2,
+          "color": "rgb(83,145,194)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(149,236,181)"
+        },
+        {
+          "x": 4,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(84,97,214)"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(208,218,57)"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(218,208,3)"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(56,192,30)"
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(223,163,208)"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(255,120,229)"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(218,172,218)"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(213,25,34)"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(13,208,8)"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "primitive": 6,
+          "color": "rgb(7,169,63)"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(132,103,112)"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(1,36,9)"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(10,221,212)"
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "primitive": 9,
+          "color": "rgb(15,69,239)"
+        }
+      ]
+    },
+    "0056": {
+      "filename": "character-u0056.svg",
+      "codepoint_key": "0056",
+      "codepoints": [
+        86
+      ],
+      "codepoints_hex": [
+        "0056"
+      ],
+      "text": "V",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        "#...#",
+        "#...#",
+        "#...#",
+        "#...#",
+        "##.##",
+        ".#.#.",
+        ".###.",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          2,
+          null,
+          null,
+          null,
+          2
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          6,
+          8,
+          null,
+          7,
+          9
+        ],
+        [
+          null,
+          0,
+          null,
+          0,
+          null
+        ],
+        [
+          null,
+          6,
+          0,
+          9,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          "rgb(156,41,231)",
+          null,
+          null,
+          null,
+          "rgb(14,91,108)"
+        ],
+        [
+          "rgb(44,75,224)",
+          null,
+          null,
+          null,
+          "rgb(146,84,66)"
+        ],
+        [
+          "rgb(20,188,181)",
+          null,
+          null,
+          null,
+          "rgb(237,5,241)"
+        ],
+        [
+          "rgb(194,68,251)",
+          null,
+          null,
+          null,
+          "rgb(200,24,79)"
+        ],
+        [
+          "rgb(135,159,48)",
+          "rgb(29,82,211)",
+          null,
+          "rgb(225,179,14)",
+          "rgb(22,87,92)"
+        ],
+        [
+          null,
+          "rgb(168,79,132)",
+          null,
+          "rgb(59,201,143)",
+          null
+        ],
+        [
+          null,
+          "rgb(183,23,54)",
+          "rgb(142,4,100)",
+          "rgb(157,86,155)",
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "primitive": 2,
+          "color": "rgb(156,41,231)"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "primitive": 2,
+          "color": "rgb(14,91,108)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(44,75,224)"
+        },
+        {
+          "x": 4,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(146,84,66)"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(20,188,181)"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(237,5,241)"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(194,68,251)"
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(200,24,79)"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "primitive": 6,
+          "color": "rgb(135,159,48)"
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "primitive": 8,
+          "color": "rgb(29,82,211)"
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "primitive": 7,
+          "color": "rgb(225,179,14)"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "primitive": 9,
+          "color": "rgb(22,87,92)"
+        },
+        {
+          "x": 1,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(168,79,132)"
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(59,201,143)"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "primitive": 6,
+          "color": "rgb(183,23,54)"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(142,4,100)"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "primitive": 9,
+          "color": "rgb(157,86,155)"
+        }
+      ]
+    },
+    "0057": {
+      "filename": "character-u0057.svg",
+      "codepoint_key": "0057",
+      "codepoints": [
+        87
+      ],
+      "codepoints_hex": [
+        "0057"
+      ],
+      "text": "W",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        "#...#",
+        "#...#",
+        "#...#",
+        "#...#",
+        "#.#.#",
+        "#####",
+        "##.##",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          2,
+          null,
+          null,
+          null,
+          2
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          2,
+          null,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          6,
+          9,
+          null,
+          6,
+          9
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          "rgb(150,3,184)",
+          null,
+          null,
+          null,
+          "rgb(75,29,243)"
+        ],
+        [
+          "rgb(123,167,95)",
+          null,
+          null,
+          null,
+          "rgb(112,102,48)"
+        ],
+        [
+          "rgb(220,148,136)",
+          null,
+          null,
+          null,
+          "rgb(72,8,162)"
+        ],
+        [
+          "rgb(0,122,221)",
+          null,
+          null,
+          null,
+          "rgb(146,22,138)"
+        ],
+        [
+          "rgb(14,22,94)",
+          null,
+          "rgb(204,40,13)",
+          null,
+          "rgb(177,60,154)"
+        ],
+        [
+          "rgb(200,137,39)",
+          "rgb(21,142,171)",
+          "rgb(28,108,221)",
+          "rgb(66,204,54)",
+          "rgb(98,227,168)"
+        ],
+        [
+          "rgb(106,199,107)",
+          "rgb(63,76,67)",
+          null,
+          "rgb(89,181,62)",
+          "rgb(205,139,151)"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "primitive": 2,
+          "color": "rgb(150,3,184)"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "primitive": 2,
+          "color": "rgb(75,29,243)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(123,167,95)"
+        },
+        {
+          "x": 4,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(112,102,48)"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(220,148,136)"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(72,8,162)"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(0,122,221)"
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(146,22,138)"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(14,22,94)"
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "primitive": 2,
+          "color": "rgb(204,40,13)"
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(177,60,154)"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(200,137,39)"
+        },
+        {
+          "x": 1,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(21,142,171)"
+        },
+        {
+          "x": 2,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(28,108,221)"
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(66,204,54)"
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(98,227,168)"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "primitive": 6,
+          "color": "rgb(106,199,107)"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "primitive": 9,
+          "color": "rgb(63,76,67)"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "primitive": 6,
+          "color": "rgb(89,181,62)"
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "primitive": 9,
+          "color": "rgb(205,139,151)"
+        }
+      ]
+    },
     "0058": {
       "filename": "character-u0058.svg",
       "codepoint_key": "0058",
@@ -590,6 +9518,253 @@
           "y": 6,
           "primitive": 3,
           "color": "rgb(36,114,159)"
+        }
+      ]
+    },
+    "0059": {
+      "filename": "character-u0059.svg",
+      "codepoint_key": "0059",
+      "codepoints": [
+        89
+      ],
+      "codepoints_hex": [
+        "0059"
+      ],
+      "text": "Y",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        "#...#",
+        "#...#",
+        "##.##",
+        ".###.",
+        "..#..",
+        "..#..",
+        "..#..",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          2,
+          null,
+          null,
+          null,
+          2
+        ],
+        [
+          0,
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          6,
+          8,
+          null,
+          7,
+          9
+        ],
+        [
+          null,
+          6,
+          0,
+          9,
+          null
+        ],
+        [
+          null,
+          null,
+          0,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          0,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          3,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          "rgb(50,23,147)",
+          null,
+          null,
+          null,
+          "rgb(105,248,155)"
+        ],
+        [
+          "rgb(229,109,217)",
+          null,
+          null,
+          null,
+          "rgb(23,167,38)"
+        ],
+        [
+          "rgb(213,44,186)",
+          "rgb(124,105,58)",
+          null,
+          "rgb(155,246,156)",
+          "rgb(23,183,31)"
+        ],
+        [
+          null,
+          "rgb(247,155,100)",
+          "rgb(70,3,177)",
+          "rgb(3,250,18)",
+          null
+        ],
+        [
+          null,
+          null,
+          "rgb(42,149,64)",
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          "rgb(190,19,110)",
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          "rgb(78,141,68)",
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "primitive": 2,
+          "color": "rgb(50,23,147)"
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "primitive": 2,
+          "color": "rgb(105,248,155)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(229,109,217)"
+        },
+        {
+          "x": 4,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(23,167,38)"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 6,
+          "color": "rgb(213,44,186)"
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "primitive": 8,
+          "color": "rgb(124,105,58)"
+        },
+        {
+          "x": 3,
+          "y": 2,
+          "primitive": 7,
+          "color": "rgb(155,246,156)"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "primitive": 9,
+          "color": "rgb(23,183,31)"
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "primitive": 6,
+          "color": "rgb(247,155,100)"
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(70,3,177)"
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "primitive": 9,
+          "color": "rgb(3,250,18)"
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(42,149,64)"
+        },
+        {
+          "x": 2,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(190,19,110)"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "primitive": 3,
+          "color": "rgb(78,141,68)"
         }
       ]
     },
@@ -3136,6 +12311,241 @@
         }
       ]
     },
+    "006b": {
+      "filename": "character-u006b.svg",
+      "codepoint_key": "006b",
+      "codepoints": [
+        107
+      ],
+      "codepoints_hex": [
+        "006b"
+      ],
+      "text": "k",
+      "grid_w": 4,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        192,
+        432
+      ],
+      "bitmap": [
+        "#...",
+        "#...",
+        "#..#",
+        "#.##",
+        "###.",
+        "#.##",
+        "#..#",
+        "....",
+        "...."
+      ],
+      "primitive_grid": [
+        [
+          2,
+          null,
+          null,
+          null
+        ],
+        [
+          0,
+          null,
+          null,
+          null
+        ],
+        [
+          0,
+          null,
+          null,
+          2
+        ],
+        [
+          0,
+          null,
+          7,
+          9
+        ],
+        [
+          0,
+          0,
+          0,
+          null
+        ],
+        [
+          0,
+          null,
+          6,
+          8
+        ],
+        [
+          3,
+          null,
+          null,
+          3
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          "rgb(2,71,41)",
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(162,135,138)",
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(243,39,108)",
+          null,
+          null,
+          "rgb(156,199,157)"
+        ],
+        [
+          "rgb(49,87,177)",
+          null,
+          "rgb(190,245,113)",
+          "rgb(47,251,147)"
+        ],
+        [
+          "rgb(123,181,21)",
+          "rgb(171,61,58)",
+          "rgb(88,224,55)",
+          null
+        ],
+        [
+          "rgb(163,8,251)",
+          null,
+          "rgb(148,132,14)",
+          "rgb(77,39,227)"
+        ],
+        [
+          "rgb(87,148,31)",
+          null,
+          null,
+          "rgb(126,161,212)"
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "primitive": 2,
+          "color": "rgb(2,71,41)"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "primitive": 0,
+          "color": "rgb(162,135,138)"
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 0,
+          "color": "rgb(243,39,108)"
+        },
+        {
+          "x": 3,
+          "y": 2,
+          "primitive": 2,
+          "color": "rgb(156,199,157)"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(49,87,177)"
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "primitive": 7,
+          "color": "rgb(190,245,113)"
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "primitive": 9,
+          "color": "rgb(47,251,147)"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(123,181,21)"
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(171,61,58)"
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(88,224,55)"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(163,8,251)"
+        },
+        {
+          "x": 2,
+          "y": 5,
+          "primitive": 6,
+          "color": "rgb(148,132,14)"
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "primitive": 8,
+          "color": "rgb(77,39,227)"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "primitive": 3,
+          "color": "rgb(87,148,31)"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "primitive": 3,
+          "color": "rgb(126,161,212)"
+        }
+      ]
+    },
     "006c": {
       "filename": "character-u006c.svg",
       "codepoint_key": "006c",
@@ -5336,6 +14746,223 @@
         }
       ]
     },
+    "0076": {
+      "filename": "character-u0076.svg",
+      "codepoint_key": "0076",
+      "codepoints": [
+        118
+      ],
+      "codepoints_hex": [
+        "0076"
+      ],
+      "text": "v",
+      "grid_w": 4,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        192,
+        432
+      ],
+      "bitmap": [
+        "....",
+        "....",
+        "#..#",
+        "#..#",
+        "#..#",
+        "####",
+        ".##.",
+        "....",
+        "...."
+      ],
+      "primitive_grid": [
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          2,
+          null,
+          null,
+          2
+        ],
+        [
+          0,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          0
+        ],
+        [
+          6,
+          0,
+          0,
+          9
+        ],
+        [
+          null,
+          6,
+          9,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(204,164,244)",
+          null,
+          null,
+          "rgb(232,11,37)"
+        ],
+        [
+          "rgb(137,98,157)",
+          null,
+          null,
+          "rgb(39,114,13)"
+        ],
+        [
+          "rgb(173,176,50)",
+          null,
+          null,
+          "rgb(94,251,1)"
+        ],
+        [
+          "rgb(205,251,20)",
+          "rgb(32,228,104)",
+          "rgb(109,135,96)",
+          "rgb(111,81,26)"
+        ],
+        [
+          null,
+          "rgb(145,55,68)",
+          "rgb(99,80,48)",
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 2,
+          "color": "rgb(204,164,244)"
+        },
+        {
+          "x": 3,
+          "y": 2,
+          "primitive": 2,
+          "color": "rgb(232,11,37)"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(137,98,157)"
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(39,114,13)"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(173,176,50)"
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(94,251,1)"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "primitive": 6,
+          "color": "rgb(205,251,20)"
+        },
+        {
+          "x": 1,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(32,228,104)"
+        },
+        {
+          "x": 2,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(109,135,96)"
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "primitive": 9,
+          "color": "rgb(111,81,26)"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "primitive": 6,
+          "color": "rgb(145,55,68)"
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "primitive": 9,
+          "color": "rgb(99,80,48)"
+        }
+      ]
+    },
     "0077": {
       "filename": "character-u0077.svg",
       "codepoint_key": "0077",
@@ -5589,6 +15216,494 @@
         }
       ]
     },
+    "0078": {
+      "filename": "character-u0078.svg",
+      "codepoint_key": "0078",
+      "codepoints": [
+        120
+      ],
+      "codepoints_hex": [
+        "0078"
+      ],
+      "text": "x",
+      "grid_w": 5,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        240,
+        432
+      ],
+      "bitmap": [
+        ".....",
+        ".....",
+        "##.##",
+        ".###.",
+        "..#..",
+        ".###.",
+        "##.##",
+        ".....",
+        "....."
+      ],
+      "primitive_grid": [
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          5,
+          8,
+          null,
+          7,
+          4
+        ],
+        [
+          null,
+          6,
+          0,
+          9,
+          null
+        ],
+        [
+          null,
+          null,
+          0,
+          null,
+          null
+        ],
+        [
+          null,
+          7,
+          0,
+          8,
+          null
+        ],
+        [
+          5,
+          9,
+          null,
+          6,
+          4
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(101,202,193)",
+          "rgb(249,84,16)",
+          null,
+          "rgb(54,6,103)",
+          "rgb(132,217,216)"
+        ],
+        [
+          null,
+          "rgb(93,24,75)",
+          "rgb(199,114,204)",
+          "rgb(193,184,161)",
+          null
+        ],
+        [
+          null,
+          null,
+          "rgb(123,172,156)",
+          null,
+          null
+        ],
+        [
+          null,
+          "rgb(67,73,178)",
+          "rgb(22,147,242)",
+          "rgb(15,124,159)",
+          null
+        ],
+        [
+          "rgb(116,170,203)",
+          "rgb(190,185,47)",
+          null,
+          "rgb(155,35,204)",
+          "rgb(215,224,40)"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 5,
+          "color": "rgb(101,202,193)"
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "primitive": 8,
+          "color": "rgb(249,84,16)"
+        },
+        {
+          "x": 3,
+          "y": 2,
+          "primitive": 7,
+          "color": "rgb(54,6,103)"
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "primitive": 4,
+          "color": "rgb(132,217,216)"
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "primitive": 6,
+          "color": "rgb(93,24,75)"
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(199,114,204)"
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "primitive": 9,
+          "color": "rgb(193,184,161)"
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(123,172,156)"
+        },
+        {
+          "x": 1,
+          "y": 5,
+          "primitive": 7,
+          "color": "rgb(67,73,178)"
+        },
+        {
+          "x": 2,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(22,147,242)"
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "primitive": 8,
+          "color": "rgb(15,124,159)"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "primitive": 5,
+          "color": "rgb(116,170,203)"
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "primitive": 9,
+          "color": "rgb(190,185,47)"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "primitive": 6,
+          "color": "rgb(155,35,204)"
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "primitive": 4,
+          "color": "rgb(215,224,40)"
+        }
+      ]
+    },
+    "0079": {
+      "filename": "character-u0079.svg",
+      "codepoint_key": "0079",
+      "codepoints": [
+        121
+      ],
+      "codepoints_hex": [
+        "0079"
+      ],
+      "text": "y",
+      "grid_w": 4,
+      "grid_h": 9,
+      "tile_size": 48,
+      "view_box": [
+        0,
+        0,
+        192,
+        432
+      ],
+      "bitmap": [
+        "....",
+        "....",
+        "#..#",
+        "#..#",
+        "#..#",
+        "####",
+        "...#",
+        "####",
+        "...."
+      ],
+      "primitive_grid": [
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          2,
+          null,
+          null,
+          2
+        ],
+        [
+          0,
+          null,
+          null,
+          0
+        ],
+        [
+          0,
+          null,
+          null,
+          0
+        ],
+        [
+          6,
+          0,
+          0,
+          0
+        ],
+        [
+          null,
+          null,
+          null,
+          0
+        ],
+        [
+          5,
+          0,
+          0,
+          9
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "color_grid": [
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(80,34,151)",
+          null,
+          null,
+          "rgb(140,20,116)"
+        ],
+        [
+          "rgb(120,39,204)",
+          null,
+          null,
+          "rgb(115,171,229)"
+        ],
+        [
+          "rgb(188,136,93)",
+          null,
+          null,
+          "rgb(171,192,241)"
+        ],
+        [
+          "rgb(94,44,66)",
+          "rgb(176,159,113)",
+          "rgb(231,83,146)",
+          "rgb(215,45,99)"
+        ],
+        [
+          null,
+          null,
+          null,
+          "rgb(46,118,4)"
+        ],
+        [
+          "rgb(47,188,65)",
+          "rgb(200,151,80)",
+          "rgb(205,45,150)",
+          "rgb(153,55,220)"
+        ],
+        [
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 2,
+          "primitive": 2,
+          "color": "rgb(80,34,151)"
+        },
+        {
+          "x": 3,
+          "y": 2,
+          "primitive": 2,
+          "color": "rgb(140,20,116)"
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(120,39,204)"
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "primitive": 0,
+          "color": "rgb(115,171,229)"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(188,136,93)"
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "primitive": 0,
+          "color": "rgb(171,192,241)"
+        },
+        {
+          "x": 0,
+          "y": 5,
+          "primitive": 6,
+          "color": "rgb(94,44,66)"
+        },
+        {
+          "x": 1,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(176,159,113)"
+        },
+        {
+          "x": 2,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(231,83,146)"
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "primitive": 0,
+          "color": "rgb(215,45,99)"
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "primitive": 0,
+          "color": "rgb(46,118,4)"
+        },
+        {
+          "x": 0,
+          "y": 7,
+          "primitive": 5,
+          "color": "rgb(47,188,65)"
+        },
+        {
+          "x": 1,
+          "y": 7,
+          "primitive": 0,
+          "color": "rgb(200,151,80)"
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "primitive": 0,
+          "color": "rgb(205,45,150)"
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "primitive": 9,
+          "color": "rgb(153,55,220)"
+        }
+      ]
+    },
     "007a": {
       "filename": "character-u007a.svg",
       "codepoint_key": "007a",
@@ -5612,8 +15727,8 @@
         ".....",
         ".....",
         "#####",
-        "...##",
-        ".###.",
+        "..##.",
+        ".##..",
         "##...",
         "#####",
         ".....",
@@ -5639,20 +15754,20 @@
           0,
           0,
           0,
-          8
+          4
         ],
         [
           null,
           null,
-          null,
           0,
-          9
+          9,
+          null
         ],
         [
           null,
           7,
-          0,
           9,
+          null,
           null
         ],
         [
@@ -5700,39 +15815,39 @@
           null
         ],
         [
-          "rgb(201,44,241)",
-          "rgb(254,141,184)",
-          "rgb(251,238,158)",
-          "rgb(194,186,245)",
-          "rgb(146,148,151)"
+          "rgb(13,204,194)",
+          "rgb(227,109,108)",
+          "rgb(195,163,114)",
+          "rgb(54,168,132)",
+          "rgb(159,83,113)"
         ],
         [
           null,
           null,
-          null,
-          "rgb(57,33,121)",
-          "rgb(52,183,249)"
-        ],
-        [
-          null,
-          "rgb(54,135,230)",
-          "rgb(129,57,245)",
-          "rgb(55,132,180)",
+          "rgb(6,251,126)",
+          "rgb(129,36,222)",
           null
         ],
         [
-          "rgb(88,254,131)",
-          "rgb(153,64,181)",
           null,
+          "rgb(76,210,144)",
+          "rgb(53,62,66)",
           null,
           null
         ],
         [
-          "rgb(111,203,187)",
-          "rgb(248,82,200)",
-          "rgb(85,106,232)",
-          "rgb(246,187,161)",
-          "rgb(137,80,126)"
+          "rgb(112,143,195)",
+          "rgb(216,115,225)",
+          null,
+          null,
+          null
+        ],
+        [
+          "rgb(106,128,231)",
+          "rgb(134,241,0)",
+          "rgb(126,147,189)",
+          "rgb(103,153,136)",
+          "rgb(116,208,208)"
         ],
         [
           null,
@@ -5754,103 +15869,97 @@
           "x": 0,
           "y": 2,
           "primitive": 5,
-          "color": "rgb(201,44,241)"
+          "color": "rgb(13,204,194)"
         },
         {
           "x": 1,
           "y": 2,
           "primitive": 0,
-          "color": "rgb(254,141,184)"
+          "color": "rgb(227,109,108)"
         },
         {
           "x": 2,
           "y": 2,
           "primitive": 0,
-          "color": "rgb(251,238,158)"
+          "color": "rgb(195,163,114)"
         },
         {
           "x": 3,
           "y": 2,
           "primitive": 0,
-          "color": "rgb(194,186,245)"
+          "color": "rgb(54,168,132)"
         },
         {
           "x": 4,
           "y": 2,
-          "primitive": 8,
-          "color": "rgb(146,148,151)"
+          "primitive": 4,
+          "color": "rgb(159,83,113)"
         },
         {
-          "x": 3,
+          "x": 2,
           "y": 3,
           "primitive": 0,
-          "color": "rgb(57,33,121)"
+          "color": "rgb(6,251,126)"
         },
         {
-          "x": 4,
+          "x": 3,
           "y": 3,
           "primitive": 9,
-          "color": "rgb(52,183,249)"
+          "color": "rgb(129,36,222)"
         },
         {
           "x": 1,
           "y": 4,
           "primitive": 7,
-          "color": "rgb(54,135,230)"
+          "color": "rgb(76,210,144)"
         },
         {
           "x": 2,
           "y": 4,
-          "primitive": 0,
-          "color": "rgb(129,57,245)"
-        },
-        {
-          "x": 3,
-          "y": 4,
           "primitive": 9,
-          "color": "rgb(55,132,180)"
+          "color": "rgb(53,62,66)"
         },
         {
           "x": 0,
           "y": 5,
           "primitive": 7,
-          "color": "rgb(88,254,131)"
+          "color": "rgb(112,143,195)"
         },
         {
           "x": 1,
           "y": 5,
           "primitive": 0,
-          "color": "rgb(153,64,181)"
+          "color": "rgb(216,115,225)"
         },
         {
           "x": 0,
           "y": 6,
           "primitive": 6,
-          "color": "rgb(111,203,187)"
+          "color": "rgb(106,128,231)"
         },
         {
           "x": 1,
           "y": 6,
           "primitive": 0,
-          "color": "rgb(248,82,200)"
+          "color": "rgb(134,241,0)"
         },
         {
           "x": 2,
           "y": 6,
           "primitive": 0,
-          "color": "rgb(85,106,232)"
+          "color": "rgb(126,147,189)"
         },
         {
           "x": 3,
           "y": 6,
           "primitive": 0,
-          "color": "rgb(246,187,161)"
+          "color": "rgb(103,153,136)"
         },
         {
           "x": 4,
           "y": 6,
           "primitive": 4,
-          "color": "rgb(137,80,126)"
+          "color": "rgb(116,208,208)"
         }
       ]
     }
