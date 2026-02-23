@@ -1,6 +1,6 @@
 {
   "manifestVersion": 1,
-  "generatedAt": "2026-02-23T15:16:35.020873+00:00",
+  "generatedAt": "2026-02-23T15:34:45.695312+00:00",
   "name": "primitives",
   "metadata": {
     "family": "Primitives",
@@ -15,22 +15,22 @@
       "ext": "woff2",
       "file": "primitives.woff2",
       "recommendedFile": "primitives.woff2",
-      "bytes": 10388,
-      "sha256": "a35534cc5e0385702662445a537bd0530521a6158fcbb5bca3e83a65b91b36c8"
+      "bytes": 10428,
+      "sha256": "1e7aa4051385898339aae103e57d5424d68aa0ce541a6e929e20a8e7b0a76410"
     },
     {
       "ext": "woff",
       "file": "primitives.woff",
       "recommendedFile": "primitives.woff",
-      "bytes": 14672,
-      "sha256": "7700019a2f9e572e21cd9fa632137d7a0da7c33e4c2d7a994c4f647b6b2a0706"
+      "bytes": 14724,
+      "sha256": "e0705e6d6ad5a759f08ff70d942e29b39eefcde850538e30fa9d7e938542f267"
     },
     {
       "ext": "ttf",
       "file": "primitives.ttf",
       "recommendedFile": "primitives.ttf",
       "bytes": 42936,
-      "sha256": "8de1ee4350b22c0b75b89fde0bd08868a821fc701b426c35c8a5227ede608aa1"
+      "sha256": "34905f1de65bae47530981a22f313f2206d49f5c299ad9ea73f414e05464f227"
     }
   ],
   "unicodeRanges": [

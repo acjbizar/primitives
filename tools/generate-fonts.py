@@ -167,17 +167,17 @@ def build_primitive_glyph(pid: int):
         pen.closePath()
 
     elif pid == 4:
-        # LEFT half (flat RIGHT), bulge LEFT in the cell => occupies right side of cell
-        pen.moveTo((s, 0))
-        pen.lineTo((s, s))
-        cubic_arc_to(pen, s, r, r, math.pi / 2.0, 3.0 * math.pi / 2.0)
-        pen.closePath()
-
-    elif pid == 5:
-        # RIGHT half (flat LEFT), bulge RIGHT in the cell => occupies left side of cell
+        # RIGHT half-circle cap: flat LEFT, bulge RIGHT (matches canvas case 4 / data primitive 4)
         pen.moveTo((0, 0))
         pen.lineTo((0, s))
         cubic_arc_to(pen, 0.0, r, r, math.pi / 2.0, -math.pi / 2.0)
+        pen.closePath()
+
+    elif pid == 5:
+        # LEFT half-circle cap: flat RIGHT, bulge LEFT (matches canvas case 5 / data primitive 5)
+        pen.moveTo((s, 0))
+        pen.lineTo((s, s))
+        cubic_arc_to(pen, s, r, r, math.pi / 2.0, 3.0 * math.pi / 2.0)
         pen.closePath()
 
     elif pid == 6:
