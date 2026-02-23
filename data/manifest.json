@@ -1,6 +1,6 @@
 {
   "manifestVersion": 1,
-  "generatedAt": "2026-02-23T15:34:45.695312+00:00",
+  "generatedAt": "2026-02-23T18:43:49.249229+00:00",
   "name": "primitives",
   "metadata": {
     "family": "Primitives",
@@ -8,29 +8,29 @@
     "fullName": "Primitives Regular",
     "postScriptName": "Primitives-Regular",
     "unitsPerEm": 1000,
-    "glyphCount": 138
+    "glyphCount": 146
   },
   "files": [
     {
       "ext": "woff2",
       "file": "primitives.woff2",
       "recommendedFile": "primitives.woff2",
-      "bytes": 10428,
-      "sha256": "1e7aa4051385898339aae103e57d5424d68aa0ce541a6e929e20a8e7b0a76410"
+      "bytes": 10572,
+      "sha256": "f202173cf550d668c2bf3fba42c73346928f6de1dc69926e3e50974f651a858a"
     },
     {
       "ext": "woff",
       "file": "primitives.woff",
       "recommendedFile": "primitives.woff",
-      "bytes": 14724,
-      "sha256": "e0705e6d6ad5a759f08ff70d942e29b39eefcde850538e30fa9d7e938542f267"
+      "bytes": 14992,
+      "sha256": "7d0951f0c08118c942b0074843341f35bdc9fda4f32e1ff3f3359a7af05a0e12"
     },
     {
       "ext": "ttf",
       "file": "primitives.ttf",
       "recommendedFile": "primitives.ttf",
-      "bytes": 42936,
-      "sha256": "34905f1de65bae47530981a22f313f2206d49f5c299ad9ea73f414e05464f227"
+      "bytes": 43576,
+      "sha256": "24e12ac9829093da5aa5d34a08176f4565d72505c1adb0d269341678cafa7cf8"
     }
   ],
   "unicodeRanges": [
@@ -39,8 +39,16 @@
       33
     ],
     [
+      44,
+      44
+    ],
+    [
+      46,
+      46
+    ],
+    [
       48,
-      57
+      59
     ],
     [
       65,
@@ -52,8 +60,8 @@
     ]
   ],
   "counts": {
-    "codepointsTotal": 64,
-    "codepointsBMP": 64,
+    "codepointsTotal": 68,
+    "codepointsBMP": 68,
     "codepointsAstral": 0
   },
   "features": {
