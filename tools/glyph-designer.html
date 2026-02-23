@@ -260,7 +260,7 @@
             border:1px solid var(--line);
             border-radius:12px;
             padding:10px;
-            min-width:160px;
+            min-width:170px;
             display:grid;
             gap:8px;
         }
@@ -306,6 +306,35 @@
             padding:6px 10px;
             font-size:12px;
             color:var(--muted);
+        }
+
+        .source-pill{
+            border-color: var(--line);
+            color: var(--muted);
+        }
+        .source-pill.ok{
+            border-color: color-mix(in oklab, #22c55e 45%, var(--line));
+            color: #15803d;
+            background: color-mix(in oklab, #22c55e 10%, transparent);
+        }
+        .source-pill.fallback{
+            border-color: var(--line);
+            color: var(--muted);
+        }
+        .source-pill.warn{
+            border-color: color-mix(in oklab, #f59e0b 45%, var(--line));
+            color: #b45309;
+            background: color-mix(in oklab, #f59e0b 10%, transparent);
+        }
+        .source-pill.error{
+            border-color: color-mix(in oklab, #ef4444 45%, var(--line));
+            color: #b91c1c;
+            background: color-mix(in oklab, #ef4444 10%, transparent);
+        }
+        @media (prefers-color-scheme: dark){
+            .source-pill.ok{ color:#86efac; }
+            .source-pill.warn{ color:#fcd34d; }
+            .source-pill.error{ color:#fca5a5; }
         }
 
         .section-title{
@@ -390,7 +419,7 @@
 <div class="app">
     <div class="left-col">
 
-        <!-- Editor moved up -->
+        <!-- Editor -->
         <div class="panel">
             <div class="row" style="margin-bottom:10px;">
                 <div style="flex:1; min-width:120px;">
@@ -407,6 +436,10 @@
                     <label for="tileSize">Tile px</label><br />
                     <input id="tileSize" type="number" min="8" max="256" value="48" style="width:88px;" />
                 </div>
+            </div>
+
+            <div class="row" style="margin-bottom:8px;">
+                <div id="sourceStatus" class="pill source-pill fallback">Source: not loaded yet</div>
             </div>
 
             <div class="row" style="margin-bottom:8px;">
@@ -488,7 +521,7 @@
                 <button id="loadByCharBtn">Load current character</button>
             </div>
             <p class="muted small" style="margin:8px 0 0 0;">
-                Loading a preset resets the grid to 5 columns, since the built-in presets are 5×9.
+                Clicking a preset (or “Load current character”) checks for a source SVG first, then falls back to the built-in 5×9 preset.
             </p>
         </div>
     </div>
@@ -551,7 +584,7 @@
         const MAX_COLS = 12;
         let gridW = 5;
 
-        // Baseline line is drawn between rows 6 and 7 (0-indexed), i.e. above the descender area.
+        // Baseline line is drawn between rows 6 and 7 (0-indexed)
         const BASELINE_AFTER_ROW = 6;
 
         // Presets copied from your Python GLYPHS dict (A–Z, a–z, 0–9)
@@ -660,6 +693,7 @@
             presetLower: document.getElementById('presetLower'),
             presetDigit: document.getElementById('presetDigit'),
             loadByCharBtn: document.getElementById('loadByCharBtn'),
+            sourceStatus: document.getElementById('sourceStatus'),
         };
 
         // Internal bitmap state: true = "#", false = "."
@@ -667,12 +701,15 @@
 
         // Drag painting state
         let isPointerDown = false;
-        let dragValue = null; // boolean
+        let dragValue = null;
         let paintedThisDrag = new Set();
 
         // Reroll nonce so user can randomize colors without changing seed/bitmap
         let rerollCounter = 0;
         let gridEventsBound = false;
+
+        // Async load de-duping
+        let sourceLoadToken = 0;
 
         // ---------- Utilities ----------
         function clamp(n, a, b) { return Math.max(a, Math.min(b, n)); }
@@ -682,8 +719,13 @@
         }
 
         function getCharValue() {
-            const raw = (el.charInput.value || '').trim();
-            return raw.length ? Array.from(raw)[0] : 'A';
+            const raw = el.charInput.value ?? '';
+            const chars = Array.from(raw); // preserves space
+            return chars.length ? chars[0] : 'A';
+        }
+
+        function displayCharLabel(ch) {
+            return ch === ' ' ? '␠ space' : ch;
         }
 
         function getCodepointLabel(ch) {
@@ -749,6 +791,63 @@
             };
         }
 
+        // ---------- Source status ----------
+        function setSourceStatus(mode, info = {}) {
+            const pill = el.sourceStatus;
+            if (!pill) return;
+
+            pill.classList.remove('ok', 'fallback', 'warn', 'error');
+
+            const ch = info.ch ?? getCharValue();
+            const cp = getCodepointLabel(ch);
+            const path = info.path || `src/svg/character-u${codepointFilenamePart(ch)}.svg`;
+
+            if (mode === 'checking') {
+                pill.classList.add('fallback');
+                pill.textContent = `Checking ${path}…`;
+                return;
+            }
+
+            if (mode === 'source') {
+                pill.classList.add('ok');
+                pill.textContent = `✓ Loaded from ${path}`;
+                return;
+            }
+
+            if (mode === 'preset') {
+                pill.classList.add('fallback');
+                pill.textContent = `Preset sketch (${displayCharLabel(ch)} · ${cp})`;
+                return;
+            }
+
+            if (mode === 'manual') {
+                pill.classList.add('fallback');
+                pill.textContent = `Manual edit (${displayCharLabel(ch)} · ${cp})`;
+                return;
+            }
+
+            if (mode === 'blank-space') {
+                pill.classList.add('warn');
+                pill.textContent = `Space glyph (blank canvas) · ${cp}`;
+                return;
+            }
+
+            if (mode === 'missing') {
+                pill.classList.add('warn');
+                pill.textContent = `No source SVG or preset for ${displayCharLabel(ch)} · ${cp}`;
+                return;
+            }
+
+            if (mode === 'error') {
+                pill.classList.add('error');
+                pill.textContent = `SVG load error: ${info.message || 'Unknown error'}`;
+                return;
+            }
+
+            pill.classList.add('fallback');
+            pill.textContent = `Source: unknown`;
+        }
+
         // ---------- Primitive selection (same logic as Python) ----------
         function isOn(x, y) {
             return y >= 0 && y < GRID_H && x >= 0 && x < gridW && bitmap[y][x];
@@ -764,32 +863,28 @@
 
             const n = Number(up) + Number(dn) + Number(lf) + Number(rt);
 
-            // isolated -> dot
             if (n === 0) return 1;
 
-            // endpoints -> use a half with FLAT edge facing the neighbor
             if (n === 1) {
-                if (dn) return 2; // connects downward => flat bottom
-                if (up) return 3; // connects upward   => flat top
-                if (rt) return 5; // connects right    => flat right
-                if (lf) return 4; // connects left     => flat left
+                if (dn) return 2;
+                if (up) return 3;
+                if (rt) return 5;
+                if (lf) return 4;
                 return 0;
             }
 
-            // orthogonal corner -> quarter with flats on connected edges
             if (n === 2 && ((up && lf) || (up && rt) || (dn && lf) || (dn && rt))) {
-                if (up && lf) return 9; // flat top+left
-                if (up && rt) return 6; // flat top+right
-                if (dn && lf) return 8; // flat bottom+left
-                if (dn && rt) return 7; // flat bottom+right
+                if (up && lf) return 9;
+                if (up && rt) return 6;
+                if (dn && lf) return 8;
+                if (dn && rt) return 7;
                 return 0;
             }
 
-            // straight segments / junctions -> square
             return 0;
         }
 
-        // ---------- SVG defs (same 10 primitives) ----------
+        // ---------- SVG defs ----------
         function svgDefs(d) {
             const r = d / 2;
             return `  <defs>
@@ -836,7 +931,7 @@
 
             const lines = [];
             lines.push(`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">`);
-            lines.push(`  <!-- character: ${escapeXml(ch)} (${getCodepointLabel(ch)}) -->`);
+            lines.push(`  <!-- character: ${escapeXml(ch === ' ' ? '[space]' : ch)} (${getCodepointLabel(ch)}) -->`);
             lines.push(svgDefs(d));
 
             const getRandRgb = randRgbFn();
@@ -857,6 +952,216 @@
 
             lines.push(`</svg>`);
             return lines.join('\n');
+        }
+
+        // ---------- SVG source parsing ----------
+        function parseTranslateXY(transform) {
+            if (!transform) return [0, 0];
+            const m = transform.match(/translate\(\s*([^\s,)+]+)(?:[\s,]+([^\s)]+))?\s*\)/i);
+            if (!m) return [0, 0];
+            const x = Number(m[1] ?? 0) || 0;
+            const y = Number(m[2] ?? 0) || 0;
+            return [x, y];
+        }
+
+        function parsePrimitiveSvgToBitmap(svgText, sourceLabel = 'SVG') {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(svgText, 'image/svg+xml');
+
+            const parseErr = doc.querySelector('parsererror');
+            if (parseErr) {
+                throw new Error(`Invalid SVG in ${sourceLabel}`);
+            }
+
+            const root = doc.documentElement;
+            if (!root || root.nodeName.toLowerCase() !== 'svg') {
+                throw new Error(`No <svg> root found in ${sourceLabel}`);
+            }
+
+            let tileSize = null;
+
+            // Prefer <use width/height>
+            const uses = Array.from(root.querySelectorAll('use'));
+            for (const use of uses) {
+                const href = use.getAttribute('href') || use.getAttributeNS('http://www.w3.org/1999/xlink', 'href') || '';
+                if (!/#p[0-9]$/.test(href)) continue;
+                const w = Number(use.getAttribute('width'));
+                const h = Number(use.getAttribute('height'));
+                if (Number.isFinite(w) && w > 0) { tileSize = w; break; }
+                if (Number.isFinite(h) && h > 0) { tileSize = h; break; }
+            }
+
+            // Fallback: symbol p0 viewBox
+            if (!tileSize) {
+                const symbols = Array.from(root.querySelectorAll('symbol'));
+                const p0 = symbols.find(s => s.getAttribute('id') === 'p0');
+                if (p0) {
+                    const vb = (p0.getAttribute('viewBox') || '').trim().split(/[,\s]+/).map(Number);
+                    if (vb.length === 4 && Number.isFinite(vb[2])) {
+                        tileSize = vb[2];
+                    }
+                }
+            }
+
+            if (!tileSize || !Number.isFinite(tileSize) || tileSize <= 0) {
+                throw new Error(`Could not infer tile size from ${sourceLabel}`);
+            }
+
+            let cols = null;
+            let rows = null;
+            const rootViewBox = (root.getAttribute('viewBox') || '').trim().split(/[,\s]+/).map(Number);
+            if (rootViewBox.length === 4 && Number.isFinite(rootViewBox[2]) && Number.isFinite(rootViewBox[3])) {
+                cols = Math.round(rootViewBox[2] / tileSize);
+                rows = Math.round(rootViewBox[3] / tileSize);
+            }
+
+            const tiles = [];
+            const groups = Array.from(root.querySelectorAll('g'));
+            for (const g of groups) {
+                const use = g.querySelector('use');
+                if (!use) continue;
+
+                const href = use.getAttribute('href') || use.getAttributeNS('http://www.w3.org/1999/xlink', 'href') || '';
+                const m = href.match(/#p([0-9])$/);
+                if (!m) continue;
+
+                const [tx, ty] = parseTranslateXY(g.getAttribute('transform'));
+                const ux = Number(use.getAttribute('x')) || 0;
+                const uy = Number(use.getAttribute('y')) || 0;
+
+                const xPx = tx + ux;
+                const yPx = ty + uy;
+
+                const gx = Math.round(xPx / tileSize);
+                const gy = Math.round(yPx / tileSize);
+
+                tiles.push({ x: gx, y: gy, primitive: Number(m[1]) });
+            }
+
+            if (!tiles.length) {
+                if (!cols || !rows) {
+                    throw new Error(`No primitive tiles found in ${sourceLabel}`);
+                }
+            }
+
+            if (!cols || !rows) {
+                const maxX = tiles.reduce((m, t) => Math.max(m, t.x), 0);
+                const maxY = tiles.reduce((m, t) => Math.max(m, t.y), 0);
+                cols = maxX + 1;
+                rows = maxY + 1;
+            }
+
+            if (rows !== GRID_H) {
+                throw new Error(`Expected ${GRID_H} rows, found ${rows} in ${sourceLabel}`);
+            }
+
+            if (cols < MIN_COLS || cols > MAX_COLS) {
+                throw new Error(`SVG width is ${cols} cols (allowed ${MIN_COLS}-${MAX_COLS}) in ${sourceLabel}`);
+            }
+
+            const next = Array.from({ length: GRID_H }, () => Array(cols).fill(false));
+            for (const t of tiles) {
+                if (t.x < 0 || t.x >= cols || t.y < 0 || t.y >= GRID_H) continue;
+                next[t.y][t.x] = true;
+            }
+
+            return { cols, bitmap: next };
+        }
+
+        async function tryFetchText(url) {
+            try {
+                const res = await fetch(url, { cache: 'no-store' });
+                if (!res.ok) return { ok: false, status: res.status, text: null };
+                const text = await res.text();
+                return { ok: true, status: res.status, text };
+            } catch (err) {
+                return { ok: false, status: 0, text: null, error: err };
+            }
+        }
+
+        function sourceSvgCandidatesForChar(ch) {
+            const filename = `character-u${codepointFilenamePart(ch)}.svg`;
+            return {
+                filename,
+                displayPath: `src/svg/${filename}`,
+                urls: [
+                    `../src/svg/${filename}`,
+                    `src/svg/${filename}`,
+                ],
+            };
+        }
+
+        function applyLoadedBitmap(cols, nextBitmap) {
+            gridW = cols;
+            bitmap = nextBitmap;
+            el.colsInput.value = String(gridW);
+            rebuildGridCells();
+        }
+
+        function bitmapFromRows(rows) {
+            return rows.map(row => Array.from(row).map(ch => ch === '#'));
+        }
+
+        function loadPresetSketch(ch) {
+            if (!PRESETS[ch]) return false;
+            el.charInput.value = ch;
+            applyLoadedBitmap(5, bitmapFromRows(PRESETS[ch]));
+            if (!el.seedInput.dataset.userEdited) {
+                el.seedInput.value = ch;
+            }
+            return true;
+        }
+
+        async function loadCharacterData(ch) {
+            const myToken = ++sourceLoadToken;
+            el.charInput.value = ch;
+
+            if (!el.seedInput.dataset.userEdited) {
+                el.seedInput.value = ch;
+            }
+
+            const srcInfo = sourceSvgCandidatesForChar(ch);
+            setSourceStatus('checking', { ch, path: srcInfo.displayPath });
+
+            // Try source SVG first
+            for (const url of srcInfo.urls) {
+                const fetched = await tryFetchText(url);
+                if (myToken !== sourceLoadToken) return;
+
+                if (!fetched.ok || !fetched.text) continue;
+
+                try {
+                    const parsed = parsePrimitiveSvgToBitmap(fetched.text, srcInfo.displayPath);
+                    applyLoadedBitmap(parsed.cols, parsed.bitmap);
+                    setSourceStatus('source', { ch, path: srcInfo.displayPath });
+                    updateAll();
+                    return;
+                } catch (err) {
+                    setSourceStatus('error', { message: err.message || String(err) });
+                    flashMessage(`Could not parse ${srcInfo.displayPath}`);
+                    return;
+                }
+            }
+
+            // Fallback to built-in preset
+            if (PRESETS[ch]) {
+                loadPresetSketch(ch);
+                setSourceStatus('preset', { ch });
+                updateAll();
+                return;
+            }
+
+            // Special case: space
+            if (ch === ' ') {
+                bitmap = makeEmptyBitmap(gridW);
+                setSourceStatus('blank-space', { ch });
+                updateAll();
+                return;
+            }
+
+            setSourceStatus('missing', { ch });
+            flashMessage(`No source SVG and no preset for "${displayCharLabel(ch)}"`);
+            updateAll();
         }
 
         // ---------- UI rendering ----------
@@ -993,7 +1298,7 @@ ${rows}
             const ch = getCharValue();
             const cpLabel = getCodepointLabel(ch);
             const d = clamp(parseInt(el.tileSize.value || '48', 10) || 48, 8, 256);
-            el.statChar.textContent = ch;
+            el.statChar.textContent = displayCharLabel(ch);
             el.statCp.textContent = cpLabel;
             el.statOn.textContent = String(onCount());
             el.statTiles.textContent = `${gridW}×${GRID_H}`;
@@ -1006,10 +1311,6 @@ ${rows}
 
         function updateSvgTextarea(svgText) {
             el.svgText.value = svgText;
-        }
-
-        function bitmapFromRows(rows) {
-            return rows.map(row => Array.from(row).map(ch => ch === '#'));
         }
 
         function setColumns(newCols, { preserve = true } = {}) {
@@ -1036,24 +1337,6 @@ ${rows}
             updateAll();
         }
 
-        function loadPreset(ch) {
-            if (!PRESETS[ch]) return false;
-            el.charInput.value = ch;
-
-            // Built-in presets are always 5×9
-            gridW = 5;
-            el.colsInput.value = '5';
-            bitmap = bitmapFromRows(PRESETS[ch]);
-
-            rebuildGridCells();
-
-            if (!el.seedInput.dataset.userEdited) {
-                el.seedInput.value = ch;
-            }
-            updateAll();
-            return true;
-        }
-
         function highlightActivePreset() {
             const ch = getCharValue();
             document.querySelectorAll('.preset-btn').forEach(btn => {
@@ -1077,7 +1360,9 @@ ${rows}
                     btn.dataset.ch = ch;
                     btn.textContent = ch;
                     btn.title = `Load ${ch}`;
-                    btn.addEventListener('click', () => loadPreset(ch));
+                    btn.addEventListener('click', () => {
+                        void loadCharacterData(ch);
+                    });
                     container.appendChild(btn);
                 }
             }
@@ -1095,8 +1380,8 @@ ${rows}
         }
 
         function updateAll() {
-            // Keep char input to a single Unicode character
-            const chars = Array.from(el.charInput.value || '');
+            // Preserve literal space; just ensure single character
+            const chars = Array.from(el.charInput.value ?? '');
             if (chars.length === 0) {
                 el.charInput.value = 'A';
             } else if (chars.length > 1) {
@@ -1114,7 +1399,6 @@ ${rows}
             updateSvgTextarea(svgText);
             highlightActivePreset();
 
-            // Sync default seed to character if seed empty
             if (!el.seedInput.value.trim()) {
                 el.seedInput.value = getCharValue();
             }
@@ -1291,6 +1575,7 @@ ${svgDefs(d)}
             if (!el.seedInput.dataset.userEdited) {
                 el.seedInput.value = getCharValue();
             }
+            setSourceStatus('manual', { ch: getCharValue() });
             updateAll();
         });
 
@@ -1326,6 +1611,7 @@ ${svgDefs(d)}
                 bitmap = parsed.bitmap;
                 el.colsInput.value = String(gridW);
                 rebuildGridCells();
+                setSourceStatus('manual', { ch: getCharValue() });
                 updateAll();
             } catch (err) {
                 alert(err.message);
@@ -1341,9 +1627,7 @@ ${svgDefs(d)}
 
         el.loadByCharBtn.addEventListener('click', () => {
             const ch = getCharValue();
-            if (!loadPreset(ch)) {
-                flashMessage(`No preset for "${ch}"`);
-            }
+            void loadCharacterData(ch);
         });
 
         window.addEventListener('resize', updateBaselineLine);
@@ -1354,8 +1638,8 @@ ${svgDefs(d)}
         buildLegend();
         buildPresetButtons();
 
-        // Start with "A"
-        loadPreset('A');
+        // Start with A (source-first)
+        void loadCharacterData('A');
     })();
 </script>
 </body>
