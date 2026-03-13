@@ -6,19 +6,21 @@ declare(strict_types=1);
 
 return [
     'Primitives' => [
-        'glyphCount' => 68,
-        'singleGlyphCount' => 68,
+        'glyphCount' => 70,
+        'singleGlyphCount' => 70,
         'ligatureCount' => 0,
-        'chars' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!,.:; ',
+        'chars' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!#,-.:; ',
         'uppercase' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
         'lowercase' => 'abcdefghijklmnopqrstuvwxyz',
         'digits' => '0123456789',
-        'punct' => '!,.:;',
+        'punct' => '!#,-.:;',
         'other' => ' ',
         'codepoints' => [
             32,
             33,
+            35,
             44,
+            45,
             46,
             48,
             49,
@@ -91,11 +93,11 @@ return [
                 33,
             ],
             [
-                44,
-                44,
+                35,
+                35,
             ],
             [
-                46,
+                44,
                 46,
             ],
             [
@@ -114,7 +116,9 @@ return [
         'charToFilename' => [
             ' ' => 'character-u0020.svg',
             '!' => 'character-u0021.svg',
+            '#' => 'character-u0023.svg',
             ',' => 'character-u002c.svg',
+            '-' => 'character-u002d.svg',
             '.' => 'character-u002e.svg',
             '0' => 'character-u0030.svg',
             '1' => 'character-u0031.svg',
@@ -184,7 +188,9 @@ return [
         'charToUnicode' => [
             ' ' => 'U+0020',
             '!' => 'U+0021',
+            '#' => 'U+0023',
             ',' => 'U+002C',
+            '-' => 'U+002D',
             '.' => 'U+002E',
             '0' => 'U+0030',
             '1' => 'U+0031',
@@ -256,7 +262,9 @@ return [
         'svgMap' => [
             ' ' => 'character-u0020.svg',
             '!' => 'character-u0021.svg',
+            '#' => 'character-u0023.svg',
             ',' => 'character-u002c.svg',
+            '-' => 'character-u002d.svg',
             '.' => 'character-u002e.svg',
             '0' => 'character-u0030.svg',
             '1' => 'character-u0031.svg',
@@ -354,6 +362,21 @@ return [
                     'U+0021',
                 ],
             ],
+            '#' => [
+                'key' => '#',
+                'filename' => 'character-u0023.svg',
+                'isLigature' => false,
+                'length' => 1,
+                'chars' => [
+                    '#',
+                ],
+                'codepoints' => [
+                    35,
+                ],
+                'unicode' => [
+                    'U+0023',
+                ],
+            ],
             ',' => [
                 'key' => ',',
                 'filename' => 'character-u002c.svg',
@@ -367,6 +390,21 @@ return [
                 ],
                 'unicode' => [
                     'U+002C',
+                ],
+            ],
+            '-' => [
+                'key' => '-',
+                'filename' => 'character-u002d.svg',
+                'isLigature' => false,
+                'length' => 1,
+                'chars' => [
+                    '-',
+                ],
+                'codepoints' => [
+                    45,
+                ],
+                'unicode' => [
+                    'U+002D',
                 ],
             ],
             '.' => [

@@ -1,0 +1,13 @@
+{# Usage:
+   {{ include('character.svg.twig', { character: 'A' }) }}
+#}
+
+{% set character = character|default('') %}
+
+{% if character is empty %}
+<!-- character.svg.twig: missing character -->
+{% else %}
+    {% set cp = (character|u).codePointsAt(0)|first %}
+    {% set file = '@svg/character-u' ~ ('%04x'|format(cp)) ~ '.svg' %}
+    {{ source(file, ignore_missing = true)|raw }}
+{% endif %}
